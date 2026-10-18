@@ -33,7 +33,7 @@ def header(home=False):
     return f'''<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap nav">
     <a class="wordmark" href="index.html" aria-label="Raghad Hanon, home"><span class="monogram" aria-hidden="true">rh.</span><span class="wordmark-name">Raghad Hanon<span>Backend engineer</span></span></a>
     <nav class="nav-links" id="navigation" aria-label="Main navigation"><a href="{base}#work">Work</a><a href="{base}#engineering">Approach</a><a href="{base}#about">About</a><a href="{base}#recognition">Recognition</a></nav>
-    <a class="nav-resume" href="assets/Raghad-Hanon-Resume.pdf" target="_blank" rel="noopener">Résumé {arrow('down')}</a>
+    <a class="nav-resume" href="assets/Raghad-Hanon-Resume.pdf?v=2f77c40aebce" target="_blank" rel="noopener">Résumé {arrow('down')}</a>
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="navigation" aria-expanded="false"><span></span><span></span></button>
     </div></header>'''
 
