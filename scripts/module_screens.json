@@ -1,0 +1,86 @@
+[
+  {
+    "group": "Auth",
+    "screen_title": "loginPage.png",
+    "asset": "screens/1eqoHIwhGYKZaE8kwd3VAk-v3HHZ34gD8.webp",
+    "caption": "The sign-in interface for entering the Collabrium workspace."
+  },
+  {
+    "group": "SuperAdmin",
+    "screen_title": "superAdminDashboard.png",
+    "asset": "screens/1cagDy8ivnF9ACTA7lKGT-NmvrMm004dt.webp",
+    "caption": "The platform tenant directory and administration overview."
+  },
+  {
+    "group": "TenantAdmin",
+    "screen_title": "TenantAdminMainDashboard.png",
+    "asset": "screens/1FOHkdZuYz7pBEyi_zLixuX73e9gaHST2.webp",
+    "caption": "The tenant profile, organizational totals, and contact information."
+  },
+  {
+    "group": "User",
+    "screen_title": "profile.png",
+    "asset": "screens/1QaGWA6DPD8lUaPguPi91eRlMYm3sxCjB.webp",
+    "caption": "The personal profile and account information interface."
+  },
+  {
+    "group": "UsersManagement",
+    "screen_title": "TenantUsersDashboard.png",
+    "asset": "screens/11HRXtzKgHAw2HtTd6UZXXoRuJicXN0b2.webp",
+    "caption": "The tenant user directory and employee administration overview."
+  },
+  {
+    "group": "TeamManagement",
+    "screen_title": "FullTeams.png",
+    "asset": "screens/1PvxY0TLW-T0LdUZ9etJ5VAM4NDcfHQAH.webp",
+    "caption": "The teams overview with membership, capacity, and activity status."
+  },
+  {
+    "group": "Teams",
+    "screen_title": "AddTeamMembers.png",
+    "asset": "screens/1_8fCPFyvmZZckiuOBVxdYns5Y4dQbnRL.webp",
+    "caption": "The team workspace with its member-management dialog. This folder contains team action screens."
+  },
+  {
+    "group": "ProjectManagement",
+    "screen_title": "ProjectsDashboard-CardView.png",
+    "asset": "screens/1AEKs4dwGch1fIUFdaAJthhcE4KYy3Lys.webp",
+    "caption": "The project directory organized by delivery status."
+  },
+  {
+    "group": "SprintManagement",
+    "screen_title": "SprintsPage.png",
+    "asset": "screens/1DZq7H06AGCrQ9-B76FP97WIUyM6aS9JO.webp",
+    "caption": "The sprint overview within a project, including lifecycle and delivery totals."
+  },
+  {
+    "group": "WorkItemManagement",
+    "screen_title": "Board.png",
+    "asset": "screens/1Q7yzCP0K71hhNJGRyVwzTaeG7BxJmrDL.webp",
+    "caption": "The project board with work items organized by workflow status."
+  },
+  {
+    "group": "LearningHub",
+    "screen_title": "CoursesPage.png",
+    "asset": "screens/1lmo-UK4A-KMkNyWF8Wk3SHzfKKIC4hI0.webp",
+    "caption": "The course catalog and learning interface."
+  },
+  {
+    "group": "CommunityHub",
+    "screen_title": "FeedPage.png",
+    "asset": "screens/1h7n4M3J1Yk9FjZhahwGWbcUoqHJ1cwbA.webp",
+    "caption": "The shared community feed with announcements and upcoming events."
+  },
+  {
+    "group": "Reports",
+    "screen_title": "TenantInfoReport.png",
+    "asset": "screens/18EuFyTiiwQPdfwtXyS6I6svUtH1NsguR.webp",
+    "caption": "The analytics interface showing the tenant information report."
+  },
+  {
+    "group": "AI",
+    "screen_title": "generateRoadmap.png",
+    "asset": "screens/1GkU_sb3gLYWj01Zj64IlEuNq_O2roZNO.webp",
+    "caption": "The roadmap generation interface with its AI generation option selected."
+  }
+]

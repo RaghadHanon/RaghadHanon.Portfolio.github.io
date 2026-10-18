@@ -1,0 +1,5 @@
+from components import *
+
+def build_presentation_page():
+    body = '''<main class="wrap presentation-download" id="main"><a class="text-link" href="collabrium.html#documentation">← Back to Collabrium</a><div class="eyebrow">Collabrium / Project documentation</div><h1>Graduation project<br>presentation.</h1><p>The complete 53-slide PowerPoint, including its embedded demonstrations. The download is 196.3 MB.</p><button type="button" class="button" id="download-presentation">Download the presentation</button><p role="status" aria-live="polite" id="download-status">The file downloads only when you request it.</p><noscript><p>Enable JavaScript to download the full presentation from this page.</p></noscript></main><script src="presentation-download.js" defer></script>'''
+    (DIST/'presentation.html').write_text(document('Collabrium presentation — Raghad Hanon','Download the complete Collabrium graduation presentation with embedded demonstrations.',body,'presentation.html'),encoding='utf-8')

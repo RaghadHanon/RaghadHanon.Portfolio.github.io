@@ -1,0 +1,1012 @@
+[
+  {
+    "title": "ViewOnlineUsers.png",
+    "group": "Workspace",
+    "asset": "screens/1PBqAF850lWzNmN8yb6r1ucmBT8GLlWzO.webp"
+  },
+  {
+    "title": "publicContent.png",
+    "group": "Workspace",
+    "asset": "screens/1zBqZgzHoptAwsvnFk2BXL15Nt5OoCxQA.webp"
+  },
+  {
+    "title": "Notifications2.png",
+    "group": "Workspace",
+    "asset": "screens/1qxSt6FJ_uGkqYVYrCH4X4pNziqz6qxzl.webp"
+  },
+  {
+    "title": "Notifications.png",
+    "group": "Workspace",
+    "asset": "screens/1VgwudjqilWJsP_R8BUQ6KHg9vN9BPKx_.webp"
+  },
+  {
+    "title": "ViewUserSkills.png",
+    "group": "User",
+    "asset": "screens/1Xqb7HxSLSWf6Ng0IPJMjpSERbdcy9cWp.webp"
+  },
+  {
+    "title": "profileImageChange.png",
+    "group": "User",
+    "asset": "screens/1vp9YZOE9-g4vUHq4ho9uvmUTd4PoB5MJ.webp"
+  },
+  {
+    "title": "profile.png",
+    "group": "User",
+    "asset": "screens/1QaGWA6DPD8lUaPguPi91eRlMYm3sxCjB.webp"
+  },
+  {
+    "title": "ManageMySkills.png",
+    "group": "User",
+    "asset": "screens/1FJMjEVQNExRrYUYii4XYasHRxmmYrwN3.webp"
+  },
+  {
+    "title": "EditProfile4.png",
+    "group": "User",
+    "asset": "screens/1V0_fb9zv9wJGrS80YHQDIMVF7x0Z00PB.webp"
+  },
+  {
+    "title": "EditProfile3.png",
+    "group": "User",
+    "asset": "screens/1L45HEB7XOU38fhfhvkZv5TL-z6AdlFj0.webp"
+  },
+  {
+    "title": "EditProfile2.png",
+    "group": "User",
+    "asset": "screens/1Dtl9KTetaXmzWr9una7SOQJYjCLNydQY.webp"
+  },
+  {
+    "title": "EditProfile1.png",
+    "group": "User",
+    "asset": "screens/1SOP85Uar_EMKMfwYr7JZ60bC47sOgGgS.webp"
+  },
+  {
+    "title": "contactEdit.png",
+    "group": "User",
+    "asset": "screens/1WxPelymEXBCyq6Kdmn5GN732DeubJWsb.webp"
+  },
+  {
+    "title": "UserDetailsDrawer.png",
+    "group": "UsersManagement",
+    "asset": "screens/1tA4QXGPFyLjU2tbtqAGmjduQobyzwPmS.webp"
+  },
+  {
+    "title": "TenantUsersDashboard.png",
+    "group": "UsersManagement",
+    "asset": "screens/11HRXtzKgHAw2HtTd6UZXXoRuJicXN0b2.webp"
+  },
+  {
+    "title": "tenantAdminAddEmployee.png",
+    "group": "UsersManagement",
+    "asset": "screens/1rm4b76RWpfFqnka5_S5YRUOAA_vTaMQS.webp"
+  },
+  {
+    "title": "FilterDrawer.png",
+    "group": "UsersManagement",
+    "asset": "screens/1XDQ5RhuCLX6eovfqYZdFGBmCWVA4FYtB.webp"
+  },
+  {
+    "title": "ChangeUserRole.png",
+    "group": "UsersManagement",
+    "asset": "screens/1onlrMnODYqvm5lInIixQH0KDvKcMPvDb.webp"
+  },
+  {
+    "title": "AddTenantEmployee.png",
+    "group": "UsersManagement",
+    "asset": "screens/1zZCPUvxLGBS0_0E4-mPw0Q9eF-XVVHA7.webp"
+  },
+  {
+    "title": "TenantAdminWorkspace.png",
+    "group": "TenantAdmin",
+    "asset": "screens/1Yzjlrcv0kvGsAnoupepYKC5iUH7unCRS.webp"
+  },
+  {
+    "title": "TenantAdminMainDashboard.png",
+    "group": "TenantAdmin",
+    "asset": "screens/1FOHkdZuYz7pBEyi_zLixuX73e9gaHST2.webp"
+  },
+  {
+    "title": "EditTenantDialog.png",
+    "group": "TenantAdmin",
+    "asset": "screens/1D9UE22rWzEIwVQFm_wAKS2-QwCMsyXX-.webp"
+  },
+  {
+    "title": "DeactivateMyTenantDialog.png",
+    "group": "TenantAdmin",
+    "asset": "screens/181W2h9i3uRBeNNS2sbum6vbuOtuF0JNL.webp"
+  },
+  {
+    "title": "ViewWorkItemDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1bngTZN9jCemnV5z1C7ZZZcJ8jnJEM3f4.webp"
+  },
+  {
+    "title": "ViewRelations.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1d4fHTu7CEUcvENlX-HR7y9vnbye4menI.webp"
+  },
+  {
+    "title": "ViewComments.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1vFk7vjmauYFfVGb_L_qxiYPRz_hPuAnX.webp"
+  },
+  {
+    "title": "ViewCodeLinks.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1qG5PvOcotYZod-_qnFqAdcCc9yIaxrCi.webp"
+  },
+  {
+    "title": "ViewCandidates.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1r_S1KkhgSQugFl5X7EuD7sH3oSUZ6vDq.webp"
+  },
+  {
+    "title": "ViewAttachment.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1tOx5UnRBNlYN5zn3Avw0JTeZZchO_CeK.webp"
+  },
+  {
+    "title": "StoryBoard.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1S255n3CyFLmZUhhMg_Ee3N6ETqm4Yi1n.webp"
+  },
+  {
+    "title": "QACreateExcutionWorkItemDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1YsJtd1vsqd98K2X6hRePPuy_huXk2LCa.webp"
+  },
+  {
+    "title": "ProductOwnerCreatePlanningWorkItemDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1rWjK7WXS5F0CjpFvtWrCgRvMDRmy7ukH.webp"
+  },
+  {
+    "title": "Epic&ItsChildren.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/16n0uZ9iFGpanZtnZY60Ehg_eHGP1cmkQ.webp"
+  },
+  {
+    "title": "EditWorkItemDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1oD8A0x657FPQcH0yQ5udBhEahz9B-4RS.webp"
+  },
+  {
+    "title": "EditUserStoryDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1NYJ_RXYUiNaNYQy2akQqMka2FUQHe17W.webp"
+  },
+  {
+    "title": "EditTask.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1gvWYxNFYCZ3ZFosl4PmC9QLuiLZWAPmV.webp"
+  },
+  {
+    "title": "EditDeleteCodeLink.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1B5ArwQw9CGLPyCHamCCOcLHJA7ag7oBj.webp"
+  },
+  {
+    "title": "EditComment.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1yu63MGIatKz4cKl1EsuS6ohy8GGuXqSi.webp"
+  },
+  {
+    "title": "DeleteWorkItemConfirmDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1T3UZtjBWAkSbfXlHekgPwBc5SRIadJWm.webp"
+  },
+  {
+    "title": "DeleteRelation.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1t6-PJcd42H6-S_sYAf-qE7a8Uoj3J1B9.webp"
+  },
+  {
+    "title": "DeleteAttachment.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/14cGboL4LPB7NO7UTlbxBp3a8BFuEAgVI.webp"
+  },
+  {
+    "title": "CreateWorkItemDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1Kawyz8Je0xByA7zb-fFe1ArBr1o737hs.webp"
+  },
+  {
+    "title": "CreateTask.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1Kbo41JhyQz24s7fkP1TY8Oyqy0wDW62g.webp"
+  },
+  {
+    "title": "BoardFilters.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/12hB78XnL0hz-GCQFZ5yQqKwksl8CjJPH.webp"
+  },
+  {
+    "title": "Board.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1Q7yzCP0K71hhNJGRyVwzTaeG7BxJmrDL.webp"
+  },
+  {
+    "title": "backlogPage.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1k938bgKNZVMoqWXHtjG8DBQ3bLkBz_Zz.webp"
+  },
+  {
+    "title": "AssignToOthersWorkItem.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1K8bI87_ZAknpj_bc2p94_FUMzoyPvLBu.webp"
+  },
+  {
+    "title": "AssignToMeWorkItem.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1hH-1Ghva3O6l9qvuGtLYjRpYOzdjJ80w.webp"
+  },
+  {
+    "title": "AssignedToMeFilter.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1dgPBLijckix4kXMREtkd9e987HAuqPGB.webp"
+  },
+  {
+    "title": "AddRelationDialog.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1C96ABXtTbGB-LgV9S7IH_ic-SY8rbXYr.webp"
+  },
+  {
+    "title": "AddComment.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1S0anNmhvB9pCH0PaWG5W3mDNTkVwpU9p.webp"
+  },
+  {
+    "title": "AddCodeLink.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1S-FXl9YF9nXY23yodZgjeNY2Ge3J4rEk.webp"
+  },
+  {
+    "title": "AddAttachment.png",
+    "group": "WorkItemManagement",
+    "asset": "screens/1aSAVvp0i-PH-q2cXb33KHSsaQ3UNKi9h.webp"
+  },
+  {
+    "title": "Velocity.png",
+    "group": "Reports",
+    "asset": "screens/1K9dJLUQ5jc3k4KtSHgLdqAukCvreWceZ.webp"
+  },
+  {
+    "title": "TenantInfoReport.png",
+    "group": "Reports",
+    "asset": "screens/18EuFyTiiwQPdfwtXyS6I6svUtH1NsguR.webp"
+  },
+  {
+    "title": "TeamsProd2.png",
+    "group": "Reports",
+    "asset": "screens/1X38wwSd2MNg-ph9NO0_bD7LQtDmWOUmD.webp"
+  },
+  {
+    "title": "TeamsProd1.png",
+    "group": "Reports",
+    "asset": "screens/1G7uPYd1U3xQLyiL9BrFWpt0Wuu9bgjVd.webp"
+  },
+  {
+    "title": "SprintsSummery.png",
+    "group": "Reports",
+    "asset": "screens/1dU0Jqw7r1By_ho5VzEeR-qbe5nXMmT1W.webp"
+  },
+  {
+    "title": "SprintProgress.png",
+    "group": "Reports",
+    "asset": "screens/1ru1TCMWR5dbRpIpCcQPj6uv7Tl5sLnpU.webp"
+  },
+  {
+    "title": "ProjectHealth2.png",
+    "group": "Reports",
+    "asset": "screens/1C5G1uimrWxUB2Uh8f6KLPMSbOKjdk07B.webp"
+  },
+  {
+    "title": "ProjectHealth.png",
+    "group": "Reports",
+    "asset": "screens/1MGe6w5K6ypK-Ogg58KdahSirD4yKEJgb.webp"
+  },
+  {
+    "title": "DeveloperProd2.png",
+    "group": "Reports",
+    "asset": "screens/1x82XOl2FG_lklZgFBAZ-tLf8LDEJOu-Z.webp"
+  },
+  {
+    "title": "DeloperProd.png",
+    "group": "Reports",
+    "asset": "screens/1CiS6-IymWmBj6Vo6zTl9B_NvArB70mut.webp"
+  },
+  {
+    "title": "Bug.png",
+    "group": "Reports",
+    "asset": "screens/1POAO47MXpGS3tOAHkQs2yOsIlTur5apF.webp"
+  },
+  {
+    "title": "blocked.png",
+    "group": "Reports",
+    "asset": "screens/1EteguLiKtj9kxiR5YSUDgMK4DfGnNiak.webp"
+  },
+  {
+    "title": "tenantsTable.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1VQVewCQx1tZa5LPyBGp3oMr4xwbaCPUc.webp"
+  },
+  {
+    "title": "TenantProfile.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1KjcasJ6bJz3VIBmnJtHTyu3aOX_-jfLi.webp"
+  },
+  {
+    "title": "TenantProfile-users.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1IbsUj-ewXSlquturbWf8uLHyKQg4LtMX.webp"
+  },
+  {
+    "title": "TenantDetailsDrawer.png",
+    "group": "SuperAdmin",
+    "asset": "screens/16UaZbd_qAUYsyiN7I0WxMQ0TXgH1Z6P-.webp"
+  },
+  {
+    "title": "TenantAdded.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1SVBB831-BhSWcc_v_Fg5AXM9DMeibPhI.webp"
+  },
+  {
+    "title": "SuperAdminWorkspace.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1PboHrdiPE2Wu6-ByBCuQwLnqxymU4JAi.webp"
+  },
+  {
+    "title": "superAdminDashboard.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1cagDy8ivnF9ACTA7lKGT-NmvrMm004dt.webp"
+  },
+  {
+    "title": "superAdminAddTenant.png",
+    "group": "SuperAdmin",
+    "asset": "screens/16d43UABZa1Br400hPpqJjJJN4PU86wpC.webp"
+  },
+  {
+    "title": "superAdminAddNewSuper.png",
+    "group": "SuperAdmin",
+    "asset": "screens/170k9fSBN_ENeVs-l2xsewrIR_vaiVl2t.webp"
+  },
+  {
+    "title": "mainDashboard.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1mGUu2j-KgdI5mPt-Dj5w1ftuBffyJnaZ.webp"
+  },
+  {
+    "title": "forgotPasswordPage.png",
+    "group": "SuperAdmin",
+    "asset": "screens/1smQn5wzuiJSU1q6lLECULNhSkiv1hQ53.webp"
+  },
+  {
+    "title": "Deactivate.png",
+    "group": "SuperAdmin",
+    "asset": "screens/10Vd3JZXTgfupH3hMx8JlImkNkbCQeg1y.webp"
+  },
+  {
+    "title": "TeamDetailsPage.png",
+    "group": "TeamManagement",
+    "asset": "screens/1S1xL0ZbD0_EqMAoxmh4QTFtSEYJ_nw_r.webp"
+  },
+  {
+    "title": "TeamDetailsPage- Projects.png",
+    "group": "TeamManagement",
+    "asset": "screens/1oZYTEuEWLiYRzAzqcZ1uAillLQsqoXnk.webp"
+  },
+  {
+    "title": "RemoveTeamMemberConfirmDialog.png",
+    "group": "TeamManagement",
+    "asset": "screens/1KZ268eNOGSJXkZbQRa_Ackrz_mkCBN37.webp"
+  },
+  {
+    "title": "FullTeams.png",
+    "group": "TeamManagement",
+    "asset": "screens/1PvxY0TLW-T0LdUZ9etJ5VAM4NDcfHQAH.webp"
+  },
+  {
+    "title": "FilterTeams.png",
+    "group": "TeamManagement",
+    "asset": "screens/1zS8KzOqybRs1qSs6Vaogk291OsDtuVig.webp"
+  },
+  {
+    "title": "EditTeamDialog.png",
+    "group": "TeamManagement",
+    "asset": "screens/1ZYiUpxVUlPQtHF-UL4x8NuLTR_AB5wuh.webp"
+  },
+  {
+    "title": "DeactivateTeam.png",
+    "group": "TeamManagement",
+    "asset": "screens/1RfI0yGgHFIWMNOwlAjvGPA1zxkmfCBvN.webp"
+  },
+  {
+    "title": "CreateTeamDialog.png",
+    "group": "TeamManagement",
+    "asset": "screens/1140vVPufX1gUqHQZnSDxUzkdKk7IX9UH.webp"
+  },
+  {
+    "title": "AddTeamMember.png",
+    "group": "TeamManagement",
+    "asset": "screens/1RLpU8E3e-vOLMr2S0TEwylGhvAq_9ShZ.webp"
+  },
+  {
+    "title": "ActivateTeam.png",
+    "group": "TeamManagement",
+    "asset": "screens/1k0e_q6H1Ql77HhVUvwUVqtCzBfNPIO8n.webp"
+  },
+  {
+    "title": "StartSprintDialog.png",
+    "group": "SprintManagement",
+    "asset": "screens/1Lc9-JbmeRT_Sezwmeht-9rxjnIa6yqJP.webp"
+  },
+  {
+    "title": "SprintsPage.png",
+    "group": "SprintManagement",
+    "asset": "screens/1DZq7H06AGCrQ9-B76FP97WIUyM6aS9JO.webp"
+  },
+  {
+    "title": "SprintOrphans.png",
+    "group": "SprintManagement",
+    "asset": "screens/1ms3jxrYDorL-SfwlmGETiHvXdDHoHOCq.webp"
+  },
+  {
+    "title": "SprintEpics.png",
+    "group": "SprintManagement",
+    "asset": "screens/1KJJXZdGOFuB25miqUr2MbxGDYSbiT6xA.webp"
+  },
+  {
+    "title": "SprintDetailsPage.png",
+    "group": "SprintManagement",
+    "asset": "screens/1zB-407sOpyiNkYJldo3uKdFLc3TUXucJ.webp"
+  },
+  {
+    "title": "FilteredSprints.png",
+    "group": "SprintManagement",
+    "asset": "screens/1hhifHM7vPHRQDKlDp16mqPZfNjkSYpbl.webp"
+  },
+  {
+    "title": "EditSprint.png",
+    "group": "SprintManagement",
+    "asset": "screens/1ue_B1jaHauTMoMtwxRC8oBwiB1aa4Mvf.webp"
+  },
+  {
+    "title": "DeleteSprintConfirmDialog.png",
+    "group": "SprintManagement",
+    "asset": "screens/1u24oItNQtLOWME7u5P2yuM5syjgQIrwL.webp"
+  },
+  {
+    "title": "CreateSprint.png",
+    "group": "SprintManagement",
+    "asset": "screens/1f6ZRwYBXEbvSOTT8yd_4uq0tXQJSUcpM.webp"
+  },
+  {
+    "title": "CompleteSprint.png",
+    "group": "SprintManagement",
+    "asset": "screens/1jComwz1BDPcnZ-AD8o6LasPdHIMcK32Y.webp"
+  },
+  {
+    "title": "CancelSprintConfirmDialog.png",
+    "group": "SprintManagement",
+    "asset": "screens/1B1k_bXjINLarhwmsgHZpL-yB-FIm0nHc.webp"
+  },
+  {
+    "title": "AddTeamMembers.png",
+    "group": "Teams",
+    "asset": "screens/1_8fCPFyvmZZckiuOBVxdYns5Y4dQbnRL.webp"
+  },
+  {
+    "title": "AddTeam.png",
+    "group": "Teams",
+    "asset": "screens/1PEIAfjp_EmHXedlcYmJX5ykYpbOkplLF.webp"
+  },
+  {
+    "title": "ReassignTeam.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1jc2MHjhumkfAbc2ZCPuZNiKYAJU0F3rz.webp"
+  },
+  {
+    "title": "ProjectsDashboard-TableViewDev.png",
+    "group": "ProjectManagement",
+    "asset": "screens/17ZGoVj1zO1FQTfyPa2G6S9LSJUeQLD8u.webp"
+  },
+  {
+    "title": "ProjectsDashboard-TableView.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1xKUgJkrDUZvK97oYkqRUPyRWf75DEre_.webp"
+  },
+  {
+    "title": "ProjectsDashboard-CardViewDev.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1mr0Gw5aFKUWtzC0INJVPrhdH2RGhW5jW.webp"
+  },
+  {
+    "title": "ProjectsDashboard-CardView.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1AEKs4dwGch1fIUFdaAJthhcE4KYy3Lys.webp"
+  },
+  {
+    "title": "ProjectHistoryDialog.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1kSKVjTHcd3zk8rNZgi1617kPwY3wgzF3.webp"
+  },
+  {
+    "title": "EditProjectDialog.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1lwIPpw0yoEJGc6TjPWMYsToCIPoQuz2x.webp"
+  },
+  {
+    "title": "DeleteProjectConfirmDialog.png",
+    "group": "ProjectManagement",
+    "asset": "screens/12dc_C5oi1mdzI8gEVKQX89J1WarbL3yH.webp"
+  },
+  {
+    "title": "CreateProjectDialog.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1AsSppKTAISKNYeMDeAxEJKSQ5BHLsmdC.webp"
+  },
+  {
+    "title": "ConfirmReassign.png",
+    "group": "ProjectManagement",
+    "asset": "screens/1j5CgCjrlGkQa0X4UVZ0Nwl3fvQi968ph.webp"
+  },
+  {
+    "title": "SubmitRatingCourse.png",
+    "group": "LearningHub",
+    "asset": "screens/1HkMJwjYtrXOcQeASzegAzTitYnZul1Ix.webp"
+  },
+  {
+    "title": "SavedCourses.png",
+    "group": "LearningHub",
+    "asset": "screens/1LFHVDHw5VBtJXce1HOlRWYHlKpop740f.webp"
+  },
+  {
+    "title": "RoadmapViewPage.png",
+    "group": "LearningHub",
+    "asset": "screens/18C0R-xOqEnIyyBNDCFb9rKBycLQDf-ny.webp"
+  },
+  {
+    "title": "RoadmapNodeDetailsDrawer.png",
+    "group": "LearningHub",
+    "asset": "screens/12DW761fZ5UGtngm1S1qxOy972ln_e7Fl.webp"
+  },
+  {
+    "title": "RoadmapNodeDetailsDrawer-Developer.png",
+    "group": "LearningHub",
+    "asset": "screens/10KGjKMblwAQddsvIonLzT7C_0Ua-uII3.webp"
+  },
+  {
+    "title": "RoadmapDeveloperViewPage.png",
+    "group": "LearningHub",
+    "asset": "screens/10qsFbIKazMlhVupPxKiLWXuzRNOIYG52.webp"
+  },
+  {
+    "title": "RoadmapDeveloperView.png",
+    "group": "LearningHub",
+    "asset": "screens/1Uv0Ig04h6on9RJhtV3LC_PDbksUtRHYT.webp"
+  },
+  {
+    "title": "RoadmapBuilderPage.png",
+    "group": "LearningHub",
+    "asset": "screens/1kJIQx2nUi3UGkk5it95X1v--HXtEXxTy.webp"
+  },
+  {
+    "title": "removeRoadmapElement.png",
+    "group": "LearningHub",
+    "asset": "screens/1PuomVYb1fiUE7iDdVbFlLplFw2tgPC_Z.webp"
+  },
+  {
+    "title": "MyCourses.png",
+    "group": "LearningHub",
+    "asset": "screens/1zpx0ccuTeJIT7BCEc_Rcp56cJpqU0DJP.webp"
+  },
+  {
+    "title": "ManageRoadmapTagsDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1v3NdD3Q5GpKRYa5e5bt4sDiKlAbOYN7O.webp"
+  },
+  {
+    "title": "ManageCourseTagsDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/14oNIM7tA4_HCLbTrSDFOu4cOeMP7Q1hO.webp"
+  },
+  {
+    "title": "ManageArticleTags.png",
+    "group": "LearningHub",
+    "asset": "screens/1vI6OHrrwPAf6R6EzDZSsHuzke3dH_EVz.webp"
+  },
+  {
+    "title": "InProgressCourse.png",
+    "group": "LearningHub",
+    "asset": "screens/18eCgOd0fDYYVF0lcBKikMtpvnrttzK0d.webp"
+  },
+  {
+    "title": "FilteredCourses.png",
+    "group": "LearningHub",
+    "asset": "screens/1EPZQ0B8c0yn3zmx3sQzEMWbVWSndvm1h.webp"
+  },
+  {
+    "title": "EditRoadmap.png",
+    "group": "LearningHub",
+    "asset": "screens/1dQhXlJxE_XJWtVehq8KZ3yf0dgQHwJlf.webp"
+  },
+  {
+    "title": "EditCourseThumbnail.png",
+    "group": "LearningHub",
+    "asset": "screens/176I2sCoCC8cbwvCF63YrGet97L3R9Ccm.webp"
+  },
+  {
+    "title": "EditCourseDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/17S5h_tI4e1uI_2FDEwxY_emI8FZElA1x.webp"
+  },
+  {
+    "title": "EditArticleReport.png",
+    "group": "LearningHub",
+    "asset": "screens/1eW5KtDYktk9I4Yp1wrrKvW0EDy80uAGx.webp"
+  },
+  {
+    "title": "EditArticleComment.png",
+    "group": "LearningHub",
+    "asset": "screens/1XoIdDj5mXFVhH3VoIrXa8GLZROpUwNbJ.webp"
+  },
+  {
+    "title": "DetailedCourseManagerView.png",
+    "group": "LearningHub",
+    "asset": "screens/17i-JGBQjyKr9TbMDqorn3XuSyHL-rRYo.webp"
+  },
+  {
+    "title": "DetailedCourseDeveloperView.png",
+    "group": "LearningHub",
+    "asset": "screens/19maQGl9-5hXRH3dvAkq5z98mOqN1Wpcm.webp"
+  },
+  {
+    "title": "DetailedArticlePageDev2.png",
+    "group": "LearningHub",
+    "asset": "screens/1kjr7xjzIkA1Mi61rcGRijkgjt7hvmOQG.webp"
+  },
+  {
+    "title": "DetailedArticlePageDev.png",
+    "group": "LearningHub",
+    "asset": "screens/1RdkkFnVYM9xTSYqdvm9CWRBlacWBWjS0.webp"
+  },
+  {
+    "title": "DetailedArticlePage.png",
+    "group": "LearningHub",
+    "asset": "screens/1aZWcgQz0B2_q2-0LxXpbWk-6DqzOJWA4.webp"
+  },
+  {
+    "title": "DeleteRoadmapConfirmDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1L8n79vu8orCM1HDjOM7PKREjewsPW0zF.webp"
+  },
+  {
+    "title": "DeleteCourseConfirmDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/158GIUTMCTD8sJGGqvcl_CZPOV8gtlHUM.webp"
+  },
+  {
+    "title": "DeleteArticle.png",
+    "group": "LearningHub",
+    "asset": "screens/1prSyIswhR_PUuIJu0JXEPpuiRS0CQlgZ.webp"
+  },
+  {
+    "title": "CreateSubTopicDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1lfgGrETccFU0E0IWT56sU9uNRWd457WQ.webp"
+  },
+  {
+    "title": "CreateRoadmap.png",
+    "group": "LearningHub",
+    "asset": "screens/1-8Q1TM-PeR8MxhfZ6sdQY-SlZ6KnmoJA.webp"
+  },
+  {
+    "title": "CreateResourceDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1pLhpsSnGGDVM2ANbDW1us9DaxTFF7H6i.webp"
+  },
+  {
+    "title": "CreateReferenceNodeDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/18-nr-0FzzpKtrryhHwHMY4MeNpHmLFg8.webp"
+  },
+  {
+    "title": "CreateNodeDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1AFkIToPQLJhqeIuTnxQgkhZhWNPm-AwI.webp"
+  },
+  {
+    "title": "CreateCourseDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1ueElmYp6JcjCjNps9vuxTylGaN8WVhQk.webp"
+  },
+  {
+    "title": "CreateArticlePage.png",
+    "group": "LearningHub",
+    "asset": "screens/1INdXde8e2x1ev20DrO8SLogqnQUChQU8.webp"
+  },
+  {
+    "title": "CoursesPage.png",
+    "group": "LearningHub",
+    "asset": "screens/1lmo-UK4A-KMkNyWF8Wk3SHzfKKIC4hI0.webp"
+  },
+  {
+    "title": "CompletedCourse.png",
+    "group": "LearningHub",
+    "asset": "screens/1FkB1M-XvvdqYs52ZoHci0FRj6WtMyXTX.webp"
+  },
+  {
+    "title": "ChangeArticleCover.png",
+    "group": "LearningHub",
+    "asset": "screens/1Pzie0MFrE62pWMYlO2qkI54LkkcgKdD1.webp"
+  },
+  {
+    "title": "cancelAssignmentConfirmDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1gzAIHT6IH3_jKHIOIV6bBUcj5C-Crw-X.webp"
+  },
+  {
+    "title": "AssignmentsPage.png",
+    "group": "LearningHub",
+    "asset": "screens/1UHvx3MO2zgSB2DvCux_AGoJo5gBjdGNd.webp"
+  },
+  {
+    "title": "AssignedToMeCourses.png",
+    "group": "LearningHub",
+    "asset": "screens/16d6eOhwyN2ZZbMl8glPgJWrRVt_oR_lS.webp"
+  },
+  {
+    "title": "AssignCourseToUserDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1wGPX9wEh9TQ6Su68nY7SD5d2BpRKoU99.webp"
+  },
+  {
+    "title": "AssignCourseToTeamDialog.png",
+    "group": "LearningHub",
+    "asset": "screens/1nvnkUGaloOT9J4mVHygf-rQ0M3fgyrU-.webp"
+  },
+  {
+    "title": "ArticlesPageManage.png",
+    "group": "LearningHub",
+    "asset": "screens/107jQ38L9h7HuAP-IvAN9a8RXPeySR4VX.webp"
+  },
+  {
+    "title": "ArticlesPage.png",
+    "group": "LearningHub",
+    "asset": "screens/191MoaIMBNELj4MJaLr2JmuiuZy_cGLWf.webp"
+  },
+  {
+    "title": "ArticleContent.png",
+    "group": "LearningHub",
+    "asset": "screens/1cNkeDLeluNmQ4c-Yg439-lblzhe5AwFT.webp"
+  },
+  {
+    "title": "ArticleCommentsSection.png",
+    "group": "LearningHub",
+    "asset": "screens/1feudru1Ni_BtWEH5bJIF8zBRUku9Oh6s.webp"
+  },
+  {
+    "title": "UpdatePassword.png",
+    "group": "Auth",
+    "asset": "screens/1k3ex5RWtvw8_7hTEt_E2uXrFMzYQ2tHr.webp"
+  },
+  {
+    "title": "ResetPasswordPage.png",
+    "group": "Auth",
+    "asset": "screens/1WnHqyKEbOIqDYbkqUBffVv0G_V107R_y.webp"
+  },
+  {
+    "title": "ResendConfirmEmail.png",
+    "group": "Auth",
+    "asset": "screens/1S7o71A_WIAv7Y0iRgcmUM-5PgmidolX8.webp"
+  },
+  {
+    "title": "loginPage.png",
+    "group": "Auth",
+    "asset": "screens/1eqoHIwhGYKZaE8kwd3VAk-v3HHZ34gD8.webp"
+  },
+  {
+    "title": "forgotPassword.png",
+    "group": "Auth",
+    "asset": "screens/1LAOUwtm9ah8gtTi7Ez0KMfAduhMub9uh.webp"
+  },
+  {
+    "title": "firstLogin.png",
+    "group": "Auth",
+    "asset": "screens/1Huvm--S-G_koPKMrDMyclGMAPgxoetcm.webp"
+  },
+  {
+    "title": "employeeFirstLogin.png",
+    "group": "Auth",
+    "asset": "screens/1pxsrmRVDNYhMFYkpAMRaWBSDL_Ang8Ip.webp"
+  },
+  {
+    "title": "emailConfirmSeccessMessage.png",
+    "group": "Auth",
+    "asset": "screens/1K3NQjA2buhnkDUxZrTzuGiAQPQVqEqhR.webp"
+  },
+  {
+    "title": "Contact.png",
+    "group": "Auth",
+    "asset": "screens/1IQYmSbNEhvF4SpGOexXSr8S_PXdISEf5.webp"
+  },
+  {
+    "title": "Contact.Emailpng.png",
+    "group": "Auth",
+    "asset": "screens/1Tx_F43AI3gNowAz295ky9E-8P70OBgJQ.webp"
+  },
+  {
+    "title": "confirmEmail.png",
+    "group": "Auth",
+    "asset": "screens/1dqb4tRqnvovKbfsfKiVMW6HlezUoNpXz.webp"
+  },
+  {
+    "title": "completeSetupGeneralInfo.png",
+    "group": "Auth",
+    "asset": "screens/12F7trXPE6yVtpbHjiZliOjOvOp0r_0UT.webp"
+  },
+  {
+    "title": "completeSetupContactInfo.png",
+    "group": "Auth",
+    "asset": "screens/1VdS-LuNpkFIkhOSHLQXUYapTPidoElI7.webp"
+  },
+  {
+    "title": "viewRoadmapsView.png",
+    "group": "AI",
+    "asset": "screens/1tThQzdIQrp5ESzI1Ffc7c-Bz-BftARw-.webp"
+  },
+  {
+    "title": "TopicAIGenerated.png",
+    "group": "AI",
+    "asset": "screens/1owbn1I8Ox9P6sEXz_0OLQ_-ThgdrLhCh.webp"
+  },
+  {
+    "title": "TenantInfoAIGeneratedReport.png",
+    "group": "AI",
+    "asset": "screens/1xLq8cgG9FDfMn7OFfM6Iiu10ECLXZK-v.webp"
+  },
+  {
+    "title": "TeamsProdAIGeneratedReport.png",
+    "group": "AI",
+    "asset": "screens/1CA2os4HzPrygDFzd84rFY40xIHTFfJoV.webp"
+  },
+  {
+    "title": "SubTopicAIGenerated.png",
+    "group": "AI",
+    "asset": "screens/1dE4Hvut3akyvSKOWez9AadB0km9b0wNJ.webp"
+  },
+  {
+    "title": "SkillsGap.png",
+    "group": "AI",
+    "asset": "screens/1-buCj3NkIkp-0EdsIqez96aGleaHOMAx.webp"
+  },
+  {
+    "title": "ResourceAIGenerated.png",
+    "group": "AI",
+    "asset": "screens/1J_rDiPxxQySf3uBnNsq_xlvPwfJPiTuk.webp"
+  },
+  {
+    "title": "Recommendation.png",
+    "group": "AI",
+    "asset": "screens/1RZXu3sptb7NW9fv0j_-RH3s7NYIqUq9W.webp"
+  },
+  {
+    "title": "generateWorkItem.png",
+    "group": "AI",
+    "asset": "screens/1qBgq1Cf7CWlQkQoFpdHuOrxPkYPHKHZL.webp"
+  },
+  {
+    "title": "generateRoadmap.png",
+    "group": "AI",
+    "asset": "screens/1GkU_sb3gLYWj01Zj64IlEuNq_O2roZNO.webp"
+  },
+  {
+    "title": "DevProAIGeneratedReport.png",
+    "group": "AI",
+    "asset": "screens/1rlbgffH7vsgHR-i7afCApEVicQDXMxth.webp"
+  },
+  {
+    "title": "MyEvent-Going.png",
+    "group": "CommunityHub",
+    "asset": "screens/1Fok7orcw05KqDiSIsuNPd23tpm6cCHnm.webp"
+  },
+  {
+    "title": "FilterPosts.png",
+    "group": "CommunityHub",
+    "asset": "screens/1vkLF3tehktkpp7dtJcZXp6XE_QhDQ60a.webp"
+  },
+  {
+    "title": "FilteredAnnouncement.png",
+    "group": "CommunityHub",
+    "asset": "screens/1n2KoCW0Is65-ArRDzpb32zDwfdZG9Zka.webp"
+  },
+  {
+    "title": "FilterAnnouncement.png",
+    "group": "CommunityHub",
+    "asset": "screens/1bA7KPgb1jzal16RH9LinJEjOGms7Aazq.webp"
+  },
+  {
+    "title": "FeedPage.png",
+    "group": "CommunityHub",
+    "asset": "screens/1h7n4M3J1Yk9FjZhahwGWbcUoqHJ1cwbA.webp"
+  },
+  {
+    "title": "Events.png",
+    "group": "CommunityHub",
+    "asset": "screens/1EbY2378Rkg2M2ZwVSZVNRtWxzNGhExLl.webp"
+  },
+  {
+    "title": "EditPostComment.png",
+    "group": "CommunityHub",
+    "asset": "screens/1S0GxJ--7iy7tr6X7hAnEkNd9fHFi-gch.webp"
+  },
+  {
+    "title": "EditAnnouncement.png",
+    "group": "CommunityHub",
+    "asset": "screens/1B3Kp7N89LgHX2AZQOXHzvK5W6m9YBzW6.webp"
+  },
+  {
+    "title": "DetailedPostDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1ayfT7uR0wRlc5RWkX9fdI55C1H8l2bFN.webp"
+  },
+  {
+    "title": "DetailedEventDrawer.png",
+    "group": "CommunityHub",
+    "asset": "screens/1AW5MBHnO7m4-Y7Dr3Z3HgcBqNASXORA2.webp"
+  },
+  {
+    "title": "DetailedAnnouncementDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1ZiZWCL4s4gvpBuM-coO9WbLU7qV_OdLE.webp"
+  },
+  {
+    "title": "DeletePostConfirmDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1fD4Jcu4OHnbQjPvOpVrsiEbN0JOgrUfv.webp"
+  },
+  {
+    "title": "DeleteEventConfirmDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1Gx_vXtodUAdN5cjkmJMEBF5mdeziHmHC.webp"
+  },
+  {
+    "title": "DeleteAnnouncementConfirmDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1NbJjZzP-M9WkWr2IjacoEDwooieaG1-x.webp"
+  },
+  {
+    "title": "CreatePostDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1-olVGAc9ppxY1CqXs7FV1r_DX3_L8pW4.webp"
+  },
+  {
+    "title": "CreateEventDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1gruChgrYSIU-NQ7g475AALnhOvSDt7gk.webp"
+  },
+  {
+    "title": "CreateAnnouncementDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1yOUXftFYF-03-WZmaxOSPFHOgGwWJjwe.webp"
+  },
+  {
+    "title": "ChangeEventBanner.png",
+    "group": "CommunityHub",
+    "asset": "screens/1mAIgihRqgsisYLAvrxt1d7F2bHFMLhzN.webp"
+  },
+  {
+    "title": "CancelEventConfirmDialog.png",
+    "group": "CommunityHub",
+    "asset": "screens/1_BRjErTlpdhKVOciU6ObzfJUZD3Qx7-f.webp"
+  },
+  {
+    "title": "AnnouncementDashboard-TableView.png",
+    "group": "CommunityHub",
+    "asset": "screens/1K6d8xxgyWYNyiKspXbh25tabv26zDmY6.webp"
+  },
+  {
+    "title": "AnnouncementDashboard-BoardView.png",
+    "group": "CommunityHub",
+    "asset": "screens/1eIRBclbJ7ml796VwjkLpR1v_mbVIq_GT.webp"
+  }
+]
