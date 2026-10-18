@@ -9,7 +9,9 @@ MEDIA=DIST/'assets/media'
 RECORDINGS=[
     ('projects-tasks-demo.mp4','Project & work-item delivery','Follow project planning, work items, and the delivery workflow.','05:56'),
     ('tenant-teams-demo.mp4','Tenant, users & teams','Explore the organization workspace and the people and teams inside it.','03:26'),
-    ('reports-demo.mp4','Reports & analytics','See the reporting workflow and the analytical views of project work.','04:14')
+    ('reports-demo.mp4','Reports & analytics','See the reporting workflow and the analytical views of project work.','04:14'),
+    ('learning-hub-demo.mp4','Learning Hub','Explore roadmaps, courses, assignments, and shared learning resources.','03:13'),
+    ('multi-tenant-architecture.mp4','Multi-Tenant Architecture','A visual overview of Collabrium’s tenant structure and role hierarchy.','00:48')
 ]
 SCREENS = json.loads((ROOT/'scripts/module_screens.json').read_text())
 PROMOS=[

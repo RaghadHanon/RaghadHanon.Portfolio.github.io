@@ -10,6 +10,8 @@ I’m a backend engineer based in Palestine, working with C#, ASP.NET Core, and 
 - **[Actify](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/actify.html)** — A social application for discovering activities, managing attendance, and joining live discussions.
 - **[Hotel Booking API](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/hotel-booking.html)** — A backend for hotel discovery, room management, reservations, and invoices.
 
+Collabrium’s showcase includes five complete recordings: project delivery, tenant and team management, reports, Learning Hub, and Multi-Tenant Architecture. The players load on request and support full-screen viewing.
+
 ## Let’s connect
 
 I’m open to junior .NET backend and software engineering opportunities.

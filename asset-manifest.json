@@ -1300,6 +1300,26 @@
       "path": "dist/assets/social-preview.png",
       "bytes": 40329,
       "sha256": "7d6b5cd75ea54bc431db36997c2390d3290942bb0d879b7728f5c4a10eacf313"
+    },
+    {
+      "path": "dist/assets/media/learning-hub-demo-poster.jpg",
+      "bytes": 101806,
+      "sha256": "91a065d51d605ac446e3f9ead43bb83b802827827f8362966c5b15bc2ed89ac6"
+    },
+    {
+      "path": "dist/assets/media/learning-hub-demo.mp4",
+      "bytes": 15945655,
+      "sha256": "d0cd4ea2ae28329b70db95380d91d25ceaaf727ee622552158eec473e15c5830"
+    },
+    {
+      "path": "dist/assets/media/multi-tenant-architecture-poster.jpg",
+      "bytes": 21357,
+      "sha256": "54a49b704dc97a6c82478c0f1b3c4a7fc993c46bb0a605887e4bf0534cdc068c"
+    },
+    {
+      "path": "dist/assets/media/multi-tenant-architecture.mp4",
+      "bytes": 2726425,
+      "sha256": "0321eba22408d51b0e53f443f3bf2e8a7281cbf7edde5c19fa5825bd8bc7858a"
     }
   ]
 }
