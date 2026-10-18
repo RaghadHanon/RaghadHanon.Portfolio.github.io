@@ -11,6 +11,18 @@ RECORDINGS=[
     ('tenant-teams-demo.mp4','Tenant, users & teams','Explore the organization workspace and the people and teams inside it.','03:26'),
     ('reports-demo.mp4','Reports & analytics','See the reporting workflow and the analytical views of project work.','04:14')
 ]
+DRIVE_RECORDINGS=[
+    ('1DNbMxOXJNtAT9TiU49AnGQJJEHgHwnFU',
+     'Learning Hub',
+     'Explore courses, roadmaps, articles, skill development, and learner progress in Collabrium.',
+     '03:13',
+     'https://drive.google.com/file/d/1DNbMxOXJNtAT9TiU49AnGQJJEHgHwnFU/view?usp=drivesdk'),
+    ('1yA82UEVyFHP8iWhenT-mDv7LZHGDY_fJ',
+     'Multi-Tenant Architecture',
+     'Watch the tenant onboarding and account setup flow in the multi-tenant platform.',
+     '00:48',
+     'https://drive.google.com/file/d/1yA82UEVyFHP8iWhenT-mDv7LZHGDY_fJ/view?usp=drivesdk'),
+]
 SCREENS = json.loads((ROOT/'scripts/module_screens.json').read_text())
 PROMOS=[
     ('demo-1.webp','Meet Collabrium','Our graduation team and the platform we delivered.'),
@@ -29,7 +41,10 @@ def video_gallery(prefix):
     for i,(file,title,summary,duration) in enumerate(RECORDINGS):
         poster='assets/media/'+file.replace('.mp4','-poster.jpg')
         cards.append(f'''<article class="demo-card"><div class="video-frame"><video controls playsinline preload="none" poster="{poster}" width="1440" height="810" aria-labelledby="{prefix}-video-title-{i}"><source src="assets/media/{file}" type="video/mp4"><a href="assets/media/{file}">Download this recording</a></video><span class="video-duration mono" aria-hidden="true">{duration}</span></div><div class="demo-card-body"><span class="label">Original recording / {i+1:02}</span><h3 id="{prefix}-video-title-{i}">{title}</h3><p>{summary}</p></div></article>''')
-    return '<div class="demo-grid">'+''.join(cards)+'</div><p class="media-footnote">Use the player’s full-screen control to inspect the interface in detail. Recordings play on request.</p>'
+    for j,(file_id,title,summary,duration,view_url) in enumerate(DRIVE_RECORDINGS,start=len(RECORDINGS)):
+        preview_url=f'https://drive.google.com/file/d/{file_id}/preview'
+        cards.append(f'''<article class="demo-card"><div class="video-frame drive-video"><iframe loading="lazy" src="{preview_url}" title="{escape(title,quote=True)} — Collabrium demonstration" width="1440" height="810" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe><span class="video-duration mono" aria-hidden="true">{duration}</span></div><div class="demo-card-body"><span class="label">Original recording / {j+1:02} · Google Drive</span><h3 id="{prefix}-video-title-{j}">{escape(title)}</h3><p>{escape(summary)}</p><a class="demo-open-link" href="{view_url}" target="_blank" rel="noopener noreferrer">Open on Google Drive {arrow()}</a></div></article>''')
+    return '<div class="demo-grid">'+''.join(cards)+'</div><p class="media-footnote">Use full-screen for a closer look. The two new recordings stream from Google Drive; if a preview is blocked, open the recording in Drive.</p>'
 
 def screen_explorer(prefix):
     panels=[]
