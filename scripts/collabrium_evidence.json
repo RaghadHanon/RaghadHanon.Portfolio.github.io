@@ -1,0 +1,509 @@
+{
+  "repository": "https://github.com/RaghadHanon/Collabrium",
+  "commit": "01aa3dd11fe0b888f54de64314ec3ca2aeb4ca1a",
+  "reviewed_on": "2026-10-19",
+  "review_method": "Static review of the README, API surface and implementation; no backend runtime or automated test result is asserted.",
+  "counts": {
+    "feature_controllers": 31,
+    "http_method_attributes": 292,
+    "functional_areas": 13,
+    "roles": 13,
+    "report_types": 10,
+    "signalr_hubs": 3,
+    "hosted_workers": 2
+  },
+  "sources": [
+    {
+      "path": "API/API.csproj",
+      "sha256": "dcd63ef957cf63473e3bace932a376b9944507d3d1442265ba50dfd44547c7d0",
+      "lines": 41
+    },
+    {
+      "path": "API/Controllers/AuthController.cs",
+      "sha256": "db9eb8c90569f8b2714a848226350dce9377568f4ad96bdc7ba464f2c898aff3",
+      "lines": 279
+    },
+    {
+      "path": "API/Controllers/MetadataController.cs",
+      "sha256": "a942369ee62d283c20372b22cc15dcc479e4690d61e40f42a009b8f206bb45f8",
+      "lines": 277
+    },
+    {
+      "path": "API/Controllers/NotificationsController.cs",
+      "sha256": "1cb28385c89c6bba1be0a8a0130568126d51dc80918a3250bc302e6fde0ebf99",
+      "lines": 113
+    },
+    {
+      "path": "API/Controllers/PostsController.cs",
+      "sha256": "ef267b0c9cca87ddf375f0d239b7ab43a9ecdfee8d3a3b6165f279e28d733d55",
+      "lines": 538
+    },
+    {
+      "path": "API/Controllers/ProjectsController.cs",
+      "sha256": "b7b9dd901129a8077870614cbeb3dce6ed4a904ffff0c1574dc16eaa806217d2",
+      "lines": 368
+    },
+    {
+      "path": "API/Controllers/ReportsController.cs",
+      "sha256": "dc553234864e84f4bbe090346a0b94106e333cc06a677c77c19b47141a5adc77",
+      "lines": 594
+    },
+    {
+      "path": "API/Controllers/RoadmapsController.cs",
+      "sha256": "bff61434b05151803298f9d8810bc03ea2c25ba296879d7c2b5ab95578d9fe12",
+      "lines": 308
+    },
+    {
+      "path": "API/Controllers/SprintsController.cs",
+      "sha256": "c8be12ed26eef3c2d82c5be1c9648bd0e474843372f350fdf272f4001289def9",
+      "lines": 368
+    },
+    {
+      "path": "API/Controllers/TagsController.cs",
+      "sha256": "1460d1148d7ce46d027d2d3ff65f78d7dd7cef1e7c4f3bc69d7e4cdbc34accf3",
+      "lines": 151
+    },
+    {
+      "path": "API/Controllers/TeamsController.cs",
+      "sha256": "518383859aeeda6696ec445aace0863f848f231ff25fd5e3173cee6b7df8fc06",
+      "lines": 315
+    },
+    {
+      "path": "API/Controllers/TenantsController.cs",
+      "sha256": "1991e81faa80789db69eb7eaf395619a4ed493f62fd64ed037aaaad021003a85",
+      "lines": 333
+    },
+    {
+      "path": "API/Controllers/UserCoursesController.cs",
+      "sha256": "409c85dbbf3307084e4ea8211d20b00583d6d7c0446f2e2ef1714da59972f751",
+      "lines": 279
+    },
+    {
+      "path": "API/Controllers/UsersController.cs",
+      "sha256": "89e713bd8ea8d3acd33ad3755218aeb46eeee17c8cc203591724e9059f9ab6a7",
+      "lines": 296
+    },
+    {
+      "path": "API/Controllers/WorkItemsController.cs",
+      "sha256": "5dd07599d8d16da609fac6abd6477d075059944f5477fc792eb2cf6d86574a21",
+      "lines": 602
+    },
+    {
+      "path": "API/Middlewares/GlobalExceptionHandler.cs",
+      "sha256": "f59e27274edd46edb53808b7d53f73a8fb3a0436f37c1c6174d965868e3e9243",
+      "lines": 130
+    },
+    {
+      "path": "API/Middlewares/TentantMiddleware.cs",
+      "sha256": "79c11f04516695c5ba741e9e16e3a1483bda37c27571d30fe2eaf8e625b0fa6a",
+      "lines": 97
+    },
+    {
+      "path": "API/SetupProgram/AuthorizationExtensions.cs",
+      "sha256": "4121c25920c0f3f66b164b4cc6a7e598f3e4608ff25ba11d96547f6c216e32cc",
+      "lines": 224
+    },
+    {
+      "path": "API/SetupProgram/ServiceCollectionExtensions.cs",
+      "sha256": "45fcf906fe342c34556e5ea3726a7576b0a4b9457f45feba7c7a933449aad88c",
+      "lines": 74
+    },
+    {
+      "path": "Application/Application.csproj",
+      "sha256": "db43e815e9eb8adcbedd999e97640c88744475b42b8e2efb759f837da62b07e4",
+      "lines": 31
+    },
+    {
+      "path": "Application/Common/Behaviors/ValidationBehavior.cs",
+      "sha256": "efbdbb02fb3050015ce2a20a1e45f484ca78e5a6c9c63f527bbd15ee5676a90a",
+      "lines": 18
+    },
+    {
+      "path": "Application/DependencyInjection.cs",
+      "sha256": "9c5873a498e5e88574ef10e60de666cee2492a82ec1bdde4546eb63925f9ab79",
+      "lines": 35
+    },
+    {
+      "path": "Application/EventsHandlers/WorkItemAssignedEmailHandler.cs",
+      "sha256": "3a9161e622c45cbee75fe6ba00c513c8c5e0447f421ea1924f1ab0ce5bbb19e8",
+      "lines": 56
+    },
+    {
+      "path": "Application/Features/Metadata/Queries/GetWorkItemsWorkFlowMetadata.cs",
+      "sha256": "f575a10eb718de7a0ec754c3b6efe96eff25fbfc0dda0c76f7302381666d431c",
+      "lines": 64
+    },
+    {
+      "path": "Application/Features/Roadmaps/Commands/CreateRoadmapWithAi.cs",
+      "sha256": "e83d60ebb5ef353d083066ca14ab8d1b5d9bc84e9f2c7847a6d271e4891253c5",
+      "lines": 113
+    },
+    {
+      "path": "Application/Features/Sprints/Commands/CompleteSprint.cs",
+      "sha256": "00398223b73702ea9b52f596aad4a32f83b6053c51c45733abaef3214fa2cd05",
+      "lines": 170
+    },
+    {
+      "path": "Application/Features/UserCourses/Commands/AssignCourseToUser.cs",
+      "sha256": "7544f7f2a7c1b8fa28f2336e0d7ac9ee31f75cab45a9abf61d30a84212cd8e89",
+      "lines": 129
+    },
+    {
+      "path": "Application/Features/WorkItems/Commands/Attachments/AddWorkItemAttachment.cs",
+      "sha256": "45710927e94e3263bf4bd6a38564ea7e77eb3b6c9d90a7749a25e468a0972676",
+      "lines": 134
+    },
+    {
+      "path": "Application/Features/WorkItems/Commands/CreateWorkItem.cs",
+      "sha256": "5dbb64e993893137913fc31a6967f5d18b7b23a2e0d670e7802a6c8a791bede7",
+      "lines": 94
+    },
+    {
+      "path": "Application/Features/WorkItems/Commands/UpdateWorkItem.cs",
+      "sha256": "c2bcdac5a85e35dc7ad09efefdc31a5cb85494917ec595e405413c72fbb8da0f",
+      "lines": 647
+    },
+    {
+      "path": "Application/Features/WorkItems/Commands/UpdateWorkItemAssignee.cs",
+      "sha256": "3c47a33cc272601699b38c3ebe8e6bdc93318d28a59dfef2965aaf56f876fa43",
+      "lines": 225
+    },
+    {
+      "path": "Application/Features/WorkItems/Commands/UpdateWorkItemStatus.cs",
+      "sha256": "9931d038cb67e373c6baa77c86c12eb406da0ad53543e542e132802ae325ed1d",
+      "lines": 112
+    },
+    {
+      "path": "Application/Services/NotificationCreationService.cs",
+      "sha256": "9afe25c0cb1629aa32ebaa8852ec0afa1534a0489cf8f362d1ed5ab99afeb1e3",
+      "lines": 103
+    },
+    {
+      "path": "Domain/Domain.csproj",
+      "sha256": "92291803bcea51faa020dad370d110108c65f06d88ad0c679da9c571edf025db",
+      "lines": 13
+    },
+    {
+      "path": "Domain/Enums/ReportType.cs",
+      "sha256": "77295091c81c7b63a2fe96aa6fa5cc5d8da72c76355d103a11c1d951fe5e5a7c",
+      "lines": 15
+    },
+    {
+      "path": "Domain/Models/Announcement.cs",
+      "sha256": "2506b724a12a2454cf6a3a8b3cc4ee755a8caa64f9fa2a2527dc50e70e35c195",
+      "lines": 189
+    },
+    {
+      "path": "Domain/Models/Event.cs",
+      "sha256": "310abc111f9524ab0121d2c466f84e5d228b2883a3cdd7a18ded73a3520ede5b",
+      "lines": 257
+    },
+    {
+      "path": "Domain/Models/Project.cs",
+      "sha256": "b97d10667307dde6115898281e855d39910a20c02e1f4dd776457c25c0d8a9b3",
+      "lines": 194
+    },
+    {
+      "path": "Domain/Models/TaskItem.cs",
+      "sha256": "285fb19cdc4e3a9e2bff06bb43308dd7b586eb6ab308d149fb9f88dfbf44a4bd",
+      "lines": 90
+    },
+    {
+      "path": "Domain/Models/Team.cs",
+      "sha256": "ac614162a29af2c8ed0b19a280fe37c87556f024512da2c16e5fb52a92e51bdc",
+      "lines": 115
+    },
+    {
+      "path": "Domain/Models/Tenant.cs",
+      "sha256": "b38d8649ce856360be610127d5fc9b748712d7a4dbff8399d5d7aa11dcfc54f6",
+      "lines": 103
+    },
+    {
+      "path": "Domain/Models/User.cs",
+      "sha256": "addd691d91ab95c7debae4b2a903f161fed90e834c5f4586f9a4de215dc0ea50",
+      "lines": 143
+    },
+    {
+      "path": "Domain/Models/UserCourse.cs",
+      "sha256": "a2ea8c9eb9e064987c95b0a16910011fe260ee4a144d800695d96d414383ecff",
+      "lines": 158
+    },
+    {
+      "path": "Domain/Models/UserStory.cs",
+      "sha256": "c1185d94a9447acce11c9f21f9f789e4df815441be8ad98701c4a2147364e335",
+      "lines": 162
+    },
+    {
+      "path": "Domain/Models/WorkItem.cs",
+      "sha256": "814355fbab2fe9f2ce9caa878d0b9562b2d6550369ebdc94d2b320729e73c11b",
+      "lines": 443
+    },
+    {
+      "path": "Infrastructure/AI/OllamaAiAssistantService.cs",
+      "sha256": "ed42c4b828c217476914ce9a90d8eb635e931cb3a56b45081a6c01734a5f8e35",
+      "lines": 82
+    },
+    {
+      "path": "Infrastructure/AI/ReportAiInsightService.cs",
+      "sha256": "83d34b0ccf9d7cf8c84a666109a6ac586a58770ac8081e85d542134364b1b928",
+      "lines": 385
+    },
+    {
+      "path": "Infrastructure/AI/RoadmapAiDraftService.cs",
+      "sha256": "b13e7378d191f2923b386233c54aab238dbcece50dd5691e2f9597d60c9576e8",
+      "lines": 335
+    },
+    {
+      "path": "Infrastructure/AI/UserSkillGapAiService.cs",
+      "sha256": "e04b900a620c38ef312d3ca3259d4349382e4eaeace11962fd811a4329f4d829",
+      "lines": 304
+    },
+    {
+      "path": "Infrastructure/AI/WorkItemFieldsSuggestionService.cs",
+      "sha256": "5113f7edef017d12f9a14a4704683bb56a8696a50f1d62c542443b5e86ee1846",
+      "lines": 522
+    },
+    {
+      "path": "Infrastructure/BackgroundServices/AnnouncementNotificationBackgroundService.cs",
+      "sha256": "cb217d54d35d05ec8a5b485518dff2614be2db3c5239eed652d7d4023ead5421",
+      "lines": 53
+    },
+    {
+      "path": "Infrastructure/BackgroundServices/EventReminderBackgroundService.cs",
+      "sha256": "1672bca1089c49c5d3baf2491120d377f5ac75ab45cebbafb59b7d09ec862cea",
+      "lines": 71
+    },
+    {
+      "path": "Infrastructure/DependencyInjection.cs",
+      "sha256": "f8571d0afae3cac7c40857e2eea754108380e1b1ba09e57de3056a32dc42a7e0",
+      "lines": 370
+    },
+    {
+      "path": "Infrastructure/Email/SmtpEmailService.cs",
+      "sha256": "3bd03875a74af0c943b577bf9406d14cea395b89b9339b2db60476ba6306b019",
+      "lines": 42
+    },
+    {
+      "path": "Infrastructure/FilesStorage/Factory/AttachmentStorageFactory.cs",
+      "sha256": "2a900082ee38a747b6f089a92a52772838a9781f72984e43a952fde899016924",
+      "lines": 32
+    },
+    {
+      "path": "Infrastructure/Identity/IdentityService.cs",
+      "sha256": "05eaec69d8ddbd0b40d88e322290bafea97b25dfd50a9eea7b9edb07f1a598e2",
+      "lines": 436
+    },
+    {
+      "path": "Infrastructure/Infrastructure.csproj",
+      "sha256": "b65b2f854b81f2a49e66d240b32e40e52c626dd75da5211d70f3be2d9232ce24",
+      "lines": 37
+    },
+    {
+      "path": "Infrastructure/Persistence/AppDbContext.cs",
+      "sha256": "48f85f45f2e46467880f8670c62c082fd28449aebc7bfa3395a89656522ac5c1",
+      "lines": 97
+    },
+    {
+      "path": "Infrastructure/Persistence/Configurations/WorkItemConfiguration.cs",
+      "sha256": "4d24368da4c2ca49996a386cc8a46012d85d32239516ca252f6c9b10b4dcac49",
+      "lines": 80
+    },
+    {
+      "path": "Infrastructure/Persistence/Mappers/WorkItemMapper.cs",
+      "sha256": "2f7dde90263766fdb52227a9637e60fa6d7a22f50f09255e32a4912ad90cb49a",
+      "lines": 61
+    },
+    {
+      "path": "Infrastructure/Persistence/ReadModels/ReportsReadModel.cs",
+      "sha256": "2dde09bb3eb258a541053718a0597d51b45e79a2c205c401180d4b8d8b15b66a",
+      "lines": 1909
+    },
+    {
+      "path": "Infrastructure/Persistence/ReadModels/WorkItemsReadModel.cs",
+      "sha256": "d3ba3d5e161f5b31b2cbe4e3823561065e6541bb30930cfd4a71346614f7403a",
+      "lines": 801
+    },
+    {
+      "path": "Infrastructure/Persistence/UnitOfWork.cs",
+      "sha256": "9c93592f9a535589157d23e45be77cf40ccaa3eeeb7da09787e3729739d0b687",
+      "lines": 68
+    },
+    {
+      "path": "Infrastructure/Reports/Velocity/VelocityChartRenderer.cs",
+      "sha256": "2976a7b097cb957e947ca0d2d814397d2f25c04863bf917dfc1abddb73a247b0",
+      "lines": 176
+    },
+    {
+      "path": "Infrastructure/Reports/Velocity/VelocityReportDocument.cs",
+      "sha256": "06e2913c6322ba156d3bad84974af78dffa9f5c90eecfddbf6321c0398b115ff",
+      "lines": 287
+    },
+    {
+      "path": "Infrastructure/Security/AuthRequirements/MustHaveProjectAccess.cs",
+      "sha256": "5aa1381d7ff6f863b1d3f3973bb9256b9661bb483dfc0c5e6b0a4e5a6726fa92",
+      "lines": 78
+    },
+    {
+      "path": "Infrastructure/SignalR/Hubs/CommentHub.cs",
+      "sha256": "6b9874c4407b6b9dabb67c3391a8635b8ca889cf9d0fc92936e1aca860c8e105",
+      "lines": 392
+    },
+    {
+      "path": "Infrastructure/SignalR/Hubs/PresenceHub.cs",
+      "sha256": "e60558ea2edb1f780302181e371b9c21d93f70f7db2f497daa84e869e300ff42",
+      "lines": 103
+    },
+    {
+      "path": "Infrastructure/SignalR/Notifications/NotificationHub.cs",
+      "sha256": "8982159f5a2c032340413a7710a1c62af12610c2ed135b48f063a405a89336fe",
+      "lines": 77
+    },
+    {
+      "path": "README.md",
+      "sha256": "f86b0876331905240b6c8fb85da67835bac9a6d75246de098ad5635b382a7e4e",
+      "lines": 2307
+    }
+  ],
+  "examples": [
+    {
+      "id": "release-gate",
+      "title": "A release gate inspects linked work.",
+      "skill": "Domain modeling / LINQ / guards",
+      "path": "Domain/Models/UserStory.cs",
+      "start_line": 73,
+      "end_line": 85,
+      "code": "if (target == WorkItemStatus.ReadyForRelease)\n{\n    Guard.Against(!allTasksDone,\n        \"Cannot move UserStory to ReadyForRelease until all linked Tasks are Done.\");\n\n    Guard.Against(!noOpenBugs,\n        \"Cannot move UserStory to ReadyForRelease while there are open Bugs.\");\n\n    Guard.Against(!allTestsPassed,\n        \"Cannot move UserStory to ReadyForRelease until all linked TestCases are Passed.\");\n\n    return;\n}",
+      "explanation": "The User Story model checks linked task, bug and test-case snapshots before release. Business completion is a rule over related work, not a direct assignment to a status property."
+    },
+    {
+      "id": "typed-transitions",
+      "title": "Concrete work-item types own their transitions.",
+      "skill": "C# polymorphism / switch expressions",
+      "path": "Domain/Models/TaskItem.cs",
+      "start_line": 21,
+      "end_line": 35,
+      "code": "protected override bool IsValidTransition(WorkItemStatus from, WorkItemStatus to)\n{\n    // Task workflow: ToDo -> ReadyForDev -> InProgress -> InReview -> Done\n    return from == to\n        || to == WorkItemStatus.ToDo\n        || from switch\n        {\n            WorkItemStatus.ToDo => to is WorkItemStatus.ReadyForDev,\n            WorkItemStatus.ReadyForDev => to is WorkItemStatus.InProgress or WorkItemStatus.ToDo,\n            WorkItemStatus.InProgress => to is WorkItemStatus.InReview or WorkItemStatus.ReadyForDev,\n            WorkItemStatus.InReview => to is WorkItemStatus.Done or WorkItemStatus.InProgress,\n            WorkItemStatus.Done => to is WorkItemStatus.InReview or WorkItemStatus.InProgress,\n            _ => false\n        };\n}",
+      "explanation": "TaskItem overrides the shared work-item transition behavior. The switch expresses development and review paths, including permitted rework, in the concrete domain type."
+    },
+    {
+      "id": "tenant-context",
+      "title": "Resolve membership before tenant-scoped work.",
+      "skill": "Middleware / claims / explicit access checks",
+      "path": "API/Middlewares/TentantMiddleware.cs",
+      "start_line": 76,
+      "end_line": 95,
+      "code": "var tenantId = context.User.FindFirstValue(\"tenantId\")\n    ?? throw new UnauthorizedAccessException(\"Tenant claim (tenantId) is missing.\");\n\nvar tenant = await tenantRepository.GetByIdAsync(tenantId)\n    ?? throw new TenantNotFoundException($\"The tenant with id: {tenantId} does not exist.\");\n\nif (!tenant.IsActive)\n{\n    throw new TenantNotActiveException(\"The tenant is not active.\");\n}\n\nif (!string.Equals(user.TenantId, tenant.Id, StringComparison.Ordinal))\n{\n    throw new UnauthorizedAccessException(\"The authenticated user does not belong to this tenant.\");\n}\n\ntenantContext.TenantId = tenant.Id;\ntenantContext.CurrentTenant = tenant;\n\nawait _next(context);",
+      "explanation": "The regular HTTP tenant path resolves the tenant claim, loads the organization, checks activation and compares the user’s tenant before establishing the scoped context."
+    },
+    {
+      "id": "refresh-rotation",
+      "title": "Renew a session through persisted rotation.",
+      "skill": "Identity / token lifecycle",
+      "path": "Infrastructure/Identity/IdentityService.cs",
+      "start_line": 397,
+      "end_line": 413,
+      "code": "var newRefreshToken = _refreshTokenGenerator.GenerateToken();\n\nstoredToken.RevokedAtUtc = DateTime.UtcNow;\nstoredToken.ReplacedByToken = newRefreshToken;\n\nvar newRefreshTokenEntity = new RefreshTokenEntity\n{\n    Token = newRefreshToken,\n    UserId = user.Id,\n    CreatedAtUtc = DateTime.UtcNow,\n    ExpiresAtUtc = DateTime.UtcNow.AddDays(7)\n};\n\n_dbContext.RefreshTokens.Add(newRefreshTokenEntity);\nawait _dbContext.SaveChangesAsync(cancellationToken);\n\nreturn (newAccessToken, newRefreshToken);",
+      "explanation": "A successful refresh revokes the previous token, records its replacement, persists the new token with an expiry and saves the changes. This excerpt does not claim distributed or concurrent-refresh guarantees."
+    },
+    {
+      "id": "request-validation",
+      "title": "Cross-cutting validation runs in the request pipeline.",
+      "skill": "Generics / MediatR / async validation",
+      "path": "Application/Common/Behaviors/ValidationBehavior.cs",
+      "start_line": 10,
+      "end_line": 17,
+      "code": "public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)\n{\n    if (validator == null) return await next();\n\n    var validationResult = await validator.ValidateAsync(request, cancellationToken);\n\n    return !validationResult.IsValid ? throw new ValidationException(validationResult.Errors) : await next();\n}",
+      "explanation": "The generic MediatR behavior runs the registered request validator when one is available, throws a structured validation exception on failure and continues to the handler when valid."
+    },
+    {
+      "id": "transaction",
+      "title": "Commit related changes behind one abstraction.",
+      "skill": "Async/await / transactions / exception handling",
+      "path": "Infrastructure/Persistence/UnitOfWork.cs",
+      "start_line": 31,
+      "end_line": 43,
+      "code": "await using var tx = await _dbContext.Database.BeginTransactionAsync(cancellationToken);\ntry\n{\n    await action(cancellationToken);\n\n    await _dbContext.SaveChangesAsync(cancellationToken);\n    await tx.CommitAsync(cancellationToken);\n}\ncatch\n{\n    await tx.RollbackAsync(cancellationToken);\n    throw;\n}",
+      "explanation": "The Unit of Work begins a database transaction, executes the supplied operation, saves and commits. On an exception, it rolls back and rethrows. External service calls remain outside this database guarantee."
+    },
+    {
+      "id": "read-projection",
+      "title": "Project a query to the fields the report needs.",
+      "skill": "EF Core / LINQ / no-tracking reads",
+      "path": "Infrastructure/Persistence/ReadModels/ReportsReadModel.cs",
+      "start_line": 52,
+      "end_line": 63,
+      "code": "var teams = await _dbContext.Teams\n    .AsNoTracking()\n    .Where(team => team.TenantId == tenantId)\n    .Select(team => new { team.IsActive })\n    .ToListAsync();\n\nreturn new TeamsSummary\n{\n    TotalTeamsCount = teams.Count,\n    ActiveTeamsCount = teams.Count(team => team.IsActive),\n    InActiveTeamsCount = teams.Count(team => !team.IsActive)\n};",
+      "explanation": "The tenant teams summary scopes the query, disables tracking and retrieves only activation state before deriving counts. The implementation expresses its read purpose without reconstructing team domain objects."
+    },
+    {
+      "id": "indexes",
+      "title": "Data constraints and access paths are explicit.",
+      "skill": "EF Core configuration / relational design",
+      "path": "Infrastructure/Persistence/Configurations/WorkItemConfiguration.cs",
+      "start_line": 63,
+      "end_line": 78,
+      "code": "builder.HasIndex(w => new { w.ProjectId, w.SprintId, w.CreatedAt });\nbuilder.HasIndex(w => new { w.ProjectId, w.Type });\nbuilder.HasIndex(w => new { w.ProjectId, w.Status });\nbuilder.HasIndex(w => new { w.ProjectId, w.AssignedToUserId });\nbuilder.HasIndex(w => new { w.ProjectId, w.Priority });\nbuilder.HasIndex(w => new { w.ProjectId, w.CreatedAt });\nbuilder.HasIndex(w => w.Code).IsUnique();\n\nbuilder\n    .HasDiscriminator(w => w.Type)\n    .HasValue<WorkItemEntity>(WorkItemType.WorkItem)\n    .HasValue<EpicEntity>(WorkItemType.Epic)\n    .HasValue<UserStoryEntity>(WorkItemType.UserStory)\n    .HasValue<TaskItemEntity>(WorkItemType.TaskItem)\n    .HasValue<BugEntity>(WorkItemType.Bug)\n    .HasValue<TestCaseEntity>(WorkItemType.TestCase);",
+      "explanation": "Composite indexes reflect project-focused read paths, the work-item code is unique, and a discriminator maps specialized persistence entities. These are configured design choices, not a measured performance claim."
+    },
+    {
+      "id": "application-event",
+      "title": "Publish the assignment after its transaction.",
+      "skill": "MediatR notifications / decoupled side effects",
+      "path": "Application/Features/WorkItems/Commands/UpdateWorkItemAssignee.cs",
+      "start_line": 160,
+      "end_line": 177,
+      "code": "if (shouldPublishAssignedEvent)\n{\n    await mediator.Publish(new WorkItemAssignedEvent(\n        tenantId,\n        request.ProjectId,\n        workItem.Id,\n        workItem.Title,\n        workItem.Code,\n        workItem.Type.ToString(),\n        workItem.Priority.ToString(),\n        workItem.SprintId,\n        assigneeUser!.Id,\n        assigneeUser.Email,\n        assigneeUser.FullName,\n        currentUser.Id,\n        currentUser.FullName\n    ), cancellationToken);\n}",
+      "explanation": "This block follows the assignment/history transaction in the handler. Email and in-app notification handlers respond to the same WorkItemAssignedEvent without the assignment command assembling those delivery channels itself."
+    },
+    {
+      "id": "email-builder",
+      "title": "Build a message from a reusable template.",
+      "skill": "Builder pattern / dependency inversion",
+      "path": "Application/EventsHandlers/WorkItemAssignedEmailHandler.cs",
+      "start_line": 47,
+      "end_line": 54,
+      "code": "var message = new EmailMessageBuilder()\n    .To(notification.AssigneeEmail)\n    .Subject(template.GetSubject())\n    .PlainTextBody(template.GetPlainTextBody(data))\n    .HtmlBody(template.GetHtmlBody(data))\n    .Build();\n\nawait emailService.SendAsync(message, ct);",
+      "explanation": "The work-assignment email handler resolves a template, supplies work and actor data, assembles plain-text and HTML versions with a builder and sends through IEmailService."
+    },
+    {
+      "id": "storage-factory",
+      "title": "Choose a storage implementation from a type.",
+      "skill": "Factory pattern / interfaces / pattern matching",
+      "path": "Infrastructure/FilesStorage/Factory/AttachmentStorageFactory.cs",
+      "start_line": 24,
+      "end_line": 30,
+      "code": "return type switch\n{\n    AttachmentType.Image => _imageStorage,\n    AttachmentType.Video => _videoStorage,\n    AttachmentType.Document or AttachmentType.Log => _fileStorage,\n    _ => throw new ArgumentOutOfRangeException(nameof(type), type, \"Unsupported attachment type.\")\n};",
+      "explanation": "The upload use case works through IAttachmentStorageFactory. Infrastructure selects a Cloudinary implementation for images, videos or files, keeping provider-specific construction out of the command."
+    },
+    {
+      "id": "ai-repair",
+      "title": "Repair structured model output before returning it.",
+      "skill": "Typed DTOs / generic parsing / AI integration",
+      "path": "Infrastructure/AI/WorkItemFieldsSuggestionService.cs",
+      "start_line": 42,
+      "end_line": 70,
+      "code": "for (var attempt = 1; attempt <= MaxAttempts; attempt++)\n{\n    var aiResponse = await aiAssistantService.AskAsync(prompt, cancellationToken);\n    lastResponse = aiResponse;\n\n    var parsed = TryParseSuggestion<TSuggestion>(\n        workItemType,\n        aiResponse,\n        summary,\n        out var suggestion,\n        out var error);\n\n    if (parsed && suggestion is not null)\n        return suggestion;\n\n    lastError = error;\n\n    prompt = BuildRepairPrompt(\n        workItemType,\n        summary,\n        aiResponse,\n        error ?? \"The response was invalid.\");\n}\n\nreturn BuildFallbackSuggestion<TSuggestion>(\n    workItemType,\n    summary,\n    lastError,\n    lastResponse);",
+      "explanation": "The work-item suggestion service allows three generation attempts. It parses and normalizes the response, checks whether it is usable and feeds parsing/validation feedback into a repair prompt. This loop repairs output; it is not a general HTTP failure-retry policy."
+    },
+    {
+      "id": "timed-worker",
+      "title": "Use time as part of a business workflow.",
+      "skill": "BackgroundService / PeriodicTimer / cancellation",
+      "path": "Infrastructure/BackgroundServices/EventReminderBackgroundService.cs",
+      "start_line": 13,
+      "end_line": 24,
+      "code": "private static readonly TimeSpan CheckInterval = TimeSpan.FromMinutes(1);\nprivate static readonly TimeSpan ReminderBeforeStart = TimeSpan.FromMinutes(15);\n\nprotected override async Task ExecuteAsync(CancellationToken stoppingToken)\n{\n    using var timer = new PeriodicTimer(CheckInterval);\n\n    while (await timer.WaitForNextTickAsync(stoppingToken))\n    {\n        await ProcessAsync(stoppingToken);\n    }\n}",
+      "explanation": "The hosted worker checks every minute and looks ahead fifteen minutes. The processing method resolves an application scope, publishes attendee reminders and records the sent state."
+    },
+    {
+      "id": "learning-history",
+      "title": "Retain a learning record when it has value.",
+      "skill": "Encapsulation / domain predicates",
+      "path": "Domain/Models/UserCourse.cs",
+      "start_line": 151,
+      "end_line": 157,
+      "code": "public bool CanBeDeletedWhenUnassigned()\n{\n    return !IsSaved\n           && Status == UserCourseStatus.NotStarted\n           && !StartedAt.HasValue\n           && !CompletedAt.HasValue;\n}",
+      "explanation": "The unassignment cleanup decision is a domain predicate: a record is disposable only when it is unsaved, not started and has no learning timestamps. Assignment changes can preserve the employee’s learning history."
+    }
+  ]
+}

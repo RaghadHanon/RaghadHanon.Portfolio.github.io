@@ -50,6 +50,7 @@ jobs:
       - name: Verify JavaScript syntax
         run: |
           node --check dist/app.js
+          node --check dist/collabrium-engineering.js
           node --check dist/presentation-download.js
       - name: Upload site
         uses: actions/upload-pages-artifact@v4

@@ -56,12 +56,26 @@ for name,tree in documents.items():
             if u.fragment and path.suffix=='.html' and path.name in documents:
                 if not documents[path.name].xpath('//*[@id=$id]',id=unquote(u.fragment)):
                     errors.append(f'{name}: absent fragment {target}')
-css=(root/'styles.css').read_text()
-for item in re.findall(r'url\(([^)]+)\)',css):
-    file=item.strip("'\"")
-    if not file.startswith(('data:','https:','#')) and not (root/file).is_file():
-        errors.append('CSS: missing '+file)
-if css.count('{')!=css.count('}'):errors.append('CSS: unmatched block braces')
+for stylesheet in root.glob('*.css'):
+    css=stylesheet.read_text()
+    for item in re.findall(r'url\(([^)]+)\)',css):
+        file=item.strip("'\"")
+        if not file.startswith(('data:','https:','#')) and not (root/file).is_file():
+            errors.append(f'{stylesheet.name}: missing '+file)
+    if css.count('{')!=css.count('}'):errors.append(f'{stylesheet.name}: unmatched block braces')
+
+engineering=documents.get('collabrium-engineering.html')
+evidence_path=root.parent/'scripts/collabrium_evidence.json'
+if engineering is not None and evidence_path.is_file():
+    evidence=json.loads(evidence_path.read_text())
+    proofs=engineering.xpath('//details[contains(concat(" ",normalize-space(@class)," ")," ce-proof ")]')
+    if len(proofs)!=len(evidence['examples']):errors.append('Engineering: source-example count differs from evidence')
+    for proof,example in zip(proofs,evidence['examples']):
+        rendered=''.join(proof.xpath('.//pre/code//text()'))
+        if rendered!=example['code']:errors.append('Engineering: source excerpt changed: '+example['id'])
+        links=proof.xpath('.//a/@href')
+        if not any('/'+evidence['commit']+'/' in link and link.endswith(f"#L{example['start_line']}-L{example['end_line']}") for link in links):
+            errors.append('Engineering: exact source link missing: '+example['id'])
 for name,tree in documents.items():
     for el in tree.xpath('//svg'):
         try:etree.fromstring(etree.tostring(el,with_tail=False))

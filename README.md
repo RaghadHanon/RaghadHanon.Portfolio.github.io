@@ -17,3 +17,9 @@ Collabrium’s showcase includes five complete recordings: project delivery, ten
 I’m open to junior .NET backend and software engineering opportunities.
 
 [LinkedIn](https://www.linkedin.com/in/raghad-hanon/) · [GitHub](https://github.com/RaghadHanon)
+
+## Inside the Collabrium backend
+
+The [backend engineering walkthrough](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/collabrium-engineering.html) covers all 13 modules, Clean Architecture, six connected workflows, domain rules, tenant and project access, EF Core, SignalR/SMTP, background workers, AI, reports and 14 C# excerpts linked to their exact source lines. The evidence catalog pins 70 source files to the reviewed Collabrium snapshot.
+
+The portfolio résumé is the unchanged PDF supplied on 19 October 2026. Source generators keep its download links versioned to the current file.

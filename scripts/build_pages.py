@@ -4,6 +4,7 @@ from components import *
 from case_studies import collabrium_page, actify_page, hotel_page
 from engineering import engineering_showcase
 from media import home_media
+from collabrium_engineering import engineering_page, engineering_teaser
 
 def home_page():
     body = f'''<main id="main">
@@ -21,6 +22,7 @@ def home_page():
     <div class="project-footer"><span>Team Lead &amp; Backend Developer · Four-person team</span>{tags(['.NET 8','Clean Architecture','CQRS','SignalR'])}</div></article>
     <article class="project reveal"><a class="project-stage project-art actify" href="actify.html" aria-label="Explore the Actify case study">{ACTIFY_ART}</a><div class="project-small-head"><div><span class="project-number mono">02 / Full-stack project · 2025</span><a href="actify.html"><h3>Actify</h3></a></div><a href="actify.html" class="round-arrow" aria-label="Read the Actify case study">{arrow()}</a></div><p>An activity-based social application connecting event discovery, attendance, profiles, and live discussion.</p><div class="project-footer"><span>Course-based implementation</span>{tags(['ASP.NET Core','React','TypeScript'])}</div></article>
     <article class="project reveal"><a class="project-stage project-art hotel" href="hotel-booking.html" aria-label="Explore the Hotel Booking Platform case study">{HOTEL_ART}</a><div class="project-small-head"><div><span class="project-number mono">03 / Internship project · 2024–2025</span><a href="hotel-booking.html"><h3>Hotel Booking API</h3></a></div><a href="hotel-booking.html" class="round-arrow" aria-label="Read the Hotel Booking API case study">{arrow()}</a></div><p>A booking backend covering hotel discovery, room management, reservations, discounts, and PDF invoices.</p><div class="project-footer"><span>Backend development · Foothill training</span>{tags(['.NET 8','SQL Server','xUnit'])}</div></article></div></div></section>
+    {engineering_teaser()}
     {engineering_showcase()}
     <div class="wrap toolkit"><div class="toolkit-grid"><div class="toolkit-group"><h3>Backend &amp; data</h3><p>C# · .NET · ASP.NET Core Web API<br>EF Core · SQL Server · LINQ</p></div><div class="toolkit-group"><h3>Design &amp; security</h3><p>Clean Architecture · CQRS · MediatR<br>Identity · JWT · Multi-tenancy</p></div><div class="toolkit-group"><h3>Testing &amp; delivery</h3><p>xUnit · Git · GitHub Actions CI<br>Swagger · Postman · Azure deployment</p></div><div class="toolkit-group"><h3>Full-stack support</h3><p>React · TypeScript · JavaScript<br>SignalR · HTML · CSS · MUI</p></div></div></div>
     <section class="section" id="about" aria-labelledby="about-title"><div class="about-grid wrap"><div class="about-intro reveal"><div class="eyebrow">03 / A little about me</div><h2 id="about-title">Curiosity at the core.<br>Care in the details.</h2><p>I’m a <strong>Computer Systems Engineering graduate from Palestine Technical University — Kadoorie</strong>, where I graduated first in the College of Engineering &amp; Technology with an average of 93.21/100.</p><p>I’m drawn to the work behind the interface: turning requirements into domain rules, deciding where responsibilities belong, and connecting features into a coherent system.</p><p>Competitive programming taught me to reason carefully. Training and team projects taught me to translate that reasoning into software other people can use and build on.</p><div class="about-mark" aria-hidden="true">think<span>.</span> build<span>.</span></div></div><div class="reveal"><div class="timeline-label label">Experience &amp; education</div>
@@ -54,13 +56,13 @@ if __name__ == '__main__':
     DIST.mkdir(exist_ok=True)
     from presentation_page import build_presentation_page
     build_presentation_page()
-    for filename,fn in [('index.html',home_page),('collabrium.html',collabrium_page),('actify.html',actify_page),('hotel-booking.html',hotel_page)]:
+    for filename,fn in [('index.html',home_page),('collabrium.html',collabrium_page),('collabrium-engineering.html',engineering_page),('actify.html',actify_page),('hotel-booking.html',hotel_page)]:
         (DIST/filename).write_text(fn(),encoding='utf-8')
         print(filename)
     (DIST/'404.html').write_text(document('Page not found — Raghad Hanon','This page could not be found.',f'<main class="wrap not-found" id="main"><div class="eyebrow">404 / A small detour</div><h1>Let’s get you<br>back on track.</h1><p>The page you’re looking for has moved or doesn’t exist.</p><a class="button" href="index.html">Back to the portfolio {arrow("right")}</a></main>','404.html'),encoding='utf-8')
     (DIST/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#b84d2e"/><text x="10" y="43" fill="#fff3e2" font-family="Arial,sans-serif" font-size="32" font-weight="bold" letter-spacing="-3">rh.</text></svg>')
     (DIST/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+ORIGIN+'/sitemap.xml\n')
-    urls=['','collabrium.html','actify.html','hotel-booking.html','presentation.html']
+    urls=['','collabrium.html','collabrium-engineering.html','actify.html','hotel-booking.html','presentation.html']
     (DIST/'sitemap.xml').write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join('<url><loc>'+ORIGIN+'/'+u+'</loc></url>' for u in urls)+'</urlset>')
     (DIST/'_headers').write_text('/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n/assets/*\n  Cache-Control: public, max-age=604800\n')
 
