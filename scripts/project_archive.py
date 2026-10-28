@@ -55,22 +55,22 @@ def card(p, compact=False):
 def additional_work():
     cards = ''.join(card(p, True) for p in projects())
     return f'''<section class="section rx-home" id="more-work" aria-labelledby="more-work-title"><div class="wrap">
-    <div class="section-head"><div><div class="eyebrow">More engineering work</div><h2 id="more-work-title">Different problems.<br>More ways to build.</h2></div><div class="rx-section-intro"><p>Focused projects in testable C# design, SQL analysis, database adapters, and full-stack integration.</p><a href="projects.html" class="text-link">Explore all 9 projects {arrow('right')}</a></div></div>
+    <div class="section-head"><div><div class="eyebrow">More engineering work</div><h2 id="more-work-title">Different problems.<br>More ways to build.</h2></div><div class="rx-section-intro"><p>Focused projects in testable C# design, SQL analysis, database adapters, and full-stack integration.</p><a href="projects.html" class="text-link">Explore all {len(featured()) + len(projects())} projects {arrow('right')}</a></div></div>
     <div class="rx-grid rx-compact-grid">{cards}</div></div></section>'''
 
 
 def archive_page():
     all_work = featured() + projects()
-    filters = [('all','All work'),('backend','Backend & APIs'),('data','Data & SQL'),('design','Design & testing'),('full-stack','Full stack')]
+    filters = [('all','All work'),('backend','Backend & APIs'),('data','Data & SQL'),('design','Design & testing'),('full-stack','Full stack'),('algorithms','Algorithms')]
     buttons = ''.join(f'<button type="button" class="rx-filter" data-rx-filter="{key}" aria-pressed="{str(key == "all").lower()}">{label}</button>' for key,label in filters)
     body = f'''<main id="main"><section class="wrap rx-archive-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Selected projects</span></div>
-    <div class="eyebrow">The project collection</div><h1>A closer look<br>at the <em>work.</em></h1><p class="rx-archive-lede">Nine selected projects across backend APIs, data persistence, testable design, and full-stack integration.</p>
-    <div class="rx-archive-meta"><span>03 featured case studies</span><span>06 additional projects</span><a href="collabrium-engineering.html">Explore Collabrium’s backend {arrow('right')}</a></div></section>
+    <div class="eyebrow">The project collection</div><h1>A closer look<br>at the <em>work.</em></h1><p class="rx-archive-lede">{len(all_work)} selected projects across backend APIs, data persistence, algorithms, testable design, and full-stack integration.</p>
+    <div class="rx-archive-meta"><span>{len(featured()):02} featured case studies</span><span>{len(projects()):02} additional projects</span><a href="collabrium-engineering.html">Explore Collabrium’s backend {arrow('right')}</a></div></section>
     <section class="wrap rx-collection" aria-labelledby="collection-title"><h2 class="rx-sr-only" id="collection-title">Browse the projects</h2>
-    <div class="rx-controls" hidden><div class="rx-filters" role="group" aria-label="Filter projects by focus">{buttons}</div><div class="rx-search-row"><label for="project-search">Find a project or technology</label><input id="project-search" type="search" placeholder="Try MongoDB, xUnit, React…" autocomplete="off"><p class="rx-count mono" aria-live="polite">9 projects</p></div></div>
+    <div class="rx-controls" hidden><div class="rx-filters" role="group" aria-label="Filter projects by focus">{buttons}</div><div class="rx-search-row"><label for="project-search">Find a project or technology</label><input id="project-search" type="search" placeholder="Try MongoDB, xUnit, React…" autocomplete="off"><p class="rx-count mono" aria-live="polite">{len(all_work)} projects</p></div></div>
     <div class="rx-grid rx-archive-grid">{''.join(card(p) for p in all_work)}</div><p class="rx-empty" hidden>No projects match this search. Try another technology or choose All work.</p>
     </section><section class="wrap rx-archive-note"><span class="label">A thread through the work</span><p>Clear responsibilities, explicit data models, and workflows that connect features into a useful whole.</p><a class="text-link" href="index.html#engineering">See my engineering approach {arrow('right')}</a></section></main><script src="project-archive.js" defer></script>'''
-    return document('Selected projects — Raghad Hanon', 'Explore nine projects in C# and .NET backend engineering, SQL, MongoDB, automated testing, and React integration.', body, 'projects.html')
+    return document('Selected projects — Raghad Hanon', f'Explore {len(all_work)} projects in C# and .NET backend engineering, SQL, MongoDB, Java algorithms, automated testing, and React integration.', body, 'projects.html')
 
 
 def diagram(p):
@@ -129,6 +129,22 @@ def diagram(p):
         box(278,218,210,76,'Request → response','Medical-record entries')
         down(383,154,208)
         caption = 'Two repositories connect the user interface, request workflow, and related records.'
+    elif kind == 'restaurant':
+        box(24,64,190,80,'REST controllers','DTOs + AutoMapper')
+        box(278,64,210,80,'Repository contracts','Async persistence',True)
+        box(550,64,186,80,'SQL Server','EF Core + SQL objects')
+        right(220,104,268);right(494,104,540)
+        box(24,218,190,76,'Identity + validation','JWT roles + request rules')
+        paths.append('<path d="M119 208V154m-5 7 5-7 5 7"/>')
+        caption = 'Controllers coordinate requests and related-record checks; repositories use EF Core for persistence.'
+    elif kind == 'algorithms':
+        box(24,64,190,80,'Data structures','Trees + heaps + linked nodes')
+        box(278,64,210,80,'Algorithms','Sorting + graph traversal',True)
+        box(550,64,186,80,'Practice problems','Apply the patterns')
+        right(220,104,268);right(494,104,540)
+        box(278,218,210,76,'Representation & state','Links + order + discovery')
+        paths.append('<path d="M383 208V154m-5 7 5-7 5 7"/>')
+        caption = 'A collection of Java implementations and practice solutions exploring structures, invariants, and algorithms.'
     else:
         box(24,64,190,80,'Text input','Separators + numbers')
         box(278,64,210,80,'String calculator','Parse · check · sum',True)
@@ -142,7 +158,7 @@ def diagram(p):
 
 
 def proof_html(proof):
-    code = codeblock(proof['code']) if proof['language'] == 'C#' else '<pre><code>'+escape(proof['code'])+'</code></pre>'
+    code = codeblock(proof['code']) if proof['language'] in ('C#', 'Java') else '<pre><code>'+escape(proof['code'])+'</code></pre>'
     return f'''<figure class="rx-proof"><figcaption><span class="label">{proof['language']} / Source example</span><h3>{escape(proof['label'])}</h3><p>{escape(proof['explanation'])}</p></figcaption><div class="rx-source-code">{code}</div><div class="rx-proof-link">{ext(proof['url'],'Read the exact source lines','source-link')}<span>{escape(proof['path'].rsplit('/',1)[-1])}</span></div></figure>'''
 
 
@@ -152,7 +168,7 @@ def project_page(p):
     sources = ''.join(ext(s['url'],s['label'],'rx-source-tile') for s in p['sources'])
     additional_repo = ext(GITHUB+'/MedicoPortal','Frontend repository','button outline') if p['slug'] == 'medicoportal' else ''
     body = f'''<main id="main"><section class="wrap rx-case-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="projects.html">Projects</a><span>/</span><span>{escape(p['title'])}</span></div>
-    <div class="eyebrow">{escape(p['context'])}</div><div class="rx-case-title"><h1>{escape(p['title'])}</h1><span class="rx-case-number mono">{p['number']} / 09</span></div><p class="rx-case-lede">{escape(p['description'])}</p>
+    <div class="eyebrow">{escape(p['context'])}</div><div class="rx-case-title"><h1>{escape(p['title'])}</h1><span class="rx-case-number mono">{p['number']} / {len(featured()) + len(projects()):02}</span></div><p class="rx-case-lede">{escape(p['description'])}</p>
     <div class="rx-case-actions">{ext(repo_url(p),'Backend repository' if p['slug']=='medicoportal' else 'View repository','button outline')}{additional_repo}<a href="#source" class="text-link">Read the code {arrow('down')}</a></div>
     <dl class="rx-case-meta"><div><dt>Engineering focus</dt><dd>{escape(p['focus'])}</dd></div><div><dt>Project context</dt><dd>{escape(p['context'])}</dd></div></dl>{tags(p['tags'])}</section>
     <div class="wrap">{diagram(p)}</div>

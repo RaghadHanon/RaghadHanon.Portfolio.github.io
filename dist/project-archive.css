@@ -31,6 +31,8 @@
 .rx-card.rx-library-database .rx-card-visual{background:#e5e2d1;color:#554f2e}
 .rx-card.rx-weather-service .rx-card-visual{background:#dfe7eb;color:#354e5c}
 .rx-card.rx-airport-booking .rx-card-visual{background:#e6e1ea;color:#544762}
+.rx-card.rx-restaurant-reservation .rx-card-visual{background:#eadfd3;color:#6d4530}
+.rx-card.rx-algorithms-data-structures .rx-card-visual{background:#dce7e8;color:#2d5058}
 .rx-card.rx-collabrium .rx-card-visual{background:#29362b;color:#f7ebdc}
 .rx-card.rx-collabrium .rx-card-index{color:#c4cfba}
 .rx-card[hidden],.rx-empty[hidden],.rx-controls[hidden]{display:none}

@@ -602,6 +602,254 @@
           "language": "C#"
         }
       ]
+    },
+    {
+      "slug": "restaurant-reservation",
+      "title": "Restaurant Reservation API",
+      "number": "10",
+      "context": "ASP.NET Core API project",
+      "focus": "Connected reservation & order workflows",
+      "categories": [
+        "backend",
+        "data"
+      ],
+      "tags": [
+        "ASP.NET Core",
+        "EF Core",
+        "SQL Server",
+        "Identity / JWT",
+        "FluentValidation",
+        "AutoMapper"
+      ],
+      "metric": "Reservations + orders",
+      "metric_label": "Related records. Explicit checks.",
+      "diagram": "restaurant",
+      "short": "An authenticated restaurant API connecting customers, tables, reservations, orders, menu items, and employees.",
+      "description": "An ASP.NET Core API for restaurant reservations and orders, with repository interfaces, DTO mapping, FluentValidation, Identity/JWT, and SQL Server through EF Core.",
+      "overview": "The project connects restaurant operations through a related data model. Reservations refer to a customer, restaurant, and table; orders belong to reservations and employees; order items connect orders to the menu. Controllers coordinate related-record checks while repositories handle persistence.",
+      "features": [
+        [
+          "Connected reservation and order workflows",
+          "Reservation creation checks that the customer, restaurant, and restaurant/table combination exist. Order creation also checks that the assigned employee belongs to the same restaurant as the reservation."
+        ],
+        [
+          "REST endpoints with explicit contracts",
+          "Controllers use repository interfaces and AutoMapper profiles to separate API DTOs from persistence entities. Nested routes expose orders beneath reservations, and creation endpoints return CreatedAtRoute responses."
+        ],
+        [
+          "Validation and authenticated access",
+          "FluentValidation rules cover IDs, party size, dates, names, and other request fields. ASP.NET Identity handles account operations, JWTs carry identity and role claims, and selected delete endpoints require the Admin role."
+        ],
+        [
+          "SQL features managed through migrations",
+          "EF Core maps relationships and keyless database views. Migration scripts create reservation/customer and employee/restaurant views, a total-revenue scalar function, and a customer-by-party-size stored procedure."
+        ]
+      ],
+      "workflow": [
+        [
+          "Validate and resolve related records",
+          "A reservation request passes DTO rules, then the controller verifies the customer, restaurant, and table relationship through repository methods."
+        ],
+        [
+          "Create the reservation and return its resource URL",
+          "AutoMapper creates the reservation entity, the repository persists it, and CreatedAtRoute identifies the new API resource."
+        ],
+        [
+          "Attach orders in the correct restaurant context",
+          "An order is created under a reservation after checking that the employee and reservation refer to the same restaurant. Order items link the order to menu entries."
+        ]
+      ],
+      "skills": "ASP.NET Core REST design, dependency injection, repository interfaces, DTOs, AutoMapper, FluentValidation, Identity/JWT, async EF Core operations, relational modeling, SQL views, functions, procedures, and migrations.",
+      "sources": [
+        {
+          "label": "Reservation endpoints",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.API/Controllers/ReservationsController.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.API/Controllers/ReservationsController.cs"
+        },
+        {
+          "label": "Order consistency checks",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.API/Controllers/OrdersController.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.API/Controllers/OrdersController.cs"
+        },
+        {
+          "label": "Reservation validation",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.API/Validators/Reservation/ReservationCreationDtoValidator.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.API/Validators/Reservation/ReservationCreationDtoValidator.cs"
+        },
+        {
+          "label": "EF Core mappings",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.Db/RestaurantReservationDbContext.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.Db/RestaurantReservationDbContext.cs"
+        },
+        {
+          "label": "SQL revenue function",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.Db/Migrations/20241111174320_CreateGetTotalRevenueFunction.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.Db/Migrations/20241111174320_CreateGetTotalRevenueFunction.cs"
+        },
+        {
+          "label": "Stored procedure migration",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.Db/Migrations/20241111193940_CreateFindCustomersByPartySizeStoredProcedure.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.Db/Migrations/20241111193940_CreateFindCustomersByPartySizeStoredProcedure.cs"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Check relationships before creating the resource",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.API/Controllers/ReservationsController.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.API/Controllers/ReservationsController.cs#L122-L151",
+          "start_line": 122,
+          "end_line": 151,
+          "code": "public async Task<IActionResult> PostReservation(ReservationCreationDto reservationForCreation)\n{\n    var customerExists = await _customerRepository.CustomerExistsAsync(reservationForCreation.CustomerId);\n    var restaurantExists = await _restaurantRepository.RestaurantExistsAsync(reservationForCreation.RestaurantId);\n    var tableExists = await _tableRepository.TableExistsAsync(reservationForCreation.RestaurantId, reservationForCreation.TableId);\n\n    if (!customerExists)\n    {\n        return NotFound(ApiErrors.CustomerNotFound);\n    }\n\n    if (!restaurantExists)\n    {\n        return NotFound(ApiErrors.RestaurantNotFound);\n    }\n\n    if (!tableExists)\n    {\n        return NotFound(ApiErrors.TableNotFound);\n    }\n\n    var reservationEntity = _mapper.Map<Reservation>(reservationForCreation);\n    await _reservationRepository.CreateReservationAsync(reservationEntity);\n    await _reservationRepository.SaveChangesAsync();\n\n    return CreatedAtRoute(\"GetReservation\",\n        new {\n            reservationId = reservationEntity.ReservationId \n        },_mapper.Map<ReservationDto>(reservationEntity));\n}",
+          "explanation": "The controller verifies its related records, maps the DTO into an entity, saves it, and returns the route of the created reservation.",
+          "language": "C#"
+        },
+        {
+          "label": "Connect EF Core to a SQL function",
+          "repo": "RestaurantReservation",
+          "commit": "701717ed1dcdcbd833f50810a7525c9c6185fdf3",
+          "path": "RestaurantReservation.Db/RestaurantReservationDbContext.cs",
+          "url": "https://github.com/RaghadHanon/RestaurantReservation/blob/701717ed1dcdcbd833f50810a7525c9c6185fdf3/RestaurantReservation.Db/RestaurantReservationDbContext.cs#L43-L48",
+          "start_line": 43,
+          "end_line": 48,
+          "code": "private void MapDatabaseFunctions(ModelBuilder modelBuilder)\n{\n    modelBuilder.HasDbFunction(typeof(RestaurantReservationDbContext)\n                .GetMethod(nameof(GetTotalRevenue), new[] { typeof(int) }))\n                .HasName(\"GetTotalRevenue\");\n}",
+          "explanation": "The model registers the CLR method as a database function. Its SQL definition is created by the migration linked below.",
+          "language": "C#"
+        }
+      ]
+    },
+    {
+      "slug": "algorithms-data-structures",
+      "title": "Algorithms & Data Structures",
+      "number": "11",
+      "context": "Java implementation & problem-solving collection",
+      "focus": "Data structures & algorithmic reasoning",
+      "categories": [
+        "algorithms"
+      ],
+      "tags": [
+        "Java",
+        "AVL trees",
+        "Binary heaps",
+        "BFS / DFS",
+        "Sorting",
+        "Hashing"
+      ],
+      "metric": "110 Java files",
+      "metric_label": "Implement the structure. Understand the behavior.",
+      "diagram": "algorithms",
+      "short": "Standalone Java implementations of data structures and algorithms, alongside graph, tree, hashing, and linked-list problem solutions.",
+      "description": "A Java learning and problem-solving repository containing custom data structures, sorting algorithms, graph traversals, and categorized practice solutions across 110 Java source files.",
+      "overview": "This collection looks beneath library calls to the operations that make a data structure work. Implementations include array lists, linked lists, stacks, queues, binary-search and AVL trees, and binary heaps. Sorting and graph algorithms sit alongside categorized practice solutions.",
+      "features": [
+        [
+          "Custom data structures and explicit invariants",
+          "The implementations cover arrays, linked lists, stacks, queues, trees, and min/max heaps. AVL code records node height and balance factors and implements rotations; the min-heap implementation includes a recursive invariant checker."
+        ],
+        [
+          "Sorting algorithms and pivot choices",
+          "Separate files implement bubble, selection, insertion, merge, heap, and quick sort. Quicksort variants explore first-, last-, and middle-element pivot selection."
+        ],
+        [
+          "Graph representations and traversal",
+          "Adjacency-list and adjacency-matrix implementations explore BFS and DFS, including iterative and recursive variants. The adjacency-list BFS records predecessor links for unweighted path reconstruction."
+        ],
+        [
+          "Applied problem-solving patterns",
+          "Practice solutions are organized by trees, graphs, hashing, linked lists, stacks, queues, priority queues, recursion, and sorting. Examples include longest consecutive sequences, tree traversal, heap-based selection, and linked-list transformations."
+        ]
+      ],
+      "workflow": [
+        [
+          "Choose a representation",
+          "Represent the problem with an array, linked nodes, a tree, a heap, or an adjacency list/matrix."
+        ],
+        [
+          "Implement the operations and inspect the invariant",
+          "Work through comparisons, pointer changes, height updates, heap ordering, or visited/predecessor state as appropriate to the structure."
+        ],
+        [
+          "Apply the pattern to a problem",
+          "Use traversal, recursion, hashing, sorting, or a priority queue to express a concrete problem solution."
+        ]
+      ],
+      "skills": "Java generics and Comparable, reference manipulation, recursion, tree rotations, heap invariants, BFS/DFS, graph representations, hashing, sorting, priority queues, and algorithmic problem solving.",
+      "sources": [
+        {
+          "label": "AVL tree implementation",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "DataStructures/Balanced Trees/AVLTree.java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/DataStructures/Balanced%20Trees/AVLTree.java"
+        },
+        {
+          "label": "Heap operations & invariant checker",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "DataStructures/Priority Queue/MinBinaryHeap.java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/DataStructures/Priority%20Queue/MinBinaryHeap.java"
+        },
+        {
+          "label": "BFS & predecessor links",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "Graph theory/Breadth first search & Shortest Bath (adjacency list, iterative).java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/Graph%20theory/Breadth%20first%20search%20%26%20Shortest%20Bath%20%28adjacency%20list%2C%20iterative%29.java"
+        },
+        {
+          "label": "Quicksort pivot variant",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "Sorting Algorithms/Quicksort (middle element as a pivot).java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/Sorting%20Algorithms/Quicksort%20%28middle%20element%20as%20a%20pivot%29.java"
+        },
+        {
+          "label": "Hashing practice solution",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "Data Structures and Algorithms practice problems/Hashing/Longest Consecutive Sequence.java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/Data%20Structures%20and%20Algorithms%20practice%20problems/Hashing/Longest%20Consecutive%20Sequence.java"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Rewire a subtree, then update its metadata",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "DataStructures/Balanced Trees/AVLTree.java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/DataStructures/Balanced%20Trees/AVLTree.java#L135-L142",
+          "start_line": 135,
+          "end_line": 142,
+          "code": "private Node<T> rightRotation(Node<T> node) {\n    Node<T> newParent = node.left;\n    node.left = newParent.right;\n    newParent.right = node;\n    update(node);\n    update(newParent);\n    return newParent;\n}",
+          "explanation": "A right rotation changes the local parent/child links and updates the height and balance metadata before returning the new subtree root.",
+          "language": "Java"
+        },
+        {
+          "label": "Track discovery and predecessor state in BFS",
+          "repo": "Algorithms-and-data-structures",
+          "commit": "a93fb5d77265e811ded96acf113547d8806f1807",
+          "path": "Graph theory/Breadth first search & Shortest Bath (adjacency list, iterative).java",
+          "url": "https://github.com/RaghadHanon/Algorithms-and-data-structures/blob/a93fb5d77265e811ded96acf113547d8806f1807/Graph%20theory/Breadth%20first%20search%20%26%20Shortest%20Bath%20%28adjacency%20list%2C%20iterative%29.java#L39-L61",
+          "start_line": 39,
+          "end_line": 61,
+          "code": "public void bfs(int s) {\n    Queue<Integer> q = new LinkedList<>();\n\n    q.add(s);\n    isVisited.put(s,true);\n    level[s]=1;\n    prv[s]=-1;\n\n    while (!q.isEmpty()) {\n        int node=q.poll();\n        System.out.print (node+\"  \");\n        for (int i=0;i<adj[node].size();i++){\n            if(isVisited.get(adj[node].get(i))==false ) {\n                q.add(adj[node].get(i));\n                level[adj[node].get(i)] = level[node]+1;\n                isVisited.put(adj[node].get(i),true);\n                prv[adj[node].get(i)]=node;\n            }\n        }\n    }\n    clearVisited();\n    System.out.println();\n}",
+          "explanation": "The queue drives traversal. Newly discovered neighbors receive a level and predecessor, which the separate shortestPath method uses for path reconstruction.",
+          "language": "Java"
+        }
+      ]
     }
   ]
 }
