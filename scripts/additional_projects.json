@@ -1,0 +1,607 @@
+{
+  "reviewed_at": "2026-10-28",
+  "projects": [
+    {
+      "slug": "weather-service",
+      "title": "Weather Service",
+      "number": "04",
+      "context": "C# design & testing exercise",
+      "focus": "Extensible behavior",
+      "categories": [
+        "design"
+      ],
+      "tags": [
+        "C#",
+        ".NET 8",
+        "Strategy",
+        "Observer",
+        "xUnit"
+      ],
+      "metric": "JSON / XML",
+      "metric_label": "Two inputs. One notification flow.",
+      "diagram": "weather",
+      "short": "Parser strategies, configurable weather bots, and automated tests in one focused C# application.",
+      "description": "A console weather-processing application that accepts JSON or XML, creates bots from configuration, and sends parsed readings through an observer-based notification flow.",
+      "overview": "The interesting problem is how to change input formats and bot behavior without making the processing flow responsible for every detail. Separate parser strategies, bot factories, and a notifier give each concern a clear place in the design.",
+      "features": [
+        [
+          "Interchangeable input parsing",
+          "JSON and XML parsers implement the same strategy interface and return a shared WeatherData model. A parser factory selects the implementation from the input format."
+        ],
+        [
+          "Configurable, independent bots",
+          "Rain, snow, and sun bots use enabled flags, threshold values, and response messages loaded from JSON configuration. Factory classes create their services."
+        ],
+        [
+          "Observer-based notification",
+          "A notifier registers bot services, avoids duplicate observer registrations, and distributes each parsed reading to its observers."
+        ],
+        [
+          "Tests and a CI definition",
+          "xUnit and FluentAssertions cover parser behavior, malformed inputs, parser selection, and bot construction. A GitHub Actions workflow defines restore, build, and test jobs on Linux, Windows, and macOS."
+        ]
+      ],
+      "workflow": [
+        [
+          "Configure the participants",
+          "Read bot configuration, construct bot services through factories, and register them with the notifier."
+        ],
+        [
+          "Choose and run a parser",
+          "Detect JSON or XML input, select its parser strategy, and deserialize it into the common weather model."
+        ],
+        [
+          "Evaluate bot responses",
+          "Notify the registered observers. Each bot evaluates its configured threshold before writing its response."
+        ]
+      ],
+      "skills": "Strategy, Observer, Factory Method, interfaces, serialization, configuration, exception handling, parameterized tests, and GitHub Actions CI configuration.",
+      "sources": [
+        {
+          "label": "Parser selection",
+          "repo": "GitHubActionsWeatherService",
+          "commit": "59c5606b86a826e1f79327a2613524cb8894588c",
+          "path": "WeatherService/Input/WeatherParserFactory.cs",
+          "url": "https://github.com/RaghadHanon/GitHubActionsWeatherService/blob/59c5606b86a826e1f79327a2613524cb8894588c/WeatherService/Input/WeatherParserFactory.cs"
+        },
+        {
+          "label": "Observer implementation",
+          "repo": "GitHubActionsWeatherService",
+          "commit": "59c5606b86a826e1f79327a2613524cb8894588c",
+          "path": "WeatherService/Core/WeatherDataNotifier.cs",
+          "url": "https://github.com/RaghadHanon/GitHubActionsWeatherService/blob/59c5606b86a826e1f79327a2613524cb8894588c/WeatherService/Core/WeatherDataNotifier.cs"
+        },
+        {
+          "label": "Parser tests",
+          "repo": "GitHubActionsWeatherService",
+          "commit": "59c5606b86a826e1f79327a2613524cb8894588c",
+          "path": "WeatherService.Tests/InputTesting/JsonWeatherParserShould.cs",
+          "url": "https://github.com/RaghadHanon/GitHubActionsWeatherService/blob/59c5606b86a826e1f79327a2613524cb8894588c/WeatherService.Tests/InputTesting/JsonWeatherParserShould.cs"
+        },
+        {
+          "label": "CI workflow",
+          "repo": "GitHubActionsWeatherService",
+          "commit": "59c5606b86a826e1f79327a2613524cb8894588c",
+          "path": ".github/workflows/test.yml",
+          "url": "https://github.com/RaghadHanon/GitHubActionsWeatherService/blob/59c5606b86a826e1f79327a2613524cb8894588c/.github/workflows/test.yml"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "One processing flow, interchangeable parsing",
+          "repo": "GitHubActionsWeatherService",
+          "commit": "59c5606b86a826e1f79327a2613524cb8894588c",
+          "path": "WeatherService/Core/WeatherDataProvider.cs",
+          "url": "https://github.com/RaghadHanon/GitHubActionsWeatherService/blob/59c5606b86a826e1f79327a2613524cb8894588c/WeatherService/Core/WeatherDataProvider.cs#L19-L23",
+          "code": "public void ProcessWeatherData(string input)\n{\n    WeatherData = _weatherParserStrategy.ParseWeatherData(input);\n    WeatherDataNotifier.NotifyObservers(WeatherData);\n}",
+          "start_line": 19,
+          "end_line": 23,
+          "explanation": "The provider calls the parser interface, then passes the resulting model to the notifier. Input parsing and bot behavior stay outside this method.",
+          "language": "C#"
+        },
+        {
+          "label": "Notify through an interface",
+          "repo": "GitHubActionsWeatherService",
+          "commit": "59c5606b86a826e1f79327a2613524cb8894588c",
+          "path": "WeatherService/Core/WeatherDataNotifier.cs",
+          "url": "https://github.com/RaghadHanon/GitHubActionsWeatherService/blob/59c5606b86a826e1f79327a2613524cb8894588c/WeatherService/Core/WeatherDataNotifier.cs#L31-L37",
+          "code": "public void NotifyObservers(WeatherData weatherData)\n{\n    foreach (var observer in _observers)\n    {\n        observer.GenerateBotResponse(weatherData);\n    }\n}",
+          "start_line": 31,
+          "end_line": 37,
+          "explanation": "Each observer receives the same weather model through IWeatherBotService.",
+          "language": "C#"
+        }
+      ]
+    },
+    {
+      "slug": "inventory-persistence",
+      "title": "Inventory Persistence",
+      "number": "05",
+      "context": "C# persistence exercise",
+      "focus": "SQL & document storage",
+      "categories": [
+        "data",
+        "backend"
+      ],
+      "tags": [
+        "C#",
+        "EF Core",
+        "SQL Server",
+        "MongoDB",
+        "Repository"
+      ],
+      "metric": "SQL + MongoDB",
+      "metric_label": "A shared repository contract.",
+      "diagram": "inventory",
+      "short": "An inventory service backed by interchangeable SQL Server and MongoDB repository implementations.",
+      "description": "A .NET inventory console application that connects the same product-management service to SQL Server through EF Core or MongoDB through its native driver.",
+      "overview": "This project explores a useful backend boundary: the inventory service uses a product repository contract, while separate adapters handle relational and document persistence. A factory selects the requested backend when the service is constructed.",
+      "features": [
+        [
+          "A common storage contract",
+          "IProductRepository defines add, lookup, list, update, and delete operations. InventoryService delegates product operations through that interface."
+        ],
+        [
+          "Two concrete persistence adapters",
+          "The SQL Server repository uses an EF Core DbContext and SaveChanges. The MongoDB repository uses driver queries and document operations."
+        ],
+        [
+          "Factory-based backend selection",
+          "RepositoryFactory chooses a SQL Server or MongoDB implementation from DatabaseType. Each application instance uses its selected backend."
+        ],
+        [
+          "Product data and relational migrations",
+          "Products include name, price, currency, and quantity. The repository includes an EF Core migration and ordered product listing in both adapters."
+        ]
+      ],
+      "workflow": [
+        [
+          "Select a persistence backend",
+          "Pass the desired DatabaseType when constructing the inventory service."
+        ],
+        [
+          "Create the matching adapter",
+          "The factory builds the database context and returns the corresponding IProductRepository implementation."
+        ],
+        [
+          "Use the shared product operations",
+          "The inventory service calls the repository contract while the selected adapter executes the database operation."
+        ]
+      ],
+      "skills": "Repository and Factory patterns, interface-based boundaries, EF Core migrations, SQL Server, MongoDB.Driver, LINQ, CRUD operations, and relational versus document persistence.",
+      "sources": [
+        {
+          "label": "Inventory service",
+          "repo": "IMS-Database",
+          "commit": "d0da5c85f5d2226a8e7be96253c04d386b2089f8",
+          "path": "Inventory_Management_System/Services/InventoryService.cs",
+          "url": "https://github.com/RaghadHanon/IMS-Database/blob/d0da5c85f5d2226a8e7be96253c04d386b2089f8/Inventory_Management_System/Services/InventoryService.cs"
+        },
+        {
+          "label": "SQL Server adapter",
+          "repo": "IMS-Database",
+          "commit": "d0da5c85f5d2226a8e7be96253c04d386b2089f8",
+          "path": "Inventory_Management_System/Repositories/SqlServer/SqlServerDbRepository.cs",
+          "url": "https://github.com/RaghadHanon/IMS-Database/blob/d0da5c85f5d2226a8e7be96253c04d386b2089f8/Inventory_Management_System/Repositories/SqlServer/SqlServerDbRepository.cs"
+        },
+        {
+          "label": "MongoDB adapter",
+          "repo": "IMS-Database",
+          "commit": "d0da5c85f5d2226a8e7be96253c04d386b2089f8",
+          "path": "Inventory_Management_System/Repositories/MongoDb/MongoDbRepository.cs",
+          "url": "https://github.com/RaghadHanon/IMS-Database/blob/d0da5c85f5d2226a8e7be96253c04d386b2089f8/Inventory_Management_System/Repositories/MongoDb/MongoDbRepository.cs"
+        },
+        {
+          "label": "EF Core migration",
+          "repo": "IMS-Database",
+          "commit": "d0da5c85f5d2226a8e7be96253c04d386b2089f8",
+          "path": "Inventory_Management_System/Migrations/20241029161011_InitialCreate.cs",
+          "url": "https://github.com/RaghadHanon/IMS-Database/blob/d0da5c85f5d2226a8e7be96253c04d386b2089f8/Inventory_Management_System/Migrations/20241029161011_InitialCreate.cs"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Select an adapter at construction",
+          "repo": "IMS-Database",
+          "commit": "d0da5c85f5d2226a8e7be96253c04d386b2089f8",
+          "path": "Inventory_Management_System/Factory/RepositoryFactory.cs",
+          "url": "https://github.com/RaghadHanon/IMS-Database/blob/d0da5c85f5d2226a8e7be96253c04d386b2089f8/Inventory_Management_System/Factory/RepositoryFactory.cs#L10-L25",
+          "code": "public static IProductRepository CreateRepository(DatabaseType databaseType)\n{\n    switch (databaseType)\n    {\n        case DatabaseType.MongoDB:\n            var mongoDbContext = new MongoDbContext(Configuration);\n            return new MongoDbRepository(mongoDbContext);\n\n        case DatabaseType.SqlServer:\n            var sqlServerContext = new SqlServerDbContext(Configuration);\n            return new SqlServerDbRepository(sqlServerContext);\n\n        default:\n            throw new ArgumentException($\"Unsupported DatabaseType: {databaseType}\");\n    }\n}",
+          "start_line": 10,
+          "end_line": 25,
+          "explanation": "The factory returns the same interface for either database implementation. Each service instance uses its selected persistence backend.",
+          "language": "C#"
+        }
+      ]
+    },
+    {
+      "slug": "airport-booking",
+      "title": "Airport Booking",
+      "number": "06",
+      "context": "C# console application",
+      "focus": "Validation & query design",
+      "categories": [
+        "backend",
+        "design"
+      ],
+      "tags": [
+        "C#",
+        "LINQ",
+        "Reflection",
+        "CSV",
+        "xUnit"
+      ],
+      "metric": "CSV + reflection",
+      "metric_label": "Import, validate, search, book.",
+      "diagram": "airport",
+      "short": "Flight search and booking workflows with CSV import, model validation, and reflection-based rule descriptions.",
+      "description": "A console application for passenger bookings and manager flight operations, with composable searches, class-based pricing, CSV flight import, and automated query and validation tests.",
+      "overview": "Beyond the console interface, the project separates presentation, booking services, queries, repositories, and validation. Its distinctive feature is the use of custom attributes and reflection to display flight-field types and validation constraints.",
+      "features": [
+        [
+          "Passenger and manager workflows",
+          "Passengers can search flights, choose a travel class, create bookings, modify them, and cancel them. Manager functionality includes booking filters and flight import."
+        ],
+        [
+          "Composable LINQ filters",
+          "Optional query parameters cover passenger, flight, class, price, departure and destination, airports, and dates. Filters are composed before materializing the result."
+        ],
+        [
+          "CSV input and model rules",
+          "Imported flight rows are mapped into flight models and submitted to repository-level validation. Rules check prices, required location fields, and departure timing."
+        ],
+        [
+          "Self-describing validation metadata",
+          "FieldType and ValidationRule attributes describe model fields. Reflection reads those attributes to print rule details. xUnit and FluentAssertions tests cover flight validation and booking queries."
+        ]
+      ],
+      "workflow": [
+        [
+          "Load and validate flights",
+          "Read CSV rows, create flight objects, and submit them to the flight repository with model-level validation."
+        ],
+        [
+          "Search and make a booking",
+          "Apply the requested filters, select a flight and class, then validate and register the booking."
+        ],
+        [
+          "Manage an existing booking",
+          "Resolve the booking, check the passenger relationship, and apply a modification or cancellation through the booking service."
+        ]
+      ],
+      "skills": "C# object-oriented design, service/query/repository separation, LINQ, custom attributes, reflection, CSV processing, domain validation, and xUnit parameterized tests.",
+      "sources": [
+        {
+          "label": "Booking workflows",
+          "repo": "Airport-Ticket-Booking-System",
+          "commit": "132be6474374ca47133dff5706534295dd0aa23e",
+          "path": "Airport Ticket Booking System/Entities/Bookings/Service/BookingService.cs",
+          "url": "https://github.com/RaghadHanon/Airport-Ticket-Booking-System/blob/132be6474374ca47133dff5706534295dd0aa23e/Airport%20Ticket%20Booking%20System/Entities/Bookings/Service/BookingService.cs"
+        },
+        {
+          "label": "Composable queries",
+          "repo": "Airport-Ticket-Booking-System",
+          "commit": "132be6474374ca47133dff5706534295dd0aa23e",
+          "path": "Airport Ticket Booking System/Entities/Bookings/Query/BookingQuery.cs",
+          "url": "https://github.com/RaghadHanon/Airport-Ticket-Booking-System/blob/132be6474374ca47133dff5706534295dd0aa23e/Airport%20Ticket%20Booking%20System/Entities/Bookings/Query/BookingQuery.cs"
+        },
+        {
+          "label": "CSV import",
+          "repo": "Airport-Ticket-Booking-System",
+          "commit": "132be6474374ca47133dff5706534295dd0aa23e",
+          "path": "Airport Ticket Booking System/Entities/DataManagement/FlightDataFileProcessing.cs",
+          "url": "https://github.com/RaghadHanon/Airport-Ticket-Booking-System/blob/132be6474374ca47133dff5706534295dd0aa23e/Airport%20Ticket%20Booking%20System/Entities/DataManagement/FlightDataFileProcessing.cs"
+        },
+        {
+          "label": "Validation tests",
+          "repo": "Airport-Ticket-Booking-System",
+          "commit": "132be6474374ca47133dff5706534295dd0aa23e",
+          "path": "Airport Ticket Booking System Tests/ValidationTests/FlightValidationTests.cs",
+          "url": "https://github.com/RaghadHanon/Airport-Ticket-Booking-System/blob/132be6474374ca47133dff5706534295dd0aa23e/Airport%20Ticket%20Booking%20System%20Tests/ValidationTests/FlightValidationTests.cs"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Use metadata to explain the model",
+          "repo": "Airport-Ticket-Booking-System",
+          "commit": "132be6474374ca47133dff5706534295dd0aa23e",
+          "path": "Airport Ticket Booking System/Entities/Flights/Core/FlightValidation.cs",
+          "url": "https://github.com/RaghadHanon/Airport-Ticket-Booking-System/blob/132be6474374ca47133dff5706534295dd0aa23e/Airport%20Ticket%20Booking%20System/Entities/Flights/Core/FlightValidation.cs#L88-L106",
+          "code": "public static void DisplayValidationRules()\n{\n    var flightType = typeof(Flight);\n    Console.WriteLine(\"\\n--- Validation Rules ---\");\n    foreach (var property in flightType.GetProperties())\n    {\n        var fieldTypeAttr = property.GetCustomAttribute<FieldTypeAttribute>();\n        var validationRuleAttr = property.GetCustomAttribute<ValidationRuleAttribute>();\n        if (fieldTypeAttr != null && validationRuleAttr != null)\n        {\n            Console.WriteLine($\"\"\"\n                               - {property.Name}:\n                                    Type: {fieldTypeAttr.Type}\n                                    Constraints: {validationRuleAttr.Constraints}\n\n                               \"\"\");\n        }\n    }\n}",
+          "start_line": 88,
+          "end_line": 106,
+          "explanation": "Reflection reads custom field attributes and turns them into validation-rule descriptions for the console interface.",
+          "language": "C#"
+        }
+      ]
+    },
+    {
+      "slug": "library-database",
+      "title": "Library Database",
+      "number": "07",
+      "context": "SQL Server database project",
+      "focus": "Relational design & analysis",
+      "categories": [
+        "data"
+      ],
+      "tags": [
+        "T-SQL",
+        "SQL Server",
+        "CTEs",
+        "Window functions",
+        "Indexes"
+      ],
+      "metric": "CTEs + rankings",
+      "metric_label": "From loan records to useful insights.",
+      "diagram": "library",
+      "short": "A relational library schema with analytical SQL, stored procedures, functions, indexes, and status-change auditing.",
+      "description": "A SQL Server database project covering books, borrowers, and loans, with data constraints, reporting queries, stored procedures, scalar functions, index definitions, and an audit trigger.",
+      "overview": "This project shows the database work behind an application: modeling relationships, enforcing basic invariants, and answering operational questions in SQL. The reporting scripts cover borrowing frequency, active borrowers, popular genres, author popularity, and overdue analysis.",
+      "features": [
+        [
+          "Relational integrity in the schema",
+          "Books and borrowers are related through loans. Primary and foreign keys, unique ISBN and email constraints, status checks, and loan-date checks encode rules in the database."
+        ],
+        [
+          "Analysis with CTEs and window functions",
+          "Reporting scripts use joins, grouped aggregates, CTEs, and DENSE_RANK to analyze borrowers, authors, genres, and loan activity."
+        ],
+        [
+          "Reusable database operations",
+          "Stored procedures cover borrower creation and borrowing reports. Scalar functions calculate borrowing frequency and overdue fees."
+        ],
+        [
+          "Index definitions and audit history",
+          "Five nonclustered index definitions target selected book and loan columns. An AFTER UPDATE trigger records book-status changes by comparing inserted and deleted rows."
+        ]
+      ],
+      "workflow": [
+        [
+          "Create and populate the model",
+          "Run the schema scripts and sample-data inserts for books, borrowers, and loans."
+        ],
+        [
+          "Query operational behavior",
+          "Use reporting scripts to inspect active loans, borrowing frequency, overdue records, and genre trends."
+        ],
+        [
+          "Encapsulate and audit operations",
+          "Call reusable procedures and functions, and capture book-status updates through the audit trigger."
+        ]
+      ],
+      "skills": "Relational modeling, referential integrity, CHECK and UNIQUE constraints, T-SQL joins and aggregates, CTEs, window functions, stored procedures, scalar functions, triggers, and index design.",
+      "sources": [
+        {
+          "label": "Relational schema",
+          "repo": "Library-Management-System-Database-Project",
+          "commit": "2efff367ef0dbef0e00a2d9d6c96aac37099ccf7",
+          "path": "SchemaCreation/SchemaCreation.sql",
+          "url": "https://github.com/RaghadHanon/Library-Management-System-Database-Project/blob/2efff367ef0dbef0e00a2d9d6c96aac37099ccf7/SchemaCreation/SchemaCreation.sql"
+        },
+        {
+          "label": "Five index definitions",
+          "repo": "Library-Management-System-Database-Project",
+          "commit": "2efff367ef0dbef0e00a2d9d6c96aac37099ccf7",
+          "path": "SchemaCreation/Indexes.sql",
+          "url": "https://github.com/RaghadHanon/Library-Management-System-Database-Project/blob/2efff367ef0dbef0e00a2d9d6c96aac37099ccf7/SchemaCreation/Indexes.sql"
+        },
+        {
+          "label": "Borrower ranking",
+          "repo": "Library-Management-System-Database-Project",
+          "commit": "2efff367ef0dbef0e00a2d9d6c96aac37099ccf7",
+          "path": "Requirements/Queries/BorrowingFrequencyUsingWindowFunctions.sql",
+          "url": "https://github.com/RaghadHanon/Library-Management-System-Database-Project/blob/2efff367ef0dbef0e00a2d9d6c96aac37099ccf7/Requirements/Queries/BorrowingFrequencyUsingWindowFunctions.sql"
+        },
+        {
+          "label": "Status audit trigger",
+          "repo": "Library-Management-System-Database-Project",
+          "commit": "2efff367ef0dbef0e00a2d9d6c96aac37099ccf7",
+          "path": "Requirements/Triggers/trg_BookStatusChange.sql",
+          "url": "https://github.com/RaghadHanon/Library-Management-System-Database-Project/blob/2efff367ef0dbef0e00a2d9d6c96aac37099ccf7/Requirements/Triggers/trg_BookStatusChange.sql"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Rank borrowers from loan activity",
+          "repo": "Library-Management-System-Database-Project",
+          "commit": "2efff367ef0dbef0e00a2d9d6c96aac37099ccf7",
+          "path": "Requirements/Queries/BorrowingFrequencyUsingWindowFunctions.sql",
+          "url": "https://github.com/RaghadHanon/Library-Management-System-Database-Project/blob/2efff367ef0dbef0e00a2d9d6c96aac37099ccf7/Requirements/Queries/BorrowingFrequencyUsingWindowFunctions.sql#L1-L9",
+          "code": "WITH BorrowedCounts AS (\n    SELECT BorrowerID, COUNT(LoanID) AS BorrowCount\n    FROM Loans\n    GROUP BY BorrowerID\n)\nSELECT (Borrowers.FirstName +' '+ Borrowers.LastName) AS FullName , BorrowCount,\n       DENSE_RANK() OVER (ORDER BY BorrowCount DESC) AS BorrowingRank\nFROM Borrowers \nJOIN BorrowedCounts ON BorrowedCounts.BorrowerID = Borrowers.BorrowerID;",
+          "start_line": 1,
+          "end_line": 9,
+          "explanation": "A CTE calculates borrowing counts; DENSE_RANK assigns equal rank to equal counts while preserving a compact ranking sequence.",
+          "language": "SQL"
+        }
+      ]
+    },
+    {
+      "slug": "medicoportal",
+      "title": "MedicoPortal",
+      "number": "08",
+      "context": "Academic team project",
+      "focus": "API & frontend integration",
+      "categories": [
+        "backend",
+        "full-stack",
+        "data"
+      ],
+      "tags": [
+        "ASP.NET Core",
+        "React",
+        "EF Core",
+        "SQL Server",
+        "JWT"
+      ],
+      "metric": "React + ASP.NET",
+      "metric_label": "A connected patient–doctor workflow.",
+      "diagram": "medico",
+      "short": "A medical-records prototype connecting patient requests, doctor responses, profiles, and daily measurements.",
+      "description": "An academic team project with a React frontend and ASP.NET Core API for doctor discovery, patient requests, medical-record responses, and blood-pressure and blood-sugar measurements.",
+      "overview": "MedicoPortal connects several screens to a related data model and an API workflow. Patients browse doctors and submit requests; doctors respond with record entries; patients can review responses and their measurement history. The frontend and backend are maintained in separate public repositories.",
+      "features": [
+        [
+          "Patient and doctor account flows",
+          "JWT-based sign-in and role-specific endpoints support patient and doctor registration, profile information, clinics, and medical specializations."
+        ],
+        [
+          "Requests connected to medical records",
+          "A patient submits a request to a doctor. A response can add allergy, medicine, chronic-disease, or general-report entries and mark the request as answered."
+        ],
+        [
+          "Measurement history and related data",
+          "Patients can add blood-pressure and blood-sugar records. EF Core models connect users, patients, doctors, clinics, requests, and the different record types."
+        ],
+        [
+          "Frontend-to-API integration",
+          "React forms submit requests with Axios and bearer tokens. The API provides answered-status filtering and pagination for patient and doctor request lists."
+        ]
+      ],
+      "workflow": [
+        [
+          "Find a doctor and submit a request",
+          "Browse doctors and their specializations, open a profile, and send a request through the React form."
+        ],
+        [
+          "Respond through the API",
+          "The doctor response endpoint creates the supplied medical-record entries and marks the corresponding request as answered."
+        ],
+        [
+          "Review records and measurements",
+          "The patient can inspect requests and responses and record daily blood-pressure or blood-sugar measurements."
+        ]
+      ],
+      "skills": "ASP.NET Core REST endpoints, EF Core relationships, SQL Server, JWT claims, DTO mapping, filtered and paginated queries, React forms, Axios, and API integration in a team project.",
+      "sources": [
+        {
+          "label": "Patient API",
+          "repo": "MedicoPortalBackend",
+          "commit": "0eeac4020210421eb33d7063db99b5fa27d51091",
+          "path": "SoftwareProject.API/Controllers/PatientController.cs",
+          "url": "https://github.com/RaghadHanon/MedicoPortalBackend/blob/0eeac4020210421eb33d7063db99b5fa27d51091/SoftwareProject.API/Controllers/PatientController.cs"
+        },
+        {
+          "label": "Doctor response workflow",
+          "repo": "MedicoPortalBackend",
+          "commit": "0eeac4020210421eb33d7063db99b5fa27d51091",
+          "path": "SoftwareProject.API/Controllers/ResponseController.cs",
+          "url": "https://github.com/RaghadHanon/MedicoPortalBackend/blob/0eeac4020210421eb33d7063db99b5fa27d51091/SoftwareProject.API/Controllers/ResponseController.cs"
+        },
+        {
+          "label": "EF Core relationships",
+          "repo": "MedicoPortalBackend",
+          "commit": "0eeac4020210421eb33d7063db99b5fa27d51091",
+          "path": "SoftwareProject.API/ApplicationDbContext.cs",
+          "url": "https://github.com/RaghadHanon/MedicoPortalBackend/blob/0eeac4020210421eb33d7063db99b5fa27d51091/SoftwareProject.API/ApplicationDbContext.cs"
+        },
+        {
+          "label": "React request form",
+          "repo": "MedicoPortal",
+          "commit": "3df0c6571ce55eb014f466e9e4c25df7b1806eb1",
+          "path": "src/Pages/Request/Request.jsx",
+          "url": "https://github.com/RaghadHanon/MedicoPortal/blob/3df0c6571ce55eb014f466e9e4c25df7b1806eb1/src/Pages/Request/Request.jsx"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Scope and filter a patient request list",
+          "repo": "MedicoPortalBackend",
+          "commit": "0eeac4020210421eb33d7063db99b5fa27d51091",
+          "path": "SoftwareProject.API/Controllers/PatientController.cs",
+          "url": "https://github.com/RaghadHanon/MedicoPortalBackend/blob/0eeac4020210421eb33d7063db99b5fa27d51091/SoftwareProject.API/Controllers/PatientController.cs#L110-L123",
+          "code": "var query = applicationDbContext.Requests\n                                 .Where(r => r.PatientId == patient.PatientId)\n                                 .Include(r => r.Doctor)\n                                 .Include(r => r.Allergy)\n                                 .Include(r => r.ChronicDisease)\n                                 .Include(r => r.Medicine)\n                                 .Include(r => r.GeneralReport)\n                                 .AsQueryable();\n\n// Apply filter on IsAnswered\nif (isAnswered.HasValue)\n{\n    query = query.Where(r => r.IsAnswered == isAnswered.Value);\n}",
+          "start_line": 110,
+          "end_line": 123,
+          "explanation": "The request query starts from the resolved patient and then applies the optional answered-status filter. The following source lines paginate the result.",
+          "language": "C#"
+        }
+      ]
+    },
+    {
+      "slug": "string-calculator",
+      "title": "String Calculator Kata",
+      "number": "09",
+      "context": "Focused testing exercise",
+      "focus": "Precise, testable behavior",
+      "categories": [
+        "design"
+      ],
+      "tags": [
+        "C#",
+        "xUnit",
+        "FluentAssertions",
+        "AutoFixture",
+        "LINQ"
+      ],
+      "metric": "9 input cases",
+      "metric_label": "Small scope. Explicit behavior.",
+      "diagram": "kata",
+      "short": "A compact calculator kata with parameterized tests for delimiters, invalid input, negative numbers, and numeric limits.",
+      "description": "A C# string-calculator exercise with custom delimiter handling, explicit errors, and xUnit tests using FluentAssertions and AutoFixture.",
+      "overview": "A small codebase makes behavior easy to examine. The calculator supports comma and newline separators, a custom delimiter prefix, and a numeric cutoff. The test class expresses expected results and error behavior as parameterized examples.",
+      "features": [
+        [
+          "Defined parsing rules",
+          "Empty or whitespace input returns zero. The calculator supports comma/newline separators and a custom delimiter declared with a // prefix."
+        ],
+        [
+          "Explicit rejection behavior",
+          "Malformed numeric tokens raise FormatException. Negative numbers are collected and reported through NegativeNumbersNotAllowedException."
+        ],
+        [
+          "A clear numeric boundary",
+          "Parsed values greater than 1000 are excluded before summing; the tests include the input 1,1001 with an expected result of 1."
+        ],
+        [
+          "Parameterized examples",
+          "Three xUnit theory methods contain nine InlineData cases across valid results, malformed input, and negative-number errors. AutoFixture constructs the calculator and FluentAssertions expresses expectations."
+        ]
+      ],
+      "workflow": [
+        [
+          "Determine the separators",
+          "Use the custom delimiter declaration when present; otherwise accept commas and newline characters."
+        ],
+        [
+          "Parse and check the values",
+          "Convert tokens to integers, exclude values above 1000, and reject any remaining negative values."
+        ],
+        [
+          "Return or explain the result",
+          "Sum valid values or raise the corresponding parsing or negative-number exception."
+        ]
+      ],
+      "skills": "Parameterized unit tests, boundary cases, exception assertions, xUnit theories, FluentAssertions, AutoFixture, LINQ, and focused method responsibilities.",
+      "sources": [
+        {
+          "label": "Calculator implementation",
+          "repo": "String-Calculator-Kata",
+          "commit": "a35b7965fb091cd988c78e534829554241c13022",
+          "path": "StringCalculatorKata/StringCalculator.cs",
+          "url": "https://github.com/RaghadHanon/String-Calculator-Kata/blob/a35b7965fb091cd988c78e534829554241c13022/StringCalculatorKata/StringCalculator.cs"
+        },
+        {
+          "label": "Nine parameterized inputs",
+          "repo": "String-Calculator-Kata",
+          "commit": "a35b7965fb091cd988c78e534829554241c13022",
+          "path": "StringCalculatorKata.Tests/StringCalculatorTests.cs",
+          "url": "https://github.com/RaghadHanon/String-Calculator-Kata/blob/a35b7965fb091cd988c78e534829554241c13022/StringCalculatorKata.Tests/StringCalculatorTests.cs"
+        }
+      ],
+      "proofs": [
+        {
+          "label": "Examples describe the expected behavior",
+          "repo": "String-Calculator-Kata",
+          "commit": "a35b7965fb091cd988c78e534829554241c13022",
+          "path": "StringCalculatorKata.Tests/StringCalculatorTests.cs",
+          "url": "https://github.com/RaghadHanon/String-Calculator-Kata/blob/a35b7965fb091cd988c78e534829554241c13022/StringCalculatorKata.Tests/StringCalculatorTests.cs#L16-L27",
+          "code": "[Theory]\n[InlineData(\"\", 0)]\n[InlineData(\"1,2,3\", 6)]\n[InlineData(\"1,2\\n3\", 6)]\n[InlineData(\"//;\\n1;2\", 3)]\n[InlineData(\"//\\n\\n1\\n2\", 3)]\n[InlineData(\"1,1001\", 1)]\npublic void Add_ShouldReturnExpectedResult_WhenInputIsInValidFormat(string numbers, int expectedResult)\n{\n    var result = _stringCalculator.Add(numbers);\n    result.Should().Be(expectedResult);\n}",
+          "start_line": 16,
+          "end_line": 27,
+          "explanation": "The theory captures empty input, mixed separators, custom separators, and the value cutoff in a compact table of examples.",
+          "language": "C#"
+        }
+      ]
+    }
+  ]
+}

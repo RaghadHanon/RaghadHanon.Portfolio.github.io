@@ -23,3 +23,16 @@ I’m open to junior .NET backend and software engineering opportunities.
 The [backend engineering walkthrough](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/collabrium-engineering.html) covers all 13 modules, Clean Architecture, six connected workflows, domain rules, tenant and project access, EF Core, SignalR/SMTP, background workers, AI, reports and 14 C# excerpts linked to their exact source lines. The evidence catalog pins 70 source files to the reviewed Collabrium snapshot.
 
 The portfolio résumé is the unchanged PDF supplied on 19 October 2026. Source generators keep its download links versioned to the current file.
+
+## More engineering work
+
+The [project collection](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/projects.html) brings together nine selected projects with technology search and focus filters. Six additional case studies complement the three featured applications:
+
+- **Weather Service** — Strategy and Observer patterns, configurable bot factories, parser tests, and a cross-platform CI workflow definition.
+- **Inventory Persistence** — SQL Server/EF Core and MongoDB adapters behind a shared product repository contract.
+- **Airport Booking** — LINQ filters, CSV flight import, custom validation attributes, reflection, and unit tests.
+- **Library Database** — Relational constraints, CTEs, window functions, procedures, scalar functions, index definitions, and a status audit trigger.
+- **MedicoPortal** — An academic team project connecting a React frontend to ASP.NET Core APIs and related patient/doctor records.
+- **String Calculator Kata** — Focused parsing behavior and nine parameterized test inputs with xUnit, FluentAssertions, and AutoFixture.
+
+Each new case study includes its purpose, engineering details, workflow, system map, and source links. Seven code examples preserve the reviewed implementation and link to exact commit lines. Content lives in `scripts/additional_projects.json`; `scripts/project_archive.py` generates the archive and case-study pages.

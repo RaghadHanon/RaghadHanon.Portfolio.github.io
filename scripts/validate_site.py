@@ -41,6 +41,22 @@ for path in sorted(root.glob('*.html')):
         except Exception:errors.append(f'{path.name}: invalid structured data')
 
 local_refs=0
+archive_data=root.parent/'scripts/additional_projects.json'
+if archive_data.is_file():
+    for project in json.loads(archive_data.read_text())['projects']:
+        filename=project['slug']+'.html'
+        page=documents.get(filename)
+        if page is None:
+            errors.append('Project archive: missing page '+filename)
+            continue
+        proofs=page.xpath('//figure[contains(concat(" ",normalize-space(@class)," ")," rx-proof ")]')
+        if len(proofs)!=len(project['proofs']):errors.append(filename+': source-example count differs')
+        for rendered,example in zip(proofs,project['proofs']):
+            if ''.join(rendered.xpath('.//pre/code//text()'))!=example['code']:
+                errors.append(filename+': source excerpt changed')
+            if example['url'] not in rendered.xpath('.//a/@href'):
+                errors.append(filename+': exact source link missing')
+
 for name,tree in documents.items():
     for element in tree.xpath('//*[@href] | //*[@src] | //*[@data-zoom]'):
         for attr in ['href','src','data-zoom']:
