@@ -34,6 +34,14 @@ def featured():
     ]
 
 
+def ordered_work():
+    """Keep the requested projects first and number the displayed collection."""
+    priority = {'restaurant-reservation': 0, 'algorithms-data-structures': 1}
+    work = featured() + projects()
+    work.sort(key=lambda p: priority.get(p['slug'], len(priority)))
+    return [dict(p, number=f'{i:02}') for i, p in enumerate(work, 1)]
+
+
 def repo_url(p):
     return GITHUB + '/' + p.get('repo', p.get('sources', [{}])[0].get('repo', ''))
 
@@ -53,14 +61,15 @@ def card(p, compact=False):
 
 
 def additional_work():
-    cards = ''.join(card(p, True) for p in projects())
+    extra_slugs = {p['slug'] for p in projects()}
+    cards = ''.join(card(p, True) for p in ordered_work() if p['slug'] in extra_slugs)
     return f'''<section class="section rx-home" id="more-work" aria-labelledby="more-work-title"><div class="wrap">
     <div class="section-head"><div><div class="eyebrow">More engineering work</div><h2 id="more-work-title">Different problems.<br>More ways to build.</h2></div><div class="rx-section-intro"><p>Focused projects in testable C# design, SQL analysis, database adapters, and full-stack integration.</p><a href="projects.html" class="text-link">Explore all {len(featured()) + len(projects())} projects {arrow('right')}</a></div></div>
     <div class="rx-grid rx-compact-grid">{cards}</div></div></section>'''
 
 
 def archive_page():
-    all_work = featured() + projects()
+    all_work = ordered_work()
     filters = [('all','All work'),('backend','Backend & APIs'),('data','Data & SQL'),('design','Design & testing'),('full-stack','Full stack'),('algorithms','Algorithms')]
     buttons = ''.join(f'<button type="button" class="rx-filter" data-rx-filter="{key}" aria-pressed="{str(key == "all").lower()}">{label}</button>' for key,label in filters)
     body = f'''<main id="main"><section class="wrap rx-archive-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Selected projects</span></div>
@@ -183,5 +192,6 @@ def project_page(p):
 
 def archive_pages():
     pages = {'projects.html': archive_page()}
-    pages.update({p['slug']+'.html': project_page(p) for p in projects()})
+    extra_slugs = {p['slug'] for p in projects()}
+    pages.update({p['slug']+'.html': project_page(p) for p in ordered_work() if p['slug'] in extra_slugs})
     return pages
