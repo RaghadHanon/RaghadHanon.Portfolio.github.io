@@ -48,4 +48,4 @@ The static validator checks document structure, local resources, links/fragments
 ## Published copies
 
 - [GitHub Pages](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/)
-- [ChatGPT Sites](https://raghad-hanon-engineering.earlycrow33.chatgpt.site)
+- [ChatGPT Sites](https://raghad-hanon-engineering.dreamy-83654.chatgpt.site)
