@@ -110,6 +110,6 @@ for font in fonts:
     if font.read_bytes()[:4] not in [b'\x00\x01\x00\x00',b'OTTO']:
         errors.append('Invalid font '+font.name)
 for error in errors:print('ERROR',error)
-print(json.dumps({'pages':len(documents),'local_references_checked':local_refs,'fonts':len(fonts),'total_asset_bytes':sum(p.stat().st_size for p in root.rglob('*') if p.is_file()),'errors':len(errors),'browser_qa':'not_run_by_this_static_check'},indent=2))
+print(json.dumps({'pages':len(documents),'local_references_checked':local_refs,'fonts':len(fonts),'total_asset_bytes':sum(p.stat().st_size for p in root.rglob('*') if p.is_file()),'errors':len(errors),'browser_qa':'unavailable'},indent=2))
 sys.exit(bool(errors))
 

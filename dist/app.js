@@ -29,19 +29,13 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   }
 
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    const destination = new URL(a.href);
-    if (!destination.hash && destination.pathname === location.pathname) a.setAttribute('aria-current', 'page');
-  });
-  const sections = [...document.querySelectorAll('main > section[id], body > section[id]')];
+  const sections = [...document.querySelectorAll('main > section[id]')];
   if ('IntersectionObserver' in window && sections.length) {
     const sectionObserver = new IntersectionObserver(entries => {
       entries.filter(e => e.isIntersecting).forEach(entry => {
         document.querySelectorAll('.nav-links a').forEach(a => {
-          const destination = new URL(a.href);
-          const active = destination.pathname === location.pathname && destination.hash === '#' + entry.target.id;
-          if (active) a.setAttribute('aria-current', 'true');
-          else if (a.getAttribute('aria-current') !== 'page') a.removeAttribute('aria-current');
+          const active = a.getAttribute('href') === '#' + entry.target.id;
+          if (active) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
         });
       });
     }, {rootMargin: '-15% 0px -55% 0px'});
@@ -137,7 +131,7 @@
           const copied = document.execCommand('copy'); field.remove();
           if (!copied) throw new Error('Copy unavailable');
         }
-        announce('Email address copied.');
+        announce('Email copied. Let’s make something good.');
       } catch (_) { announce('Email: ' + email); }
     });
   });

@@ -1,51 +1,40 @@
-# Raghad Hanon — engineering portfolio
+# Raghad Hanon — .NET Backend Engineer
 
-A buildless portfolio for junior .NET backend opportunities, with 16 pages and 11 project case studies.
+I’m a backend engineer based in Palestine, working with C#, ASP.NET Core, and SQL Server. My portfolio brings together the projects I’ve built, the engineering decisions behind them, and a closer look at the applications in use.
 
-## Reader journey
+**[Explore my portfolio →](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/)**
 
-The homepage introduces the role and three short background proofs, then features Collabrium, Hotel Booking API and Restaurant Reservation API. Capability-to-source links lead to deeper evidence. Technical experience, education and contact follow without a full project or media inventory in between.
+## Selected projects
 
-The project collection retains all 11 projects, labeled by context, with category/search controls and a combined reset action. Restaurant Reservation and Algorithms & Data Structures remain first in the complete collection; a separate compact route highlights the three featured backend cases.
+- **[Collabrium](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/collabrium.html)** — A multi-tenant collaboration platform connecting project delivery, teams, learning, and community.
+- **[Actify](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/actify.html)** — A social application for discovering activities, managing attendance, and joining live discussions.
+- **[Hotel Booking API](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/hotel-booking.html)** — A backend for hotel discovery, room management, reservations, and invoices.
 
-Collabrium has a concise contribution-led case study and a separate backend reference. The reference retains 13 functional areas, six workflows, 14 exact C# excerpts and the extended engineering decision notes. Recordings, 202 application screenshots, project visuals, documents and development posts remain accessible as optional case-study resources. The presentation page provides a lightweight browser summary before its optional 196.3 MB PowerPoint download.
+Collabrium’s showcase includes five complete recordings: project delivery, tenant and team management, reports, Learning Hub, and Multi-Tenant Architecture. The players load on request and support full-screen viewing.
 
-## Edit and build
+## Let’s connect
 
-- Homepage: `scripts/homepage.py`.
-- Shared document/navigation/contact components: `scripts/components.py`.
-- Collabrium narrative: `scripts/collabrium_case.py`; other original cases: `scripts/case_studies.py`.
-- Backend reference: `scripts/collabrium_engineering.py` and `scripts/collabrium_evidence.json`.
-- Collection/additional cases: `scripts/project_archive.py` and `scripts/additional_projects.json`.
-- Shared refreshed styling: `dist/portfolio-refresh.css`, loaded after the existing stylesheets.
-- Media and presentation: `scripts/media.py` and `scripts/presentation_page.py`.
-- Interactions: `dist/app.js`, `dist/project-archive.js`, `dist/collabrium-engineering.js`, and `dist/presentation-download.js`.
+I’m open to junior .NET backend and software engineering opportunities.
 
-Run `python scripts/build_pages.py`, `python scripts/validate_site.py`, and JavaScript syntax checks after changes. `PORTFOLIO_URL` supplies the hosting origin. The build driver generates HTML, the sitemap, headers and robots file. Serve `dist/` with a static host.
+[LinkedIn](https://www.linkedin.com/in/raghad-hanon/) · [GitHub](https://github.com/RaghadHanon)
 
-The static site has no form backend, analytics, account integration or API keys.
+## Inside the Collabrium backend
 
-## Evidence and scope
+The [backend engineering walkthrough](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/collabrium-engineering.html) covers all 13 modules, Clean Architecture, six connected workflows, domain rules, tenant and project access, EF Core, SignalR/SMTP, background workers, AI, reports and 14 C# excerpts linked to their exact source lines. The evidence catalog pins 70 source files to the reviewed Collabrium snapshot.
 
-| Project | Reviewed source commit |
-| --- | --- |
-| Collabrium | `01aa3dd11fe0b888f54de64314ec3ca2aeb4ca1a` |
-| Actify | `2d2204fc04000f73354a956c1841d26846cacb70` |
-| HotelBookingPlatform | `f469dcc3dafa81ccd2478bebfd161a4150f62b7d` |
+The portfolio résumé is the latest user-supplied PDF, preserved unchanged. Source generators keep its download links versioned to the current file.
 
-The eight additional case studies carry their own pinned source references in `scripts/additional_projects.json`. Exact excerpts are validated against that data. Collabrium source fingerprints and excerpts are recorded in `scripts/collabrium_evidence.json`.
+## More engineering work
 
-`contribution_evidence.json` records the path-history evidence reviewed on 3 November 2026 for the first-person Collabrium contribution summary. Those histories include Raghad Hanon / RaghadHanon contributions; the site does not claim sole authorship of the shared team platform.
+The [project collection](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/projects.html) brings together 11 selected projects with technology search and focus filters. Eight additional case studies complement the three featured applications:
 
-Collabrium is a four-person graduation project. Actify is course-based. Hotel Booking is an internship final project. The Hotel Booking workflow defines restore/build/test across three operating systems; historical hands-on Azure deployment is described separately. The linked Collabrium snapshot has no automated unit/integration test project or deployment pipeline.
+- **Weather Service** — Strategy and Observer patterns, configurable bot factories, parser tests, and a cross-platform CI workflow definition.
+- **Inventory Persistence** — SQL Server/EF Core and MongoDB adapters behind a shared product repository contract.
+- **Airport Booking** — LINQ filters, CSV flight import, custom validation attributes, reflection, and unit tests.
+- **Library Database** — Relational constraints, CTEs, window functions, procedures, scalar functions, index definitions, and a status audit trigger.
+- **MedicoPortal** — An academic team project connecting a React frontend to ASP.NET Core APIs and related patient/doctor records.
+- **String Calculator Kata** — Focused parsing behavior and nine parameterized test inputs with xUnit, FluentAssertions, and AutoFixture.
+- **Restaurant Reservation API** — Related-record checks, DTO validation, Identity/JWT, repositories, and EF Core mappings to SQL Server views and a scalar function.
+- **Algorithms & Data Structures** — 110 Java files covering custom data structures, AVL rotations, heaps, sorting, graph traversal, and categorized practice solutions.
 
-The résumé remains the unchanged latest user-supplied PDF, SHA-256 `1d766086dcb86cd87782a638489245d422759d1e27a63edc3ea77c5ac35f43a7`. Download links carry the content version. Drive originals and sharing were not changed.
-
-## Validation
-
-The static validator checks document structure, local resources, links/fragments, IDs, labels, image dimensions, structured data, exact source excerpts and fonts. Its browser field describes only that static check. Browser QA is performed separately through the managed preview: desktop and narrow layouts, navigation, filtering/reset, disclosures, screenshot viewing and clipboard feedback.
-
-## Published copies
-
-- [GitHub Pages](https://raghadhanon.github.io/RaghadHanon.Portfolio.github.io/)
-- [ChatGPT Sites](https://raghad-hanon-engineering.dreamy-83654.chatgpt.site)
+Each new case study includes its purpose, engineering details, workflow, system map, and source links. Eleven code examples preserve the reviewed implementation and link to exact commit lines. Content lives in `scripts/additional_projects.json`; `scripts/project_archive.py` generates the archive and case-study pages.
