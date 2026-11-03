@@ -14,6 +14,25 @@ RECORDINGS=[
     ('multi-tenant-architecture.mp4','Multi-Tenant Architecture','A visual overview of Collabrium’s tenant structure and role hierarchy.','00:48')
 ]
 SCREENS = json.loads((ROOT/'scripts/module_screens.json').read_text())
+SCREEN_GROUP_LABELS = {
+    'ProjectManagement': 'Project planning', 'WorkItemManagement': 'Boards & work-item delivery',
+    'SprintManagement': 'Sprint lifecycle', 'Reports': 'Reports & analytics',
+    'TeamManagement': 'Team administration', 'Teams': 'Team membership actions',
+    'UsersManagement': 'People administration', 'TenantAdmin': 'Organization administration',
+    'SuperAdmin': 'Platform administration', 'LearningHub': 'Courses & learning roadmaps',
+    'CommunityHub': 'Posts, announcements & events', 'AI': 'AI-assisted workflows',
+    'Auth': 'Sign-in & account setup', 'User': 'Profiles & skills', 'Workspace': 'Workspace & notifications'
+}
+
+
+def screen_title(title):
+    text = re.sub(r'\.(png|jpe?g|webp)$', '', title, flags=re.I)
+    text = text.replace('Contact.Emailpng', 'Contact email').replace('Seccess', 'Success').replace('Deloper', 'Developer')
+    text = re.sub(r'(?<=[A-Z])(?=[A-Z][a-z])', ' ', text)
+    text = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', text)
+    text = re.sub(r'(?<=[A-Za-z])(?=\d)', ' ', text)
+    text = text.replace('_', ' ').replace('-', ' — ').replace('&', ' & ')
+    return re.sub(r'\s+', ' ', text).strip()
 PROMOS=[
     ('demo-1.webp','Meet Collabrium','Our graduation team and the platform we delivered.'),
     ('demo-2.webp','The challenge','The fragmented workflows that motivated the project.'),
@@ -26,12 +45,14 @@ def media_image(path,alt,cls='',lazy=True):
     with Image.open(file) as im: width,height=im.size
     return f'<img src="assets/{path}" alt="{escape(alt,quote=True)}" width="{width}" height="{height}" class="{cls}" loading="{"lazy" if lazy else "eager"}" decoding="async">'
 
-def video_gallery(prefix):
+def video_gallery(prefix, selected=None):
     cards=[]
     for i,(file,title,summary,duration) in enumerate(RECORDINGS):
+        if selected is not None and i not in selected:
+            continue
         poster='assets/media/'+file.replace('.mp4','-poster.jpg')
         cards.append(f'''<article class="demo-card"><div class="video-frame"><video controls playsinline preload="none" poster="{poster}" width="1440" height="810" aria-labelledby="{prefix}-video-title-{i}"><source src="assets/media/{file}" type="video/mp4"><a href="assets/media/{file}">Download this recording</a></video><span class="video-duration mono" aria-hidden="true">{duration}</span></div><div class="demo-card-body"><span class="label">Original recording / {i+1:02}</span><h3 id="{prefix}-video-title-{i}">{title}</h3><p>{summary}</p></div></article>''')
-    return '<div class="demo-grid">'+''.join(cards)+'</div><p class="media-footnote">Use the player’s full-screen control to inspect the interface in detail. Recordings play on request.</p>'
+    return '<div class="demo-grid">'+''.join(cards)+'</div><p class="media-footnote">Recordings play on request. Use full screen for details. '+('Other recordings cover organization management, reporting, learning and tenant architecture.' if selected == [0] else 'Each recording includes a short workflow summary above.')+'</p>'
 
 def screen_explorer(prefix):
     panels=[]
@@ -67,21 +88,22 @@ def home_media():
 
 
 def linkedin_series():
-    links=['dQ93CzKb','d7pM5biD','daM3mNSy','dVii-Cc9','d34BXFRV','dQHDbSVw']
-    titles=['Introducing Collabrium','Collabrium series · Part 02','Collabrium series · Part 03','Collabrium series · Part 04','From project setup to sprint delivery','Reports, analytics & AI insights']
+    links=['dQ93CzKb','d34BXFRV','dQHDbSVw']
+    titles=['Introducing the graduation project','From project setup to sprint delivery','Reports, analytics & AI insights']
     cards=''.join(f'<li>{ext("https://lnkd.in/p/"+link, f"<span class=\"mono\">{i+1:02}</span><span>{title}</span>","series-link")}</li>' for i,(link,title) in enumerate(zip(links,titles)))
-    return '<div class="build-notes"><span class="label">Collabrium / LinkedIn series</span><h3>The development story, in order.</h3><ol class="linkedin-series">'+cards+'</ol></div>'
+    earlier=''.join('<li>'+ext('https://lnkd.in/p/'+link,'Series entry '+str(i),'series-link')+'</li>' for i,link in enumerate(['d7pM5biD','daM3mNSy','dVii-Cc9'],2))
+    return '<div class="build-notes"><span class="label">Collabrium / LinkedIn</span><h3>Selected development notes</h3><ol class="linkedin-series">'+cards+'</ol><details class="pf-resource-disclosure"><summary>Earlier entries in the series</summary><ul class="linkedin-series">'+earlier+'</ul></details></div>'
 
 def full_screen_gallery():
     files=json.loads((ROOT/'scripts/all_screens.json').read_text())
-    groups=sorted(set(f['group'] for f in files))
+    groups=sorted(set(f['group'] for f in files), key=lambda g: list(SCREEN_GROUP_LABELS).index(g) if g in SCREEN_GROUP_LABELS else 99)
     result=[f'<p>All {len(files)} application screenshots from the project archive, organized by module. Open a module, then select any screen to view it at full size.</p>']
     for group in groups:
         items=sorted([f for f in files if f['group']==group],key=lambda f:f['title'].lower())
-        title=group
+        title=SCREEN_GROUP_LABELS.get(group, group)
         result.append(f'<details class="archive-group"><summary><strong>{escape(title)}</strong><span class="mono">{len(items)} screens</span></summary><div class="archive-grid">')
         for f in items:
-            label=re.sub(r'(?<=[a-z])(?=[A-Z])',' ',Path(f['title']).stem)
+            label=screen_title(f['title'])
             caption=title+' / '+label
             result.append(f'<figure><button class="image-zoom" type="button" data-zoom="assets/{f["asset"]}" data-caption="{escape(caption,quote=True)}" aria-label="Expand {escape(caption,quote=True)}">{media_image(f["asset"],caption)}</button><figcaption>{escape(label)}</figcaption></figure>')
         result.append('</div></details>')

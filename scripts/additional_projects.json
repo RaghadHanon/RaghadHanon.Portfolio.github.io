@@ -20,7 +20,7 @@
       "metric": "JSON / XML",
       "metric_label": "Two inputs. One notification flow.",
       "diagram": "weather",
-      "short": "Parser strategies, configurable weather bots, and automated tests in one focused C# application.",
+      "short": "A C# console application that parses JSON or XML weather data and routes readings to configurable bots, with parser/factory tests.",
       "description": "A console weather-processing application that accepts JSON or XML, creates bots from configuration, and sends parsed readings through an observer-based notification flow.",
       "overview": "The interesting problem is how to change input formats and bot behavior without making the processing flow responsible for every detail. Separate parser strategies, bot factories, and a notifier give each concern a clear place in the design.",
       "features": [
@@ -536,7 +536,7 @@
       "metric": "9 input cases",
       "metric_label": "Small scope. Explicit behavior.",
       "diagram": "kata",
-      "short": "A compact calculator kata with parameterized tests for delimiters, invalid input, negative numbers, and numeric limits.",
+      "short": "A compact C# kata with tests for delimiters, malformed input, negative values and numeric limits.",
       "description": "A C# string-calculator exercise with custom delimiter handling, explicit errors, and xUnit tests using FluentAssertions and AutoFixture.",
       "overview": "A small codebase makes behavior easy to examine. The calculator supports comma and newline separators, a custom delimiter prefix, and a numeric cutoff. The test class expresses expected results and error behavior as parameterized examples.",
       "features": [
@@ -624,8 +624,8 @@
       "metric": "Reservations + orders",
       "metric_label": "Related records. Explicit checks.",
       "diagram": "restaurant",
-      "short": "An authenticated restaurant API connecting customers, tables, reservations, orders, menu items, and employees.",
-      "description": "An ASP.NET Core API for restaurant reservations and orders, with repository interfaces, DTO mapping, FluentValidation, Identity/JWT, and SQL Server through EF Core.",
+      "short": "Reservations and orders with checks connecting customers, tables and employees in the correct restaurant context.",
+      "description": "An ASP.NET Core API for reservations and orders, with checks connecting customers, restaurant tables and employees. Data is stored in SQL Server through EF Core.",
       "overview": "The project connects restaurant operations through a related data model. Reservations refer to a customer, restaurant, and table; orders belong to reservations and employees; order items connect orders to the menu. Controllers coordinate related-record checks while repositories handle persistence.",
       "features": [
         [
@@ -752,8 +752,8 @@
       "metric_label": "Implement the structure. Understand the behavior.",
       "diagram": "algorithms",
       "short": "Standalone Java implementations of data structures and algorithms, alongside graph, tree, hashing, and linked-list problem solutions.",
-      "description": "A Java learning and problem-solving repository containing custom data structures, sorting algorithms, graph traversals, and categorized practice solutions across 110 Java source files.",
-      "overview": "This collection looks beneath library calls to the operations that make a data structure work. Implementations include array lists, linked lists, stacks, queues, binary-search and AVL trees, and binary heaps. Sorting and graph algorithms sit alongside categorized practice solutions.",
+      "description": "Java implementations of data structures, graph traversals and sorting algorithms, alongside categorized practice solutions.",
+      "overview": "A learning collection with 110 Java source files. Custom implementations explore array lists, linked lists, stacks, queues, binary-search and AVL trees, and heaps. Sorting and graph algorithms sit alongside categorized practice solutions.",
       "features": [
         [
           "Custom data structures and explicit invariants",

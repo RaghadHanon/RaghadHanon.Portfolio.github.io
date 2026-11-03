@@ -6,6 +6,7 @@
   const search = controls.querySelector('input[type="search"]');
   const count = controls.querySelector('.rx-count');
   const empty = document.querySelector('.rx-empty');
+  const resetButtons = [...document.querySelectorAll('[data-rx-reset]')];
   let active = 'all';
 
   function update() {
@@ -20,6 +21,7 @@
     buttons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.rxFilter === active)));
     count.textContent = `${visible} ${visible === 1 ? 'project' : 'projects'}`;
     empty.hidden = visible !== 0;
+    resetButtons.forEach(button => { button.hidden = active === 'all' && !terms.length; });
   }
 
   buttons.forEach(button => button.addEventListener('click', () => {
@@ -27,6 +29,12 @@
     update();
   }));
   search.addEventListener('input', update);
+  resetButtons.forEach(button => button.addEventListener('click', () => {
+    active = 'all';
+    search.value = '';
+    update();
+    search.focus();
+  }));
   controls.hidden = false;
   update();
 })();

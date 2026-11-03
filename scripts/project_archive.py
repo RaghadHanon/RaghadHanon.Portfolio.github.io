@@ -1,7 +1,7 @@
 """Curated project archive, with source-linked case studies."""
 from html import escape
 import json
-from components import ROOT, GITHUB, arrow, tags, ext, document, codeblock
+from components import ROOT, GITHUB, arrow, tags, ext, document, codeblock, asset_href
 
 
 def projects():
@@ -14,21 +14,21 @@ def featured():
          'context': 'Graduation project · Team Lead & Backend Developer',
          'categories': ['backend', 'full-stack'],
          'tags': ['.NET 8', 'Clean Architecture', 'CQRS', 'SignalR'],
-         'metric': '13 connected modules', 'metric_label': 'One tenant-aware enterprise workspace.',
+         'focus': 'Tenant-aware application workflows', 'metric': '13 connected modules', 'metric_label': 'One tenant-aware enterprise workspace.',
          'short': 'Project delivery, people, learning, community, reporting, and AI assistance in one connected platform.',
          'repo': 'Collabrium'},
         {'slug': 'actify', 'title': 'Actify', 'number': '02',
          'context': 'Course-based full-stack project',
          'categories': ['backend', 'full-stack'],
          'tags': ['ASP.NET Core', 'React', 'TypeScript', 'SignalR'],
-         'metric': 'Activities + people', 'metric_label': 'Discovery, attendance, and live discussion.',
+         'focus': 'React integration and live discussion', 'metric': 'Activities + people', 'metric_label': 'Discovery, attendance, and live discussion.',
          'short': 'An activity-based social application connecting event discovery, attendance, profiles, and real-time comments.',
          'repo': 'Actify'},
         {'slug': 'hotel-booking', 'title': 'Hotel Booking API', 'number': '03',
          'context': 'Foothill internship project',
          'categories': ['backend', 'data'],
          'tags': ['.NET 8', 'EF Core', 'SQL Server', 'xUnit'],
-         'metric': 'Search → stay', 'metric_label': 'A connected booking and invoice workflow.',
+         'focus': 'Booking rules, invoice tests and CI', 'metric': 'Search → stay', 'metric_label': 'A connected booking and invoice workflow.',
          'short': 'Hotel discovery, room management, bookings, discounts, and PDF invoices, with automated test code and a CI workflow.',
          'repo': 'HotelBookingPlatform'},
     ]
@@ -50,14 +50,10 @@ def card(p, compact=False):
     searchable = ' '.join([p['title'], p['short'], *p['tags'], p['context']])
     category = escape(' '.join(p['categories']), quote=True)
     search = escape(searchable.lower(), quote=True)
+    focus = p.get('focus', p['metric_label'])
     return f'''<article class="rx-card rx-{p['slug']}" data-rx-category="{category}" data-rx-search="{search}">
-    <a class="rx-card-main" href="{p['slug']}.html">
-      <div class="rx-card-visual"><span class="rx-card-index mono">{p['number']} / ENGINEERING</span><strong>{escape(p['metric'])}</strong><span>{escape(p['metric_label'])}</span><span class="rx-visual-lines" aria-hidden="true"></span></div>
-      <div class="rx-card-heading"><h3>{escape(p['title'])}</h3>{arrow('right')}</div><p>{escape(p['short'])}</p>
-    </a>
-    <div class="rx-card-tags">{tags(p['tags'][:3] if compact else p['tags'])}</div>
-    <div class="rx-card-foot"><span>{escape(p['context'])}</span>{ext(repo_url(p),'Repository','rx-repo-link')}</div>
-    </article>'''
+    <a class="rx-card-main" href="{p['slug']}.html"><div class="rx-card-heading"><h3>{escape(p['title'])}</h3>{arrow('right')}</div><p>{escape(p['short'])}</p><span class="pf-card-focus">Focus: {escape(focus)}</span></a>
+    <div class="rx-card-tags">{tags(p['tags'][:3] if compact else p['tags'])}</div><div class="rx-card-foot"><span>{escape(p['context'])}</span>{ext(repo_url(p),'Repository','rx-repo-link')}</div></article>'''
 
 
 def additional_work():
@@ -70,16 +66,11 @@ def additional_work():
 
 def archive_page():
     all_work = ordered_work()
-    filters = [('all','All work'),('backend','Backend & APIs'),('data','Data & SQL'),('design','Design & testing'),('full-stack','Full stack'),('algorithms','Algorithms')]
+    filters = [('all','All projects'),('backend','Backend & APIs'),('data','Data & SQL'),('design','Design & testing'),('full-stack','Full stack'),('algorithms','Algorithms')]
     buttons = ''.join(f'<button type="button" class="rx-filter" data-rx-filter="{key}" aria-pressed="{str(key == "all").lower()}">{label}</button>' for key,label in filters)
-    body = f'''<main id="main"><section class="wrap rx-archive-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Selected projects</span></div>
-    <div class="eyebrow">The project collection</div><h1>A closer look<br>at the <em>work.</em></h1><p class="rx-archive-lede">{len(all_work)} selected projects across backend APIs, data persistence, algorithms, testable design, and full-stack integration.</p>
-    <div class="rx-archive-meta"><span>{len(featured()):02} featured case studies</span><span>{len(projects()):02} additional projects</span><a href="collabrium-engineering.html">Explore Collabrium’s backend {arrow('right')}</a></div></section>
-    <section class="wrap rx-collection" aria-labelledby="collection-title"><h2 class="rx-sr-only" id="collection-title">Browse the projects</h2>
-    <div class="rx-controls" hidden><div class="rx-filters" role="group" aria-label="Filter projects by focus">{buttons}</div><div class="rx-search-row"><label for="project-search">Find a project or technology</label><input id="project-search" type="search" placeholder="Try MongoDB, xUnit, React…" autocomplete="off"><p class="rx-count mono" aria-live="polite">{len(all_work)} projects</p></div></div>
-    <div class="rx-grid rx-archive-grid">{''.join(card(p) for p in all_work)}</div><p class="rx-empty" hidden>No projects match this search. Try another technology or choose All work.</p>
-    </section><section class="wrap rx-archive-note"><span class="label">A thread through the work</span><p>Clear responsibilities, explicit data models, and workflows that connect features into a useful whole.</p><a class="text-link" href="index.html#engineering">See my engineering approach {arrow('right')}</a></section></main><script src="project-archive.js" defer></script>'''
-    return document('Selected projects — Raghad Hanon', f'Explore {len(all_work)} projects in C# and .NET backend engineering, SQL, MongoDB, Java algorithms, automated testing, and React integration.', body, 'projects.html')
+    body = f'''<main id="main"><section class="wrap rx-archive-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Projects</span></div><div class="eyebrow">The project collection</div><h1>Projects<em>.</em></h1><p class="rx-archive-lede">{len(all_work)} projects in backend APIs, SQL, persistence, testing, full-stack work and algorithms. Each case states its context and links to the code.</p><nav class="pf-featured-routes" aria-label="Featured backend case studies"><span>Start with backend work:</span><a href="collabrium.html">Collabrium {arrow('right')}</a><a href="hotel-booking.html">Hotel Booking API {arrow('right')}</a><a href="restaurant-reservation.html">Restaurant Reservation API {arrow('right')}</a></nav></section>
+    <section class="wrap rx-collection" aria-labelledby="collection-title"><h2 class="rx-sr-only" id="collection-title">Browse all projects</h2><div class="rx-controls" hidden><div class="rx-filters" role="group" aria-label="Filter projects by focus">{buttons}</div><div class="rx-search-row"><label for="project-search">Find a project or technology</label><input id="project-search" type="search" placeholder="Try MongoDB, xUnit, React…" autocomplete="off"><button class="pf-clear-search" type="button" data-rx-reset hidden>Clear search &amp; filters</button><p class="rx-count mono" aria-live="polite">{len(all_work)} projects</p></div></div><div class="rx-grid rx-archive-grid">{''.join(card(p) for p in all_work)}</div><div class="rx-empty" hidden><p>No projects match this search. Try another technology or clear the search and filters.</p><button class="pf-clear-search" type="button" data-rx-reset>Clear search &amp; filters</button></div></section><section class="wrap rx-archive-note"><span class="label">Follow a capability</span><p>Find examples of domain rules, access checks, persistence, testing and backend integrations.</p><a class="text-link" href="index.html#engineering">Skills with implementation evidence {arrow('right')}</a></section></main><script src="{asset_href('project-archive.js')}" defer></script>'''
+    return document('Projects — Raghad Hanon', 'Explore projects in C# and .NET backend engineering, SQL, MongoDB, Java algorithms, automated testing, and React integration.', body, 'projects.html')
 
 
 def diagram(p):
@@ -172,21 +163,30 @@ def proof_html(proof):
 
 
 def project_page(p):
+    compact = p['slug'] in {'algorithms-data-structures', 'string-calculator'}
+    overview_titles = {'restaurant-reservation':'Reservations and orders in context', 'algorithms-data-structures':'Data structures and algorithmic reasoning', 'string-calculator':'Parsing rules and testable behavior', 'weather-service':'Parsers, bots and their boundaries', 'inventory-persistence':'One contract, two persistence adapters', 'airport-booking':'Search and booking rules in C#', 'library-database':'Relational integrity and analytical SQL', 'medicoportal':'Patient requests and doctor responses'}
+    overview_title = overview_titles.get(p['slug'], p['metric_label'])
     features = ''.join(f'<article class="rx-feature"><span class="mono">{i:02}</span><div><h3>{escape(title)}</h3><p>{escape(text)}</p></div></article>' for i,(title,text) in enumerate(p['features'],1))
     steps = ''.join(f'<li><span class="rx-step-index mono">{i:02}</span><div><h3>{escape(title)}</h3><p>{escape(text)}</p></div></li>' for i,(title,text) in enumerate(p['workflow'],1))
     sources = ''.join(ext(s['url'],s['label'],'rx-source-tile') for s in p['sources'])
     additional_repo = ext(GITHUB+'/MedicoPortal','Frontend repository','button outline') if p['slug'] == 'medicoportal' else ''
     body = f'''<main id="main"><section class="wrap rx-case-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="projects.html">Projects</a><span>/</span><span>{escape(p['title'])}</span></div>
-    <div class="eyebrow">{escape(p['context'])}</div><div class="rx-case-title"><h1>{escape(p['title'])}</h1><span class="rx-case-number mono">{p['number']} / {len(featured()) + len(projects()):02}</span></div><p class="rx-case-lede">{escape(p['description'])}</p>
+    <div class="eyebrow">{escape(p['context'])}</div><div class="rx-case-title"><h1>{escape(p['title'])}</h1></div><p class="rx-case-lede">{escape(p['description'])}</p>
     <div class="rx-case-actions">{ext(repo_url(p),'Backend repository' if p['slug']=='medicoportal' else 'View repository','button outline')}{additional_repo}<a href="#source" class="text-link">Read the code {arrow('down')}</a></div>
     <dl class="rx-case-meta"><div><dt>Engineering focus</dt><dd>{escape(p['focus'])}</dd></div><div><dt>Project context</dt><dd>{escape(p['context'])}</dd></div></dl>{tags(p['tags'])}</section>
     <div class="wrap">{diagram(p)}</div>
     <div class="wrap rx-case-layout"><aside class="rx-case-nav" aria-label="Project contents"><span class="label">Inside the project</span><a href="#overview">The idea</a><a href="#features">What stands out</a><a href="#workflow">How it works</a><a href="#source">Code & sources</a><a href="projects.html" class="rx-back">All projects {arrow('left')}</a></aside>
-    <div class="rx-case-body"><section id="overview" class="rx-case-section"><div class="eyebrow">01 / The idea</div><h2>{escape(p['metric_label'])}</h2><p>{escape(p['overview'])}</p><div class="rx-skill-note"><span class="label">Skills demonstrated</span><p>{escape(p['skills'])}</p></div></section>
+    <div class="rx-case-body"><section id="overview" class="rx-case-section"><div class="eyebrow">01 / The idea</div><h2>{escape(overview_title)}</h2><p>{escape(p['overview'])}</p><div class="rx-skill-note"><span class="label">Skills demonstrated</span><p>{escape(p['skills'])}</p></div></section>
     <section id="features" class="rx-case-section"><div class="eyebrow">02 / What stands out</div><h2>The engineering details.</h2><div class="rx-features">{features}</div></section>
     <section id="workflow" class="rx-case-section"><div class="eyebrow">03 / How it works</div><h2>Follow the workflow.</h2><ol class="rx-workflow">{steps}</ol></section>
     <section id="source" class="rx-case-section"><div class="eyebrow">04 / Code & sources</div><h2>From the implementation.</h2>{''.join(proof_html(x) for x in p['proofs'])}<div class="rx-source-grid">{sources}</div></section></div></div>
     <section class="wrap rx-case-end"><div><span class="label">Keep exploring</span><h2>Another problem.<br>Another perspective.</h2></div><a class="button outline" href="projects.html">Browse all projects {arrow('right')}</a></section></main>'''
+    if compact:
+        import re
+        body = body.replace('<a href="#workflow">How it works</a>', '')
+        body = re.sub(r'<section id="workflow".*?</section>', '<span id="workflow"></span>', body, flags=re.S)
+        body = re.sub(r'<div class="rx-skill-note">.*?</div>', '', body, flags=re.S)
+        body = body.replace('04 / Code & sources', '03 / Code & sources')
     return document(p['title']+' — Raghad Hanon',p['description'],body,p['slug']+'.html')
 
 

@@ -1,0 +1,29 @@
+{
+  "repository": "RaghadHanon/Collabrium",
+  "snapshot": "01aa3dd11fe0b888f54de64314ec3ca2aeb4ca1a",
+  "reviewed_on": "2026-11-03",
+  "scope": "Non-exclusive contributions in the shared four-person project. GitHub path history includes Raghad Hanon / RaghadHanon; no sole-authorship claim.",
+  "examples": [
+    {
+      "path": "Domain/Models/UserStory.cs",
+      "commits": [
+        "100029becb9621f165bdfa44f5babbc0ef01f042",
+        "dc7094d6e6c2f8fbceced3d8db1496ab12ac3c5c"
+      ]
+    },
+    {
+      "path": "API/Middlewares/TentantMiddleware.cs",
+      "commits": [
+        "5fb08873dbbf94f9fed9c8736ee571225fd3f493",
+        "d76e8bfe22774d11c8d97d4a1633911bef4ae49e"
+      ]
+    },
+    {
+      "path": "Application/Features/Sprints/Commands/CompleteSprint.cs",
+      "commits": [
+        "50e0bd4ffa5a314e30cd3bf278068a65bf5d62ff",
+        "13cdca5ccf61bdbafda839de2277f593825515ac"
+      ]
+    }
+  ]
+}
