@@ -66,6 +66,22 @@ def home_media():
 
 
 
+def collabrium_depth():
+    """A compact home-page entry point into Collabrium's recordings, screens and documents.
+    The full galleries live on collabrium.html, so the home page stays scannable."""
+    file,title,summary,duration=RECORDINGS[0]
+    poster='assets/media/'+file.replace('.mp4','-poster.jpg')
+    thesis_mb=(DIST/'assets/docs/Collabrium-Thesis.pdf').stat().st_size/(1024*1024)
+    routes=[
+        ('collabrium.html#demo','5 recordings','Watch every workflow','Delivery, teams, reports, Learning Hub and multi-tenancy.'),
+        ('collabrium.html#walkthrough','202 screens','Explore the interface','One overview per module, plus the full screen archive.'),
+        ('assets/docs/Collabrium-Thesis.pdf','272 pages',f'Read the thesis · {thesis_mb:.1f} MB','Requirements, system design and domain models.'),
+        ('presentation.html','53 slides','Graduation presentation','Platform workflows and product demonstrations.'),
+        ('collabrium.html#sources','6 posts','The LinkedIn build series','The development story, told in order.'),
+    ]
+    items=''.join(f'<li><a href="{href}"{" target=\"_blank\" rel=\"noopener\"" if href.endswith(".pdf") else ""}><span class="depth-count">{count}</span><span class="depth-text"><strong>{name}</strong><small>{desc}</small></span>{arrow("right")}</a></li>' for href,count,name,desc in routes)
+    return f'''<div class="depth-panel reveal"><div class="depth-video"><div class="video-frame"><video controls playsinline preload="none" poster="{poster}" width="1440" height="810" aria-labelledby="home-depth-video-title"><source src="assets/media/{file}" type="video/mp4"><a href="assets/media/{file}">Download this recording</a></video><span class="video-duration mono" aria-hidden="true">{duration}</span></div><div class="depth-caption"><span class="label">Watch / Original recording</span><h3 id="home-depth-video-title">{title}</h3><p>{summary}</p></div></div><div class="depth-routes"><span class="label">See the full product</span><ul>{items}</ul></div></div>'''
+
 def linkedin_series():
     links=['dQ93CzKb','d7pM5biD','daM3mNSy','dVii-Cc9','d34BXFRV','dQHDbSVw']
     titles=['Introducing Collabrium','Collabrium series · Part 02','Collabrium series · Part 03','Collabrium series · Part 04','From project setup to sprint delivery','Reports, analytics & AI insights']

@@ -1,7 +1,7 @@
 """Curated project archive, with source-linked case studies."""
 from html import escape
 import json
-from components import ROOT, GITHUB, arrow, tags, ext, document, codeblock
+from components import ROOT, GITHUB, arrow, tags, ext, document, codeblock, tldr, bridge
 
 
 def projects():
@@ -42,6 +42,19 @@ def ordered_work():
     return [dict(p, number=f'{i:02}') for i, p in enumerate(work, 1)]
 
 
+def pager_order():
+    """Featured case studies first, then the additional projects in collection order."""
+    extra = [p for p in ordered_work() if p['slug'] not in {f['slug'] for f in featured()}]
+    return featured() + extra
+
+
+def project_pager(slug):
+    order = pager_order()
+    i = next(n for n, p in enumerate(order) if p['slug'] == slug)
+    prev, nxt = order[i - 1], order[(i + 1) % len(order)]
+    return f'''<nav class="project-pager wrap" aria-label="More case studies"><a class="pager-prev" href="{prev['slug']}.html" rel="prev">{arrow('left')}<span><span class="label">Previous project</span><strong>{escape(prev['title'])}</strong></span></a><a class="pager-all" href="projects.html"><span class="label">{i + 1:02} of {len(order):02}</span><strong>All projects</strong></a><a class="pager-next" href="{nxt['slug']}.html" rel="next"><span><span class="label">Next project</span><strong>{escape(nxt['title'])}</strong></span>{arrow('right')}</a></nav>'''
+
+
 def repo_url(p):
     return GITHUB + '/' + p.get('repo', p.get('sources', [{}])[0].get('repo', ''))
 
@@ -66,6 +79,20 @@ def additional_work():
     return f'''<section class="section rx-home" id="more-work" aria-labelledby="more-work-title"><div class="wrap">
     <div class="section-head"><div><div class="eyebrow">More engineering work</div><h2 id="more-work-title">Different problems.<br>More ways to build.</h2></div><div class="rx-section-intro"><p>Focused projects in testable C# design, SQL analysis, database adapters, and full-stack integration.</p><a href="projects.html" class="text-link">Explore all {len(featured()) + len(projects())} projects {arrow('right')}</a></div></div>
     <div class="rx-grid rx-compact-grid">{cards}</div></div></section>'''
+
+
+def additional_work_list(eyebrow='04 / More engineering work'):
+    """Scannable rows for the home page: every project stays one click away."""
+    extra_slugs = {p['slug'] for p in projects()}
+    rows = []
+    for p in ordered_work():
+        if p['slug'] not in extra_slugs:
+            continue
+        rows.append(f'''<li class="mw-row"><a class="mw-main" href="{p['slug']}.html"><span class="mw-metric">{escape(p['metric'])}</span><span class="mw-body"><span class="mw-title">{escape(p['title'])}</span><span class="mw-short">{escape(p['short'])}</span></span>{arrow('right')}</a><div class="mw-meta">{tags(p['tags'][:3])}{ext(repo_url(p),'Code','mw-repo')}</div></li>''')
+    total = len(featured()) + len(projects())
+    return f'''<section class="section mw-section" id="more-work" aria-labelledby="more-work-title"><div class="wrap">
+    <div class="section-head reveal"><div><div class="eyebrow">{eyebrow}</div><h2 id="more-work-title">More projects</h2><p class="section-tagline">Different problems. More ways to build.</p></div><div class="rx-section-intro"><p>Focused projects in testable C# design, SQL analysis, database adapters, and full-stack integration. Each one has its own case study.</p><a href="projects.html" class="text-link">Search &amp; filter all {total} projects {arrow('right')}</a></div></div>
+    <ul class="mw-list">{''.join(rows)}</ul>{bridge('#recognition','Recognition &amp; milestones')}</div></section>'''
 
 
 def archive_page():
@@ -179,14 +206,14 @@ def project_page(p):
     body = f'''<main id="main"><section class="wrap rx-case-hero"><div class="breadcrumb"><a href="index.html">Home</a><span>/</span><a href="projects.html">Projects</a><span>/</span><span>{escape(p['title'])}</span></div>
     <div class="eyebrow">{escape(p['context'])}</div><div class="rx-case-title"><h1>{escape(p['title'])}</h1><span class="rx-case-number mono">{p['number']} / {len(featured()) + len(projects()):02}</span></div><p class="rx-case-lede">{escape(p['description'])}</p>
     <div class="rx-case-actions">{ext(repo_url(p),'Backend repository' if p['slug']=='medicoportal' else 'View repository','button outline')}{additional_repo}<a href="#source" class="text-link">Read the code {arrow('down')}</a></div>
-    <dl class="rx-case-meta"><div><dt>Engineering focus</dt><dd>{escape(p['focus'])}</dd></div><div><dt>Project context</dt><dd>{escape(p['context'])}</dd></div></dl>{tags(p['tags'])}</section>
+    {tldr([('Project type',escape(p['context'])),('Engineering focus',escape(p['focus'])),('Key result',escape(p['metric'])+' · '+escape(p['metric_label']))],[escape(t) for t,_ in p['features'][:4]],p['tags'],[ext(repo_url(p),'Repository','tldr-link'),'<a class="tldr-link" href="#source">Read the code '+arrow('down')+'</a>'])}</section>
     <div class="wrap">{diagram(p)}</div>
     <div class="wrap rx-case-layout"><aside class="rx-case-nav" aria-label="Project contents"><span class="label">Inside the project</span><a href="#overview">The idea</a><a href="#features">What stands out</a><a href="#workflow">How it works</a><a href="#source">Code & sources</a><a href="projects.html" class="rx-back">All projects {arrow('left')}</a></aside>
     <div class="rx-case-body"><section id="overview" class="rx-case-section"><div class="eyebrow">01 / The idea</div><h2>{escape(p['metric_label'])}</h2><p>{escape(p['overview'])}</p><div class="rx-skill-note"><span class="label">Skills demonstrated</span><p>{escape(p['skills'])}</p></div></section>
     <section id="features" class="rx-case-section"><div class="eyebrow">02 / What stands out</div><h2>The engineering details.</h2><div class="rx-features">{features}</div></section>
     <section id="workflow" class="rx-case-section"><div class="eyebrow">03 / How it works</div><h2>Follow the workflow.</h2><ol class="rx-workflow">{steps}</ol></section>
     <section id="source" class="rx-case-section"><div class="eyebrow">04 / Code & sources</div><h2>From the implementation.</h2>{''.join(proof_html(x) for x in p['proofs'])}<div class="rx-source-grid">{sources}</div></section></div></div>
-    <section class="wrap rx-case-end"><div><span class="label">Keep exploring</span><h2>Another problem.<br>Another perspective.</h2></div><a class="button outline" href="projects.html">Browse all projects {arrow('right')}</a></section></main>'''
+    {project_pager(p['slug'])}</main>'''
     return document(p['title']+' — Raghad Hanon',p['description'],body,p['slug']+'.html')
 
 
