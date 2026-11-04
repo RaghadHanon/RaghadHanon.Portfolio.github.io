@@ -1,0 +1,104 @@
+/* UX refresh: clearer paths to information, readable sizes, and compact home sections.
+   Loaded last so it can refine the base styles without rewriting them. */
+
+/* ---------- Navigation ---------- */
+.nav-links a[aria-current=true]{color:var(--accent)}
+.nav-links .nav-contact{color:var(--accent);font-weight:600}
+@media(max-width:1100px) and (min-width:801px){.nav{gap:26px}.nav-links{gap:18px}}
+@media(max-width:600px){.nav-links{gap:4px}.nav-links a{font-size:16px;padding:10px 0;width:100%}.nav-links a:after{display:none}}
+
+/* ---------- Hero: direct routes in the first screen ---------- */
+.hero-actions{flex-wrap:wrap;gap:14px}
+.hero-actions .button.outline{background:transparent;border:1px solid #c9cbbf;color:var(--ink)}
+.hero-actions .button.outline:hover{border-color:var(--ink);background:#fffefa;color:var(--ink)}
+.quick-links{list-style:none;margin:26px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 20px}
+.quick-links a{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:var(--muted);padding:6px 0;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
+.quick-links a:hover{color:var(--accent);border-color:currentColor}
+.icon{width:18px;height:18px;flex-shrink:0}
+.hero-bottom .availability{font-size:12px}
+@media(max-width:600px){.hero-actions .button{flex:1 1 100%;justify-content:space-between}.quick-links{gap:4px 18px}.quick-links a{font-size:14px;padding:8px 0}}
+
+/* ---------- Collabrium, in depth ---------- */
+.ce-home-section .wrap{display:grid;gap:22px}
+.depth-panel{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;padding:32px;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface)}
+.depth-caption{padding-top:18px}
+.depth-caption .label{color:var(--accent);font-size:11.5px}
+.depth-caption h3{font-size:22px;letter-spacing:-.035em;margin-top:6px}
+.depth-caption p{font-size:15px;color:var(--muted);margin-top:6px;line-height:1.7}
+.depth-routes .label{color:var(--muted);font-size:11.5px}
+.depth-routes ul{list-style:none;margin:14px 0 0;padding:0}
+.depth-routes li+li{border-top:1px solid var(--line)}
+.depth-routes a{display:grid;grid-template-columns:124px minmax(0,1fr) auto;gap:16px;align-items:center;padding:15px 0;transition:color .2s}
+.depth-routes a:hover{color:var(--accent)}
+.depth-routes a:hover .arrow{transform:translateX(3px)}
+.depth-routes .arrow{transition:transform .2s;color:var(--accent)}
+.depth-count{white-space:nowrap;font-family:'Plex Mono',monospace;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.depth-text strong{display:block;font-size:16px;font-weight:600;letter-spacing:-.02em;line-height:1.35}
+.depth-text small{display:block;font-size:14px;color:var(--muted);line-height:1.55;margin-top:2px}
+@media(max-width:900px){.depth-panel{grid-template-columns:1fr;gap:26px;padding:24px}}
+@media(max-width:600px){.depth-panel{padding:18px;border-radius:12px}.depth-routes a{grid-template-columns:102px minmax(0,1fr) auto;gap:12px}.depth-count{font-size:12px}}
+
+/* ---------- About: toolkit inside the section it belongs to ---------- */
+#about .toolkit{padding-top:72px}
+.toolkit-head{display:flex;justify-content:space-between;align-items:baseline;gap:24px;margin-bottom:22px}
+.toolkit-head .label{color:var(--accent)}
+.toolkit-head p{font-size:15px;color:var(--muted)}
+.toolkit-group h3{font-size:16px}
+.toolkit-group p{font-size:14.5px;line-height:1.85;color:#4f524b}
+@media(max-width:600px){.toolkit-head{display:block}.toolkit-head p{margin-top:6px}.toolkit-group p{font-size:14px}}
+
+/* ---------- More engineering work: scannable rows ---------- */
+.mw-section{background:#efefe8;border-block:1px solid var(--line)}
+.mw-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 48px}
+.mw-row{border-top:1px solid #d6d8cd;padding-bottom:20px}
+.mw-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 18px;padding:22px 0 12px}
+.mw-main .arrow{grid-row:1/3;grid-column:2;align-self:center;color:var(--accent);transition:transform .2s}
+.mw-main:hover .arrow{transform:translateX(4px)}
+.mw-main:hover .mw-title{color:var(--accent)}
+.mw-metric{font-family:'Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);grid-column:1}
+.mw-body{grid-column:1}
+.mw-title{display:block;font-size:21px;font-weight:600;letter-spacing:-.035em;line-height:1.3;transition:color .2s}
+.mw-short{display:block;font-size:15px;color:var(--muted);line-height:1.65;margin-top:6px}
+.mw-meta{display:flex;align-items:center;justify-content:space-between;gap:14px}
+.mw-meta .tags{margin:0}
+.mw-meta .tag{font-size:12px;background:#f8f7f3}
+.mw-repo{display:inline-flex;align-items:center;gap:6px;font-size:13.5px;font-weight:600;color:var(--muted);white-space:nowrap}
+.mw-repo:hover{color:var(--accent)}
+.mw-repo .arrow{width:15px;height:15px}
+@media(max-width:800px){.mw-list{grid-template-columns:1fr}.mw-title{font-size:19px}.mw-short{font-size:14.5px}}
+
+/* ---------- Case studies: show where you are ---------- */
+.case-sidebar a[aria-current=true]{color:var(--accent);border-color:var(--accent);font-weight:600}
+@media(max-width:800px){.case-sidebar a[aria-current=true]{font-weight:600}}
+
+/* ---------- Contact ---------- */
+.contact-resume{display:inline-flex;align-items:center;justify-content:space-between;gap:16px;font-size:14px;font-weight:600;color:#fff3e8;padding:10px 2px;border-bottom:1px solid #f4d4bc70}
+.contact-resume:hover{border-color:#fff3e8}
+.contact .copy-email{font-size:13.5px}
+.contact p{font-size:16px}
+@media(max-width:600px){.contact p{font-size:15px}}
+
+/* ---------- Readability floor ---------- */
+.section-head p{font-size:16px;line-height:1.75}
+.project p,.project-heading p{font-size:15.5px}
+.timeline-item p{font-size:15px}
+.recognition-card p{font-size:14.5px}
+@media(max-width:600px){.section-head p{font-size:15px}.hero-copy{font-size:15.5px}}
+
+/* ---------- Mobile refinements ---------- */
+@media(max-width:600px){
+  .proof-grid{grid-template-columns:1fr 1fr;gap:22px 0}
+  .proof-item{flex-direction:column;align-items:flex-start;gap:4px;padding-inline:16px}
+  .proof-item:nth-child(odd){padding-left:0}
+  .proof-item span{font-size:11px;line-height:1.5}
+  .proof-item span br{display:none}
+  .depth-routes a{grid-template-columns:minmax(0,1fr) auto;gap:2px 12px}
+  .depth-count{grid-column:1;font-size:11.5px}
+  .depth-text{grid-column:1}
+  .depth-routes a .arrow{grid-column:2;grid-row:1/3}
+  .hero-portrait{max-width:300px}
+  .hero-portrait img{height:340px}
+  .hero-bottom{flex-wrap:wrap;gap:10px 20px}
+}
+.case-section .screen-explorer{margin:22px 0 48px}.case-section .screen-choices{margin-bottom:6px}
+.nav-links a[aria-current=page]{color:var(--accent)}.nav-links a[aria-current=page]:after{right:0}

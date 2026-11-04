@@ -42,6 +42,21 @@
     sections.forEach(section => sectionObserver.observe(section));
   }
 
+  // Case studies: highlight the section the reader is currently in.
+  const caseLinks = [...document.querySelectorAll('.case-sidebar a[href^="#"]')];
+  const caseSections = caseLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
+  if ('IntersectionObserver' in window && caseSections.length) {
+    const caseObserver = new IntersectionObserver(entries => {
+      entries.filter(e => e.isIntersecting).forEach(entry => {
+        caseLinks.forEach(a => {
+          if (a.getAttribute('href') === '#' + entry.target.id) a.setAttribute('aria-current', 'true');
+          else a.removeAttribute('aria-current');
+        });
+      });
+    }, {rootMargin: '-20% 0px -65% 0px'});
+    caseSections.forEach(section => caseObserver.observe(section));
+  }
+
   const tabs = [...document.querySelectorAll('.engineering-explorer [role="tab"]')];
   const visibleTabs = () => tabs.filter(tab => !tab.hidden);
   const activateTab = tab => {

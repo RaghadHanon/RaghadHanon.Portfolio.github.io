@@ -68,6 +68,20 @@ def additional_work():
     <div class="rx-grid rx-compact-grid">{cards}</div></div></section>'''
 
 
+def additional_work_list(eyebrow='04 / More engineering work'):
+    """Scannable rows for the home page: every project stays one click away."""
+    extra_slugs = {p['slug'] for p in projects()}
+    rows = []
+    for p in ordered_work():
+        if p['slug'] not in extra_slugs:
+            continue
+        rows.append(f'''<li class="mw-row"><a class="mw-main" href="{p['slug']}.html"><span class="mw-metric">{escape(p['metric'])}</span><span class="mw-body"><span class="mw-title">{escape(p['title'])}</span><span class="mw-short">{escape(p['short'])}</span></span>{arrow('right')}</a><div class="mw-meta">{tags(p['tags'][:3])}{ext(repo_url(p),'Code','mw-repo')}</div></li>''')
+    total = len(featured()) + len(projects())
+    return f'''<section class="section mw-section" id="more-work" aria-labelledby="more-work-title"><div class="wrap">
+    <div class="section-head reveal"><div><div class="eyebrow">{eyebrow}</div><h2 id="more-work-title">Different problems.<br>More ways to build.</h2></div><div class="rx-section-intro"><p>Focused projects in testable C# design, SQL analysis, database adapters, and full-stack integration. Each one has its own case study.</p><a href="projects.html" class="text-link">Search &amp; filter all {total} projects {arrow('right')}</a></div></div>
+    <ul class="mw-list">{''.join(rows)}</ul></div></section>'''
+
+
 def archive_page():
     all_work = ordered_work()
     filters = [('all','All work'),('backend','Backend & APIs'),('data','Data & SQL'),('design','Design & testing'),('full-stack','Full stack'),('algorithms','Algorithms')]
