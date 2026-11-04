@@ -4,6 +4,7 @@ from components import *
 from case_studies import collabrium_page, actify_page, hotel_page
 from engineering import engineering_showcase
 from media import collabrium_depth
+from api_section import api_section
 from collabrium_engineering import engineering_page, engineering_teaser
 from project_archive import additional_work_list, archive_pages
 
@@ -20,7 +21,7 @@ def home_page():
     <section class="section" id="work" aria-labelledby="work-title"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">01 / 05</div><h2 id="work-title">Selected work</h2><p class="section-tagline">From requirements to working systems.</p></div><p>A graduation platform, a full-stack learning project, and an internship API. Three different contexts for putting backend engineering into practice.</p></div>
     <div class="work-grid"><article class="project featured reveal"><div class="project-heading"><div><span class="project-number mono">01 / Graduation project · 2025–2026</span><a href="collabrium.html" class="project-link-title"><h3>Collabrium</h3><span class="round-arrow">{arrow()}</span></a></div><p>A connected enterprise workspace bringing project delivery, people, learning, community, and reporting into one tenant-aware platform.</p></div>
     <a class="project-stage project-art collabrium collabrium-overview" href="collabrium.html" aria-label="Explore the Collabrium case study">{COLLABRIUM_ART}</a>
-    <div class="owned"><span class="label">My part</span><ul><li>Led the four-person team through sprints and delivery</li><li>Tenant isolation, JWT refresh tokens &amp; layered authorization</li><li>Work-item and sprint business rules</li><li>Notifications, background workers, reports &amp; AI with fallback</li></ul></div><div class="project-footer"><span>Team Lead &amp; Backend Developer · Four-person team</span>{tags(['.NET 8','Clean Architecture','CQRS','SignalR'])}</div></article>
+    <div class="owned"><span class="label">My part</span><ul><li>Led the team and delivered 137 of the 292 endpoints</li><li>Tenant isolation, JWT refresh tokens &amp; project-access policies</li><li>Domain rules for projects, sprints &amp; 5 work-item types</li><li>10 report types, SignalR notifications &amp; AI with fallbacks</li></ul></div><div class="project-footer"><span>Team Lead &amp; Backend Developer · Four-person team</span>{tags(['.NET 8','Clean Architecture','CQRS','SignalR'])}</div></article>
     <article class="project reveal"><a class="project-stage project-art actify" href="actify.html" aria-label="Explore the Actify case study">{ACTIFY_ART}</a><div class="project-small-head"><div><span class="project-number mono">02 / Full-stack project · 2025</span><a href="actify.html"><h3>Actify</h3></a></div><a href="actify.html" class="round-arrow" aria-label="Read the Actify case study">{arrow()}</a></div><p>An activity-based social application connecting event discovery, attendance, profiles, and live discussion.</p><div class="project-footer"><span>Course-based implementation</span>{tags(['ASP.NET Core','React','TypeScript'])}</div></article>
     <article class="project reveal"><a class="project-stage project-art hotel" href="hotel-booking.html" aria-label="Explore the Hotel Booking Platform case study">{HOTEL_ART}</a><div class="project-small-head"><div><span class="project-number mono">03 / Internship project · 2024–2025</span><a href="hotel-booking.html"><h3>Hotel Booking API</h3></a></div><a href="hotel-booking.html" class="round-arrow" aria-label="Read the Hotel Booking API case study">{arrow()}</a></div><p>A booking backend covering hotel discovery, room management, reservations, discounts, and PDF invoices.</p><div class="project-footer"><span>Backend development · Foothill training</span>{tags(['.NET 8','SQL Server','xUnit'])}</div></article></div>{bridge('#collabrium-engineering','Inside Collabrium: how it’s built')}</div></section>
     {engineering_teaser(collabrium_depth())}
@@ -49,7 +50,8 @@ def home_page():
     <div class="chapter"><time>2019</time><div><strong>English Access Microscholarship Program</strong><p>Language learning and communication development.</p></div></div>
     <div class="chapter"><time>—</time><div><strong>Palestine FIRST LEGO League</strong><p>Participation listed among my LinkedIn certifications.</p></div></div>
     <div class="chapter"><time>2026</time><div><strong>TAP — Job Hunting Program</strong><p>Career development and preparation for international opportunities.</p></div></div>
-    </div>{ext(LINKEDIN+'details/licenses/','Explore certificates on LinkedIn','text-link')}</details>{bridge('#contact','Let’s talk about your team')}</div></section>
+    </div>{ext(LINKEDIN+'details/licenses/','Explore certificates on LinkedIn','text-link')}</details>{bridge('#api','Before you go: call my API')}</div></section>
+    {api_section()}
     </main>'''
     return document('Raghad Hanon — .NET Backend Engineer','The portfolio of Raghad Hanon, a .NET backend engineer and first-ranked Computer Systems Engineering graduate. Explore Collabrium, Actify, and Hotel Booking API.',body,home=True)
 
@@ -63,7 +65,9 @@ if __name__ == '__main__':
     for filename,fn in [('index.html',home_page),('collabrium.html',collabrium_page),('collabrium-engineering.html',engineering_page),('actify.html',actify_page),('hotel-booking.html',hotel_page)]:
         (DIST/filename).write_text(fn(),encoding='utf-8')
         print(filename)
-    (DIST/'404.html').write_text(document('Page not found — Raghad Hanon','This page could not be found.',f'<main class="wrap not-found" id="main"><div class="eyebrow">404 / A small detour</div><h1>Let’s get you<br>back on track.</h1><p>The page you’re looking for has moved or doesn’t exist.</p><a class="button" href="index.html">Back to the portfolio {arrow("right")}</a></main>','404.html'),encoding='utf-8')
+    from api_section import to_html
+    notfound_json = to_html({'error': 'This page moved, or never existed.', 'try_instead': ['index.html', 'projects.html', 'collabrium.html'], 'still_lost': 'mailto:'+EMAIL})
+    (DIST/'404.html').write_text(document('Page not found — Raghad Hanon','This page could not be found.',f'''<main class="wrap not-found" id="main"><div class="eyebrow">404 / A small detour</div><h1>Let’s get you<br>back on track.</h1><p>The page you’re looking for has moved or doesn’t exist.</p><div class="api-console not-found-console"><div class="api-bar" aria-hidden="true"><i></i><i></i><i></i><span>raghad · portfolio api · v1</span></div><div class="api-response"><div class="api-request"><span class="api-method m-get">GET</span> <span data-request-path>/this-page</span></div><div class="api-status s-warn"><span class="api-dot" aria-hidden="true"></span>HTTP/1.1 404 Not Found<span class="api-type">application/json</span></div><pre class="api-json"><code>{notfound_json}</code></pre></div></div><a class="button" href="index.html">Back to the portfolio {arrow("right")}</a></main>''','404.html'),encoding='utf-8')
     (DIST/'assets/favicon.svg').write_text('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="17" fill="#b84d2e"/><text x="10" y="43" fill="#fff3e2" font-family="Arial,sans-serif" font-size="32" font-weight="bold" letter-spacing="-3">rh.</text></svg>')
     (DIST/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+ORIGIN+'/sitemap.xml\n')
     urls=['','collabrium.html','collabrium-engineering.html','actify.html','hotel-booking.html','presentation.html']

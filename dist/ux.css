@@ -206,3 +206,52 @@
 .rx-case-nav a[aria-current=true]{color:var(--accent)}
 .ce-toc a[aria-current=true]{color:var(--accent)}
 .engineering .section-head p.section-tagline{color:#c9d3bf}.ce-home-panel p.section-tagline{color:#dcb99a;font-size:clamp(18px,1.6vw,22px)}
+
+/* ================= Hire me as an API ================= */
+.api-section{background:var(--paper)}
+.api-console{border-radius:var(--radius);overflow:hidden;background:#1d231e;color:#dfe6d8;border:1px solid #2f382f;box-shadow:0 30px 60px -30px #1d231e80}
+.api-bar{display:flex;align-items:center;gap:7px;padding:13px 18px;background:#262e27;border-bottom:1px solid #343e34}
+.api-bar i{width:10px;height:10px;border-radius:50%;background:#4a554a}
+.api-bar i:first-child{background:#c96f4f}
+.api-bar span{margin-left:auto;margin-right:auto;font:12px 'Plex Mono',monospace;letter-spacing:.06em;color:#a9b5a1}
+.api-body{display:grid;grid-template-columns:minmax(250px,.8fr) minmax(0,1.6fr);min-height:440px}
+.api-endpoints{display:flex;flex-direction:column;gap:2px;padding:14px;border-right:1px solid #343e34}
+.api-endpoint{display:flex;align-items:center;gap:12px;text-align:left;background:none;border:1px solid transparent;border-radius:8px;padding:11px 12px;color:#cfd8c8;font:13.5px 'Plex Mono',monospace;transition:background .15s,border-color .15s}
+.api-endpoint:hover{background:#ffffff0d}
+.api-endpoint[aria-selected=true]{background:#ffffff14;border-color:#ffffff24;color:#fff}
+.api-endpoint:focus-visible{outline:2px solid #e5b08b;outline-offset:2px}
+.api-path{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.api-method{display:inline-block;min-width:58px;text-align:center;font:600 11.5px 'Plex Mono',monospace;letter-spacing:.04em;padding:3px 6px;border-radius:5px}
+.m-get{background:#3f5a43;color:#c9ecc9}
+.m-post{background:#6b4a2e;color:#ffd9b0}
+.m-delete{background:#6b3532;color:#ffc4bc}
+.api-output{position:relative;min-width:0}
+.api-response{padding:20px 24px 24px;outline:none}
+.api-response[hidden]{display:none}
+.api-request{font:13.5px 'Plex Mono',monospace;color:#a9b5a1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.api-status{display:flex;align-items:center;gap:9px;margin-top:12px;font:600 14px 'Plex Mono',monospace}
+.api-status.s-ok{color:#8fd19a}
+.api-status.s-warn{color:#f0b46a}
+.api-dot{width:8px;height:8px;border-radius:50%;background:currentColor;box-shadow:0 0 0 4px color-mix(in srgb,currentColor 20%,transparent)}
+.api-type{margin-left:auto;font-weight:400;font-size:12px;color:#8c9886}
+.api-json{margin:16px 0 0;padding:18px 20px;border-radius:10px;background:#151a16;border:1px solid #2b332b;font:13.5px/1.75 'Plex Mono',monospace;color:#cfd8c8;overflow-x:auto;white-space:pre;min-height:0}
+.api-json .j-key{color:#9fc7e8}
+.api-json .j-str{color:#e5b08b}
+.api-json .j-num{color:#b9e3a6}
+.api-json .j-link{text-decoration:underline;text-decoration-color:#e5b08b66;text-underline-offset:3px}
+.api-json .j-link:hover{color:#ffd2b0;text-decoration-color:currentColor}
+.api-output.is-sending .api-status{opacity:.35}
+.api-output.is-sending .api-json{opacity:.35}
+.api-output.is-sending .api-status:after{content:' · sending…';font-weight:400;color:#a9b5a1}
+@media(max-width:860px){
+  .api-body{grid-template-columns:1fr;min-height:0}
+  .api-endpoints{flex-direction:row;overflow-x:auto;scrollbar-width:none;border-right:0;border-bottom:1px solid #343e34;padding:10px}
+  .api-endpoints::-webkit-scrollbar{display:none}
+  .api-endpoint{flex:0 0 auto}
+  .api-path{max-width:none}
+}
+@media(max-width:600px){.api-response{padding:16px}.api-json{font-size:12.5px;padding:14px}.api-endpoint{font-size:12.5px;padding:9px 10px}.api-type{display:none}}
+@media print{.api-endpoints{display:none}.api-response[hidden]{display:block}}
+@media(max-width:860px){.api-json{white-space:pre-wrap;overflow-wrap:anywhere}}
+.not-found-console{max-width:720px;margin:34px 0 30px}
+.not-found-console .api-response{padding:20px 22px}
