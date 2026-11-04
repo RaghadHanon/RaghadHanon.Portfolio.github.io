@@ -1,7 +1,20 @@
 (() => {
   'use strict';
   const header = document.querySelector('.site-header');
-  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 8);
+  const progress = document.querySelector('.read-progress span');
+  const toTop = document.querySelector('.to-top');
+  let ticking = false;
+  const update = () => {
+    ticking = false;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    const long = max > window.innerHeight * 2.5;
+    if (progress) progress.style.transform = 'scaleX(' + (long && max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+    toTop?.classList.toggle('visible', window.scrollY > window.innerHeight * 1.5);
+  };
+  const onScroll = () => {
+    header?.classList.toggle('scrolled', window.scrollY > 8);
+    if (!ticking) { ticking = true; requestAnimationFrame(update); }
+  };
   onScroll();
   window.addEventListener('scroll', onScroll, {passive: true});
 
@@ -43,14 +56,18 @@
   }
 
   // Case studies: highlight the section the reader is currently in.
-  const caseLinks = [...document.querySelectorAll('.case-sidebar a[href^="#"]')];
+  const caseLinks = [...document.querySelectorAll('.case-sidebar a[href^="#"], .rx-case-nav a[href^="#"], .ce-toc a[href^="#"]')];
   const caseSections = caseLinks.map(a => document.getElementById(a.getAttribute('href').slice(1))).filter(Boolean);
   if ('IntersectionObserver' in window && caseSections.length) {
     const caseObserver = new IntersectionObserver(entries => {
       entries.filter(e => e.isIntersecting).forEach(entry => {
         caseLinks.forEach(a => {
-          if (a.getAttribute('href') === '#' + entry.target.id) a.setAttribute('aria-current', 'true');
-          else a.removeAttribute('aria-current');
+          if (a.getAttribute('href') === '#' + entry.target.id) {
+            a.setAttribute('aria-current', 'true');
+            // On narrow screens the contents bar scrolls sideways: keep the active item visible.
+            const bar = a.closest('.case-sidebar, .rx-case-nav, .ce-toc nav');
+            if (bar && bar.scrollWidth > bar.clientWidth) bar.scrollTo({left: a.offsetLeft - 20, behavior: reducedMotion ? 'auto' : 'smooth'});
+          } else a.removeAttribute('aria-current');
         });
       });
     }, {rootMargin: '-20% 0px -65% 0px'});

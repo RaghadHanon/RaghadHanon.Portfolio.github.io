@@ -48,14 +48,18 @@ def quick_links():
     """Direct contact routes, visible in the first screen."""
     return f'''<ul class="quick-links" aria-label="Contact and profiles"><li><a href="mailto:{EMAIL}">{icon('mail')}<span>Email</span></a></li><li><a href="{LINKEDIN}" target="_blank" rel="noopener noreferrer">{icon('linkedin')}<span>LinkedIn</span></a></li><li><a href="{GITHUB}" target="_blank" rel="noopener noreferrer">{icon('github')}<span>GitHub</span></a></li><li><a href="{CF}" target="_blank" rel="noopener noreferrer">{icon('code')}<span>Codeforces</span></a></li></ul>'''
 
+def bridge(href,label):
+    """A one-line link that carries the reader to the next part of the story."""
+    return f'<a class="bridge" href="{href}"><span class="label">Next</span><span>{label}</span>{arrow("down")}</a>'
+
 def header(home=False, filename='index.html'):
     base = '' if home else 'index.html'
     return f'''<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap nav">
     <a class="wordmark" href="index.html" aria-label="Raghad Hanon, home"><span class="monogram" aria-hidden="true">rh.</span><span class="wordmark-name">Raghad Hanon<span>Backend engineer</span></span></a>
-    <nav class="nav-links" id="navigation" aria-label="Main navigation"><a href="{base}#work">Work</a><a href="{base}#about">Experience</a><a href="{base}#engineering">Code</a><a href="projects.html"{' aria-current="page"' if filename=='projects.html' else ''}>All projects</a><a href="{base}#recognition">Recognition</a><a href="{base}#contact" class="nav-contact">Contact</a></nav>
+    <nav class="nav-links" id="navigation" aria-label="Main navigation"><a href="{base}#work">Work</a><a href="{base}#engineering">Code</a><a href="{base}#about">Experience</a><a href="projects.html"{' aria-current="page"' if filename=='projects.html' else ''}>All projects</a><a href="{base}#recognition">Recognition</a><a href="{base}#contact" class="nav-contact">Contact</a></nav>
     <a class="nav-resume" href="{RESUME}" target="_blank" rel="noopener">Résumé {arrow('down')}</a>
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="navigation" aria-expanded="false"><span></span><span></span></button>
-    </div></header>'''
+    </div><div class="read-progress" aria-hidden="true"><span></span></div></header>'''
 
 def footer():
     return f'''<section class="contact" id="contact" aria-labelledby="contact-title"><div class="wrap">
@@ -63,6 +67,7 @@ def footer():
     <div class="contact-actions"><a class="button" href="mailto:{EMAIL}">Start a conversation {arrow()}</a><button class="copy-email" type="button" data-copy-email="{EMAIL}" aria-label="Copy email address">{EMAIL}<svg class="arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="7" y="6" width="9" height="11" rx="1"/><path d="M12 6V3H3v10h4"/></svg></button><a class="contact-resume" href="{RESUME}" target="_blank" rel="noopener">Download my résumé {arrow('down')}</a></div></div>
     <div class="contact-socials">{ext(GITHUB,'GitHub')}{ext(LINKEDIN,'LinkedIn')}{ext(CF,'Codeforces')}<span class="location">BASED IN PALESTINE · OPEN TO REMOTE WORK</span></div></div></section>
     <footer class="footer"><div class="wrap"><span>© 2026 Raghad Hanon. Thoughtfully built, from the inside out.</span><a href="#top">Back to top {arrow('up')}</a></div></footer>
+    <a class="to-top" href="#top" aria-label="Back to top">{arrow('up')}</a>
     <div class="toast" role="status" aria-live="polite"></div>
     <dialog class="lightbox" aria-label="Expanded project screenshot"><button class="close-lightbox" type="button" aria-label="Close screenshot">×</button><img alt=""><p></p></dialog>'''
 
@@ -128,11 +133,29 @@ def decision(number,title,text,source=None):
 def gallery(file,alt,caption):
     return f'<figure class="gallery-item"><button type="button" class="image-zoom" data-zoom="assets/{file}" data-caption="{escape(caption,quote=True)}" aria-label="Expand: {escape(alt,quote=True)}"><img src="assets/{file}" alt="{escape(alt,quote=True)}" loading="lazy" decoding="async" width="1866" height="912"></button><figcaption>{caption}</figcaption></figure>'
 
-def case_page(slug,title,category,subtitle,lede,role,date,context,tech,cover,caption,sections,nextslug,nexttitle):
+COLLABRIUM_TABS = [('overview','Overview','collabrium.html'),('backend','Backend engineering','collabrium-engineering.html'),('demo','Demo &amp; screens','collabrium.html#demo'),('docs','Thesis &amp; presentation','collabrium.html#documentation')]
+
+def collabrium_tabs(current):
+    """One navigation bar shared by every Collabrium page, so its three pages read as one project."""
+    links=''.join(f'<a href="{href}"{" aria-current=\"page\"" if key==current else ""}>{label}</a>' for key,label,href in COLLABRIUM_TABS)
+    return f'<nav class="project-tabs" aria-label="Collabrium pages"><span class="project-tabs-name">Collabrium</span><div class="project-tabs-links">{links}</div></nav>'
+
+def tldr(facts,built,stack,links):
+    """A ten-second summary placed at the top of each case study."""
+    rows=''.join(f'<div><dt>{dt}</dt><dd>{dd}</dd></div>' for dt,dd in facts if dd)
+    items=''.join(f'<li>{b}</li>' for b in built)
+    return f'''<section class="tldr" aria-labelledby="tldr-title"><h2 class="label" id="tldr-title">At a glance</h2><div class="tldr-grid"><dl class="tldr-facts">{rows}</dl><div class="tldr-built"><h3>What I built</h3><ul>{items}</ul></div><div class="tldr-stack"><h3>Stack</h3>{tags(stack)}<div class="tldr-links">{''.join(links)}</div></div></div></section>'''
+
+def case_page(slug,title,category,subtitle,lede,role,date,context,tech,cover,caption,sections,nextslug=None,nexttitle=None,summary=None):
+    from project_archive import project_pager
     nav=''.join(f'<a href="#{id}">{name}</a>' for id,name,_ in sections)
     parts=''.join(f'<section class="case-section" id="{id}"><h2>{name}</h2>{html}</section>' for id,name,html in sections)
     repo={'collabrium':'Collabrium','actify':'Actify','hotel-booking':'HotelBookingPlatform'}[slug]
-    body=f'''<main id="main"><section class="case-hero wrap"><div class="breadcrumb"><a href="index.html#work">Selected work</a><span>/</span><span>{title}</span></div><div class="eyebrow">{category}</div><div class="case-title-row"><h1>{title}</h1>{ext(GITHUB+'/'+repo,'View repository','button outline')}</div><p class="case-subtitle">{subtitle}</p><p class="lede">{lede}</p><dl class="case-meta"><div><dt>My role</dt><dd>{role}</dd></div><div><dt>Timeline</dt><dd>{date}</dd></div><div><dt>Context</dt><dd>{context}</dd></div></dl></section><div class="wrap">{cover}<p class="image-caption"><span>{caption}</span><span>ENGINEERING CASE STUDY</span></p></div><div class="wrap case-content"><aside class="case-sidebar" aria-label="Case study contents"><div class="label">In this case study</div>{nav}<div class="stack-list"><div class="label">Technology</div>{tags(tech)}</div></aside><div class="case-body">{parts}</div></div><section class="next-project"><div class="wrap"><a href="{nextslug}.html"><div><span class="label">Next case study</span><h2>{nexttitle}</h2></div><span class="round-arrow">{arrow('right')}</span></a></div></section></main>'''
+    summary=summary or {}
+    links=[ext(GITHUB+'/'+repo,'Repository','tldr-link')]+summary.get('links',[])
+    glance=tldr([('My role',role),('Timeline',date),('Context',context),('Outcome',summary.get('outcome',''))],summary.get('built',[]),tech,links) if summary else f'<dl class="case-meta"><div><dt>My role</dt><dd>{role}</dd></div><div><dt>Timeline</dt><dd>{date}</dd></div><div><dt>Context</dt><dd>{context}</dd></div></dl>'
+    tabs=collabrium_tabs('overview') if slug=='collabrium' else ''
+    body=f'''<main id="main"><section class="case-hero wrap">{tabs}<nav class="breadcrumb" aria-label="Breadcrumb"><a href="index.html">Home</a><span>/</span><a href="projects.html">Projects</a><span>/</span><span aria-current="page">{title}</span></nav><div class="eyebrow">{category}</div><div class="case-title-row"><h1>{title}</h1>{ext(GITHUB+'/'+repo,'View repository','button outline')}</div><p class="case-subtitle">{subtitle}</p><p class="lede">{lede}</p>{glance}</section><div class="wrap">{cover}<p class="image-caption"><span>{caption}</span><span>ENGINEERING CASE STUDY</span></p></div><div class="wrap case-content"><aside class="case-sidebar" aria-label="Case study contents"><div class="label">In this case study</div>{nav}<div class="stack-list"><div class="label">Technology</div>{tags(tech)}</div></aside><div class="case-body">{parts}</div></div>{project_pager(slug)}</main>'''
     return document(title+' — Raghad Hanon',lede,body,slug+'.html')
 
 
