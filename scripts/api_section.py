@@ -15,7 +15,7 @@ ENDPOINTS = [
         'links': {'github': GITHUB, 'linkedin': LINKEDIN},
     }),
     ('stack', 'GET', '/raghad/stack', 200, 'OK', {
-        'backend': ['C#', '.NET 8', 'ASP.NET Core Web API', 'EF Core', 'LINQ', 'SQL Server', 'REST APIs'],
+        'backend': ['C#', '.NET', 'ASP.NET Core Web API', 'EF Core', 'LINQ', 'SQL Server', 'REST APIs'],
         'architecture': ['Clean Architecture', 'CQRS / MediatR', 'SOLID', 'Dependency injection', 'Repository / Unit of Work', 'Multi-tenancy'],
         'security': ['ASP.NET Identity', 'JWT + refresh tokens', 'RBAC', 'Policy-based authorization'],
         'testing_delivery': ['xUnit', 'Moq', 'AutoFixture', 'FluentValidation', 'Swagger / OpenAPI', 'Postman', 'Git', 'GitHub Actions CI/CD', 'Azure App Service', 'Azure SQL'],

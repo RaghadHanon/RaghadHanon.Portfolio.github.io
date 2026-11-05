@@ -7,7 +7,7 @@ the frontend is a side road off the API, and problem solving is the river
 that runs under the whole map.
 """
 from html import escape
-from components import CF, arrow
+from components import CF, arrow, bridge
 
 W, H = 1200, 600
 
@@ -100,7 +100,7 @@ TOOLS = {
     'delivery': ['Git', 'GitHub Actions CI/CD', 'Azure App Service', 'Azure SQL'],
     'river': ['Algorithms', 'Data structures', 'C++', 'Java', 'Competitive programming'],
 }
-CARRIED = ['C#', '.NET 8']
+CARRIED = ['C#', '.NET']
 
 # Road waypoints: villages plus wiggles between them, start sign and finish flag.
 ROAD = [(30, 150), (130, 150), (245, 122), (360, 150), (480, 178), (600, 150), (720, 122), (840, 150), (950, 178),
@@ -301,7 +301,7 @@ CUP = ('<span class="sm-cup" aria-hidden="true"><svg viewBox="0 0 40 40"><circle
        '<path d="M8 31.5h22" stroke="#2c312b" stroke-width="2" stroke-linecap="round"/></svg></span>')
 
 
-def skill_map():
+def skill_map(eyebrow='02 / 06'):
     by_key = {v[0]: v for v in VILLAGES}
     order = ROUTE[:5] + ['frontend'] + ROUTE[5:] + ['river']
     pins, panels, bubbles = [], [], []
@@ -325,7 +325,7 @@ def skill_map():
         where = f'Stop {stop:02} of {len(ROUTE):02}' if stop else TAGS[key]
         rows = ''.join(f'<li><strong>{escape(s)}</strong><span class="sm-detail">{escape(d)}</span><span class="sm-used">Used in {links(l)}</span></li>' for s, d, l in skills)
         panels.append(f'<article class="sm-panel" id="sm-{key}" aria-labelledby="sm-title-{key}"><div class="sm-panel-head"><span class="sm-num" aria-hidden="true">{badge}</span>'
-                      f'<div><span class="label">{where}</span><h4 id="sm-title-{key}">{escape(name)}</h4><p class="sm-q">{escape(question)}</p></div>{nxt_btn}</div><ul class="sm-tools" aria-label="Tools at this stop">{''.join(f'<li>{escape(t)}</li>' for t in TOOLS[key])}</ul><h5 class="sm-evidence">Where I’ve used them</h5><ul class="sm-skills">{rows}</ul></article>')
+                      f'<div><span class="label">{where}</span><h3 id="sm-title-{key}">{escape(name)}</h3><p class="sm-q">{escape(question)}</p></div>{nxt_btn}</div><ul class="sm-tools" aria-label="Tools at this stop">{''.join(f'<li>{escape(t)}</li>' for t in TOOLS[key])}</ul><h4 class="sm-evidence">Where I’ve used them</h4><ul class="sm-skills">{rows}</ul></article>')
         chips = ''.join(f'<li>{escape(t)}</li>' for t in TOOLS[key])
         bubbles.append(f'<div class="sm-bubble sm-bubble-{kind}" data-sm-bubble="{key}" aria-hidden="true" hidden><div class="sm-bubble-top"><span class="sm-bubble-num">{badge}</span>'
                        f'<span class="sm-bubble-stage">{escape(where)}</span></div><strong class="sm-bubble-title">{escape(name)}</strong><span class="sm-bubble-q">{escape(question)}</span>'
@@ -335,9 +335,9 @@ def skill_map():
            '<path class="i-play" d="M6.5 4.5v11l9-5.5z" fill="currentColor"/><path class="i-stop" d="M5.5 5.5h9v9h-9z" fill="currentColor"/></svg><span class="sm-play-label">Start a task</span></button>'
            f'<div class="sm-hud-info"><span class="sm-hud-quest">Quest · Ship a new feature</span><span class="sm-progress" aria-hidden="true">{segments}</span>'
            '<span class="sm-status" aria-live="polite">Follow a task, or open any village.</span></div></div>')
-    return f'''<div class="wrap skillmap reveal" id="skill-map" data-skillmap>
-    <div class="sm-head"><div><span class="label">Skill map / How I work</span><h3>From a new task to production.</h3></div><p>Every task travels the same road. Each village is one stage of how I work, with the skills I use there and where I’ve used them. Tests travel alongside the build, and problem solving runs underneath it all.</p></div>
+    return f'''<section class="section sm-section" id="skills" aria-labelledby="skills-title"><div class="wrap skillmap" id="skill-map" data-skillmap>
+    <div class="section-head reveal"><div><div class="eyebrow">{eyebrow}</div><h2 id="skills-title">Skills &amp; how I work</h2><p class="section-tagline">From a new task to production.</p></div><p>Every task travels the same road. Each village is one stage of how I work, with the tools I use there and where I’ve used them. Tests travel alongside the build, and problem solving runs underneath it all.</p></div>
     <p class="sm-carry"><span class="label">Carried to every stop</span>{''.join(f'<span class="sm-carry-chip">{escape(t)}</span>' for t in CARRIED)}</p>
     <div class="sm-stage">{map_svg()}<ol class="sm-villages" aria-label="Stages of a task, in order">{''.join(pins)}</ol>{CUP}{''.join(bubbles)}<span class="sm-confetti" aria-hidden="true"></span>{hud}</div>
     <div class="sm-panels">{''.join(panels)}</div>
-    </div>'''
+    {bridge('#engineering', 'The decisions behind the code')}</div></section>'''

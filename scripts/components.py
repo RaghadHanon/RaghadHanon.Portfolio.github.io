@@ -56,7 +56,7 @@ def header(home=False, filename='index.html'):
     base = '' if home else 'index.html'
     return f'''<a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="wrap nav">
     <a class="wordmark" href="index.html" aria-label="Raghad Hanon, home"><span class="monogram" aria-hidden="true">rh.</span><span class="wordmark-name">Raghad Hanon<span>Backend engineer</span></span></a>
-    <nav class="nav-links" id="navigation" aria-label="Main navigation"><a href="{base}#work">Work</a><a href="{base}#engineering">Code</a><a href="{base}#about">Experience</a><a href="projects.html"{' aria-current="page"' if filename=='projects.html' else ''}>All projects</a><a href="{base}#recognition">Recognition</a><a href="{base}#contact" class="nav-contact">Contact</a></nav>
+    <nav class="nav-links" id="navigation" aria-label="Main navigation"><a href="{base}#work">Work</a><a href="{base}#skills">Skills</a><a href="{base}#engineering">Code</a><a href="{base}#about">Experience</a><a href="projects.html"{' aria-current="page"' if filename=='projects.html' else ''}>All projects</a><a href="{base}#recognition">Recognition</a><a href="{base}#api">Hire me</a><a href="{base}#contact" class="nav-contact">Contact</a></nav>
     <a class="nav-resume" href="{RESUME}" target="_blank" rel="noopener">Résumé {arrow('down')}</a>
     <button class="menu-toggle" type="button" aria-label="Open navigation" aria-controls="navigation" aria-expanded="false"><span></span><span></span></button>
     </div><div class="read-progress" aria-hidden="true"><span></span></div></header>'''
