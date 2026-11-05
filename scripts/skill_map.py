@@ -86,6 +86,22 @@ VILLAGES = [
 ROUTE = ['analysis', 'domain', 'data', 'architecture', 'api', 'security', 'integrations', 'testing', 'delivery']
 TAGS = {'frontend': 'Side road', 'testing': 'Alongside the build', 'river': 'Underneath it all'}
 
+# The full toolset at each stop, as agreed: shown in the bubble and in the details panel.
+TOOLS = {
+    'analysis': ['Requirements analysis', 'User stories', 'Acceptance criteria', 'Agile / Scrum', 'API contracts'],
+    'domain': ['Domain models', 'Invariants', 'State transitions', 'OOP', 'SOLID'],
+    'data': ['SQL Server', 'EF Core', 'LINQ', 'Relational design', 'Migrations', 'Read models', 'T-SQL', 'MongoDB'],
+    'architecture': ['Clean Architecture', 'CQRS / MediatR', 'Dependency injection', 'Repository / Unit of Work', 'Design patterns'],
+    'api': ['ASP.NET Core Web API', 'REST', 'DTOs', 'FluentValidation', 'AutoMapper', 'Swagger / OpenAPI'],
+    'frontend': ['React', 'TypeScript', 'JavaScript', 'MUI', 'MobX', 'HTML', 'CSS', 'Bootstrap'],
+    'security': ['ASP.NET Identity', 'JWT + refresh tokens', 'RBAC', 'Policy-based authorization', 'Multi-tenancy'],
+    'integrations': ['SignalR', 'Background workers', 'Email notifications', 'QuestPDF', 'ScottPlot', 'Ollama / LLMs'],
+    'testing': ['xUnit', 'Moq', 'AutoFixture', 'FluentAssertions', 'Postman'],
+    'delivery': ['Git', 'GitHub Actions CI/CD', 'Azure App Service', 'Azure SQL'],
+    'river': ['Algorithms', 'Data structures', 'C++', 'Java', 'Competitive programming'],
+}
+CARRIED = ['C#', '.NET 8']
+
 # Road waypoints: villages plus wiggles between them, start sign and finish flag.
 ROAD = [(30, 150), (130, 150), (245, 122), (360, 150), (480, 178), (600, 150), (720, 122), (840, 150), (950, 178),
         (1060, 150), (1140, 210), (1152, 300), (1135, 385), (1050, 440), (905, 468), (760, 440), (610, 412),
@@ -309,11 +325,11 @@ def skill_map():
         where = f'Stop {stop:02} of {len(ROUTE):02}' if stop else TAGS[key]
         rows = ''.join(f'<li><strong>{escape(s)}</strong><span class="sm-detail">{escape(d)}</span><span class="sm-used">Used in {links(l)}</span></li>' for s, d, l in skills)
         panels.append(f'<article class="sm-panel" id="sm-{key}" aria-labelledby="sm-title-{key}"><div class="sm-panel-head"><span class="sm-num" aria-hidden="true">{badge}</span>'
-                      f'<div><span class="label">{where}</span><h4 id="sm-title-{key}">{escape(name)}</h4><p class="sm-q">{escape(question)}</p></div>{nxt_btn}</div><ul class="sm-skills">{rows}</ul></article>')
-        chips = ''.join(f'<li>{escape(s)}</li>' for s, _, _ in skills)
+                      f'<div><span class="label">{where}</span><h4 id="sm-title-{key}">{escape(name)}</h4><p class="sm-q">{escape(question)}</p></div>{nxt_btn}</div><ul class="sm-tools" aria-label="Tools at this stop">{''.join(f'<li>{escape(t)}</li>' for t in TOOLS[key])}</ul><h5 class="sm-evidence">Where I’ve used them</h5><ul class="sm-skills">{rows}</ul></article>')
+        chips = ''.join(f'<li>{escape(t)}</li>' for t in TOOLS[key])
         bubbles.append(f'<div class="sm-bubble sm-bubble-{kind}" data-sm-bubble="{key}" aria-hidden="true" hidden><div class="sm-bubble-top"><span class="sm-bubble-num">{badge}</span>'
                        f'<span class="sm-bubble-stage">{escape(where)}</span></div><strong class="sm-bubble-title">{escape(name)}</strong><span class="sm-bubble-q">{escape(question)}</span>'
-                       f'<ul class="sm-bubble-skills">{chips}</ul><span class="sm-bubble-more">Projects for each skill, below ↓</span></div>')
+                       f'<ul class="sm-bubble-skills">{chips}</ul><span class="sm-bubble-more">Where I’ve used them, below ↓</span></div>')
     segments = ''.join(f'<i data-seg="{i}"></i>' for i in range(1, len(ROUTE) + 1))
     hud = ('<div class="sm-hud" data-sm-js hidden><button type="button" class="sm-play" aria-pressed="false"><svg class="sm-play-icon" viewBox="0 0 20 20" aria-hidden="true">'
            '<path class="i-play" d="M6.5 4.5v11l9-5.5z" fill="currentColor"/><path class="i-stop" d="M5.5 5.5h9v9h-9z" fill="currentColor"/></svg><span class="sm-play-label">Start a task</span></button>'
@@ -321,6 +337,7 @@ def skill_map():
            '<span class="sm-status" aria-live="polite">Follow a task, or open any village.</span></div></div>')
     return f'''<div class="wrap skillmap reveal" id="skill-map" data-skillmap>
     <div class="sm-head"><div><span class="label">Skill map / How I work</span><h3>From a new task to production.</h3></div><p>Every task travels the same road. Each village is one stage of how I work, with the skills I use there and where I’ve used them. Tests travel alongside the build, and problem solving runs underneath it all.</p></div>
+    <p class="sm-carry"><span class="label">Carried to every stop</span>{''.join(f'<span class="sm-carry-chip">{escape(t)}</span>' for t in CARRIED)}</p>
     <div class="sm-stage">{map_svg()}<ol class="sm-villages" aria-label="Stages of a task, in order">{''.join(pins)}</ol>{CUP}{''.join(bubbles)}<span class="sm-confetti" aria-hidden="true"></span>{hud}</div>
     <div class="sm-panels">{''.join(panels)}</div>
     </div>'''
